@@ -13,7 +13,8 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
    <style> 
-   /*Custom Bootsratp*/
+
+   /*Custom Bootsratp-->Nav and SearchBtn*/
 
    #navbarSupportedContent{
        position: relative;
@@ -168,6 +169,56 @@
 <body>
 
     <header>
+
+    <div id="cookiesAccept"></div>
+<div id="cookiesScript"><!-- Your Script (ex : Google Analytics; facebook; twitter; ...) --></div>
+<script>
+    /** PARAM ////////////////////// */
+    var bndIdCookiesInfos = 'cookiesAccept';
+    var bndIdCookiesScript = 'cookiesScript';
+    var contentInfosMessage = 'Ce site utilise des cookies afin d\'analyser le trafic et de mesurer les performances des annonces. En poursuivant votre navigation sur ce site, vous en acceptez l\'utilisation.';
+    var contentInfosMessageLinkMore = '';
+    /** .PARAM ////////////////////// */
+ 
+    var blkInfos = null;var blkScript = null;var htmlChecked = null;
+    window.onload = function () {
+        if ((document.getElementById(bndIdCookiesInfos)) && (document.getElementById(bndIdCookiesScript))) {
+            var cookiesAccepted = null;
+            blkInfos = document.getElementById(bndIdCookiesInfos);
+            blkScript = document.getElementById(bndIdCookiesScript);
+            htmlChecked = true;
+            if (sessionStorage.getItem("cookiesAccepted")) {cookiesAccepted = sessionStorage.getItem("cookiesAccepted");}
+            else {sessionStorage.setItem('cookiesAccepted', 'null');}
+            CookiesAreAccepted(cookiesAccepted);
+        }
+    };
+    function CookiesAreAccepted(param) {
+        if (htmlChecked === true) {
+            if (param === 'true') {
+                sessionStorage.setItem('cookiesAccepted', 'true');
+                blkInfos.remove();
+            }
+            else if (param === 'false') {
+                sessionStorage.setItem('cookiesAccepted', 'false');
+                blkInfos.remove(); blkScript.remove();
+            }
+            else {
+                var htmlContent = '<div style="z-index: 9999 !important;position: fixed !important;background-color: rgba(51, 51, 51, 0.6);color:#fff;bottom: 0;width: 100%;padding: 10px;">';
+                htmlContent += '<div style="float: left;"><em>' + contentInfosMessage + '</em>';
+                if (contentInfosMessageLinkMore != '') {
+                    htmlContent += ' <a href="' + contentInfosMessageLinkMore + '" style="color:#fff;text-decoration: underline;">en savoir +</a>';
+                }
+                htmlContent += '</div>';
+                htmlContent += '<div style="float: right;">';
+                htmlContent += '<span id="btnAcceptCookies" style="padding:5px;background-color:green;cursor:pointer;" onclick="CookiesAreAccepted(\'true\');">ACCEPTER</span>  ';
+                htmlContent += '<span id="btnDeclineCookies" style="padding:5px;background-color:red;cursor:pointer;" onclick="CookiesAreAccepted(\'false\');">REFUSER</span>  ';
+                htmlContent += '</div></div>';
+                blkInfos.innerHTML = htmlContent;
+            }
+        }
+    }
+    function ClearCookieschoices() {sessionStorage.removeItem('cookiesAccepted');}
+</script>
 
     @yield('header')
 
