@@ -1,7 +1,7 @@
 @extends('default')
 
 @section('title')
-CESI
+CESI Login
 @endsection
 
 
@@ -19,8 +19,8 @@ CESI
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-2">
-      <li class="nav-item active">
-        <a class="nav-link mr-2" href="#">Accueil<span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <a class="nav-link mr-2" href="{{route( 'welcome')}}">Accueil</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Activités</a>
@@ -29,8 +29,8 @@ CESI
         <a class="nav-link" href="#">Boutique</a>
       </li>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="inscriptionConnection.php">Connection/Inscription</a>
+    <li class="nav-item active">
+      <a class="nav-link" href="{{route( 'login')}}">Connection/Inscription<span class="sr-only">(current)</span></a>
     </li>
     <li>
       <form class="form-inline ">
