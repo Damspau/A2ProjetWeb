@@ -35,10 +35,10 @@
 
     /*navbar*/
 
-    .navbar-collapse{
+    .navbar-collapse {
 
       width: 190%;
-      height:90%;
+      height: 90%;
 
     }
 
@@ -214,33 +214,26 @@
       background-color: #6684bd;
     }
 
-    footer {
-      width: 100%;
-	position: absolute;
-   background-color: black;
-    color: white;
-    display: flex;
-  flex-direction: column;
-  min-height: 20%;
+         @media only screen and (min-height: 478px) {
+
+      #idk {
+        position: absolute;
+      } 
+
+    }  
+
+     footer {
+      bottom: 0;
+      background-color: black;
+      color: white;
+      position: relative;
+        width: 100%;
     }
 
-    @media and (min-width: 563px ) {
-      footer{
-  position: absolute;
-    bottom: 0;
-    width: 60%;
-      }
 
-    }
 
-/* 
-background: #998B7D;
 
-      
-      margin-top: auto;
-      */
-
-    #sizeAdresseMail {
+     #sizeAdresseMail {
       font-size: small;
     }
   </style>
@@ -335,7 +328,7 @@ background: #998B7D;
   </aside>
 
 
-  <footer class="mt-5 ">
+  <footer class="mt-5 b-light" id="idk">
     <div class="container">
       <div class="row">
         <div class="col-sm-5 col-md-3 col-lg-3 ">
