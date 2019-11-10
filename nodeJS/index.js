@@ -5,35 +5,78 @@ var express = require('express');
 // server parameters
 var hostname = 'localhost';
 var port = 3000;
-//use of express and router
+//use of express, router for the api
 var app = express();
 var myRouter = express.Router();
+//driver bodyParser and mysql
+var bodyParser = require('body-parser'); app.use(bodyParser.json()); app.use(bodyParser.urlencoded({ extended: true }));
+var mysql = require('mysql');
 
+var connexion = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'national'
+});
+
+connexion.connect((err) =>{
+  if(err) throw err;
+  console.log('Mysql Connected...');
+});
 //data route for getting, update and add data
-myRouter.route('/data')
+myRouter.route('/data/:userName')
 
 // Get put and update method
 // GET data without password
 .get(function(req,res){
-   res.json({message : "GET data", methode : req.method});
+ let sql = "CALL UserGetData ('" + req.params.userName + "')";
+ let query = connexion.query(sql, (err, results) => {
+   if(err) throw err;
+   res.send(JSON.stringify({"response": results}));
+ });;
 })
+myRouter.route('/data')
 //POST add a user
 .post(function(req,res){
-     res.json({message : "POST", methode : req.method});
+  let sql = "CALL PostData ('" + req.body.username + "', '" + req.body.mdp + "', '" + req.body.email + "','" + req.body.location+ "')";
+  let query = connexion.query(sql, (err, results) => {
+    if(err) throw err;
+    res.send(JSON.stringify({"response": results}));
+  });;
+
+
 })
 //PUT update location of user
 .put(function(req,res){
-     res.json({message : "PUT", methode : req.method});
+  let sql = "CALL PutData ('" + req.body.username + "', '" + req.body.location + "', '" + req.body.passwordAdmin + "')";
+  let query = connexion.query(sql, (err, results) => {
+    if(err) throw err;
+    res.send(JSON.stringify({"response": results}));
+  });;
 })
 
 //route for delete and connexion
 myRouter.route('/connexDel/:identifiant/:mdp')
 .get(function(req,res){
-   res.json({message : "GET connexion", methode : req.method, identifiant : req.params.identifiant, mdp : req.params.mdp });
+  let sql = "CALL UserLogin ('" + req.params.identifiant + "', '" + req.params.mdp + "')";
+  let query = connexion.query(sql, (err, results) => {
+    if(err) throw err;
+
+    res.send(JSON.stringify({"response": results[0]}));
+
+
+
+  });;
+
 })
 
 .delete(function(req,res){
-   res.json({message : "GET connexion", methode : req.method, identifiant : req.params.identifiant, mdp : req.params.mdp });
+   //res.json({message : "GET connexion", methode : req.method, identifiant : req.params.identifiant, mdp : req.params.mdp });
+   let sql = "CALL DeleteData ('" + req.params.identifiant + "', '" + req.params.mdp + "')";
+   let query = connexion.query(sql, (err, results) => {
+     if(err) throw err;
+     res.send(JSON.stringify({"response": results}));
+   });;
 })
 
 
@@ -41,6 +84,10 @@ myRouter.route('/connexDel/:identifiant/:mdp')
 
 //start using the router
 app.use(myRouter);
+// parse application/x-www-form-urlencoded
+
+
+
 
 //server start
 app.listen(port, hostname, function(){
