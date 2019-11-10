@@ -101,7 +101,7 @@ CESI
   <header>
     <h1 style=" font-size: 150%;text-align: center;"><em><u style="text-decoration-color: red;">Page d'accueil : Activités et boutique</u></em></h1>
   </header>
-  <div class="container" style="   top: 50%; left: 50%; ">
+  <div class="container" style="   top: 50%; left: 50%;transform: translate(15%, 15%);   ">
     <div class="row">
       <div class="col-sm-4 col-md-4 col-lg-4">
         <div class="bd-example">
@@ -210,6 +210,7 @@ CESI
 
     </div>
   </div>
+  </br>
 
 
 

@@ -214,7 +214,7 @@
       background-color: #6684bd;
     }
 
-         @media only screen and (min-height: 478px) {
+         @media only screen and (min-height: 465px) {
 
       #idk {
         position: absolute;
@@ -328,7 +328,7 @@
   </aside>
 
 
-  <footer class="mt-5 b-light" id="idk">
+  <footer class="" id="idk">
     <div class="container">
       <div class="row">
         <div class="col-sm-5 col-md-3 col-lg-3 ">
