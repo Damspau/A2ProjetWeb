@@ -224,12 +224,20 @@
       background-color: #6684bd;
     }
 
-    .footer {
+    footer {
+      background: #998B7D;
+      position: absolute;
+      width: 100%;
+      bottom: 0px;
       background-color: black;
       color: white;
+      display: flex;
+      flex-direction: column;
     }
 
-    #sizeAdresseMail{
+
+
+    #sizeAdresseMail {
       font-size: small;
     }
   </style>
@@ -315,7 +323,7 @@
 
     @yield('section')
 
-  </section>')
+  </section>
 
   </section>
 
@@ -324,10 +332,10 @@
   </aside>
 
 
-  <footer class="mt-5 footer">
+  <footer class="mt-5 ">
     <div class="container">
       <div class="row">
-        <div class="col-sm-3 col-md-3 col-lg-3">
+        <div class="col-sm-3 col-md-3 col-lg-3 ">
           <!--Pour le sm-12 il prend pour 1 case 12 colonne; pour md-6 il prend pour 1 case pour 6 colonne il y aura donc 2 partie-->
           <i class="navbar-brand" href="#"><u> Réseaux sociaux : </u></i>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -348,7 +356,7 @@
           </div>
         </div>
 
-        <div class="col-sm-3 col-md-3 col-lg-3">
+        <div class="col-sm-3 col-md-3 col-lg-3 ">
           <i class=" navbar-brand" href="#"> <u>Mentions légales : </u></i>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -361,13 +369,13 @@
           </div>
 
         </div>
-        <div class="col-sm-3 col-md-3 col-lg-3">
+        <div class="col-sm-3 col-md-3 col-lg-3 ">
           <i class="navbar-brand"><u> Contactez-nous :</u></i>
           <div><i>Téléphone : 05 59 32 57 62</i></div>
           <div><i id=sizeAdresseMail>Adresse mail : quentin.desens@viacesi.fr</i></div>
         </div>
 
-        <div class="col-sm-3 col-md-3 col-lg-3">
+        <div class="col-sm-3 col-md-3 col-lg-3 ">
           <i class="navbar-brand"><u> © CESI 2019</u></i>
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2902.8354489013727!2d-0.3117529842849723!3d43.31770398207772!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5648107b30e995%3A0xd938961626e8938!2s8%20Rue%20des%20Fr%C3%A8res%20Charles%20et%20Alcide%20d&#39;%20Orbigny%2C%2064000%20Pau!5e0!3m2!1sfr!2sfr!4v1573392921733!5m2!1sfr!2sfr" width="275" height="175" frameborder="0" style="border:0;" allowfullscreen=""></iframe> </div>
 
@@ -375,5 +383,6 @@
   </footer>
 
 </body>
+
 
 </html>

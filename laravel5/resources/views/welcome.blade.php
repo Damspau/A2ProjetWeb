@@ -95,9 +95,125 @@ CESI
 @endsection
 
 
-
-
-
 @section('section')
+
+<main>
+  <header>
+    <h1 style=" font-size: 150%;text-align: center;"><em><u style="text-decoration-color: red;">Page d'accueil : Activités et boutique</u></em></h1>
+  </header>
+  <div class="container" style="   top: 50%; left: 50%; 
+  transform: translate(10%, 2%);">
+    <div class="row">
+      <div class="col-sm-5 col-md-5 col-lg-5">
+        <div class="bd-example">
+          <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+              <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+              <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
+            </ol>
+            <div class="carousel-inner ">
+              <div class="carousel-item active" date-interval="2000">
+                <img src="4.jpg" class="d-block w-100">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Tesla</h5>
+                  <p>description</p>
+                </div>
+              </div>
+              <div class="carousel-item ">
+                <img src="5.jpg" class="d-block w-100 ">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Ford</h5>
+                  <p>description</p>
+                </div>
+              </div>
+              <div class="carousel-item ">
+                <img src="4.jpg" class="d-block w-100 ">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Alfa Romeo</h5>
+                  <p>description</p>
+                </div>
+              </div>
+              <div class="carousel-item ">
+                <img src="5.jpg" class="d-block w-100 ">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Alfa Romeo</h5>
+                  <p>description</p>
+                </div>
+              </div>
+
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm-5 col-md-5 col-lg-5">
+        <div class="bd-example">
+          <div id="carouselExampleCaptions2" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleCaptions2" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleCaptions2" data-slide-to="1"></li>
+              <li data-target="#carouselExampleCaptions2" data-slide-to="2"></li>
+              <li data-target="#carouselExampleCaptions2" data-slide-to="3"></li>
+            </ol>
+            <div class="carousel-inner ">
+              <div class="carousel-item active" date-interval="2000">
+                <img src="4.jpg" class="d-block w-100">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Tesla</h5>
+                  <p>description</p>
+                </div>
+              </div>
+              <div class="carousel-item ">
+                <img src="5.jpg" class="d-block w-100 ">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Ford</h5>
+                  <p>description</p>
+                </div>
+              </div>
+              <div class="carousel-item ">
+                <img src="4.jpg" class="d-block w-100 ">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Alfa Romeo</h5>
+                  <p>description</p>
+                </div>
+              </div>
+              <div class="carousel-item ">
+                <img src="5.jpg" class="d-block w-100 ">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Alfa Romeo</h5>
+                  <p>description</p>
+                </div>
+              </div>
+
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleCaptions2" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleCaptions2" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+</main>
 
 @endsection
