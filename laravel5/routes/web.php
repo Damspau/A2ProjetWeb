@@ -15,14 +15,32 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/welcome', function () {
+Route::get('/accueil', function () {
     return view('welcome');
 });
 
-Route::get('/loginRegister', function () {
-    return view('loginRegister');
+Route::get('/login', function () {
+    return view('login');
 });
 
 Route::get('/legalnotices', function () {
     return view('legalnotices');
 });
+
+Route::get('/legalnotices', function () {
+    return view('legalnotices');
+});
+
+Route::get('/register', function () {
+    return view('register');
+});
+
+Route::get('/boutique', function () {
+    return view('shop');
+});
+
+Route::get('/shop', function () {
+    return view('shop');
+});
+
+

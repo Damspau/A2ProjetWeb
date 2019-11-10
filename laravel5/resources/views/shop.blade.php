@@ -1,7 +1,7 @@
 @extends('default')
 
 @section('title')
-CESI Login
+CESI Shop
 @endsection
 
 
@@ -25,12 +25,12 @@ CESI Login
       <li class="nav-item">
         <a class="nav-link" href="#">Activités</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Boutique</a>
-      </li>
-      </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#">Connection/Inscription<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#">Boutique<span class="sr-only">(current)</span></a>
+      </li>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Connection/Inscription</a>
       </li>
       <li>
         <form class="form-inline">

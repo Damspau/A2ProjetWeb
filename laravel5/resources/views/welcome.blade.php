@@ -30,7 +30,7 @@ CESI
       </li>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="inscriptionConnection.php">Connection/Inscription</a>
+        <a class="nav-link" href="#">Connection/Inscription</a>
       </li>
       <li>
         <form class="form-inline">
@@ -101,10 +101,9 @@ CESI
   <header>
     <h1 style=" font-size: 150%;text-align: center;"><em><u style="text-decoration-color: red;">Page d'accueil : Activités et boutique</u></em></h1>
   </header>
-  <div class="container" style="   top: 50%; left: 50%; 
-  transform: translate(10%, 2%);">
+  <div class="container" style="   top: 50%; left: 50%; ">
     <div class="row">
-      <div class="col-sm-5 col-md-5 col-lg-5">
+      <div class="col-sm-4 col-md-4 col-lg-4">
         <div class="bd-example">
           <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -157,7 +156,7 @@ CESI
       </div>
 
 
-      <div class="col-sm-5 col-md-5 col-lg-5">
+      <div class="col-sm-4 col-md-4 col-lg-4">
         <div class="bd-example">
           <div id="carouselExampleCaptions2" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
