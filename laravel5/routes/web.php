@@ -22,3 +22,7 @@ Route::get('/welcome', function () {
 Route::get('/loginRegister', function () {
     return view('loginRegister');
 });
+
+Route::get('/legalnotices', function () {
+    return view('legalnotices');
+});
