@@ -32,7 +32,7 @@ myRouter.route('/data/:userName')
  let sql = "CALL UserGetData ('" + req.params.userName + "')";
  let query = connexion.query(sql, (err, results) => {
    if(err) throw err;
-   res.send(JSON.stringify({"response": results}));
+   res.send(results);
  });;
 })
 myRouter.route('/data')
@@ -41,7 +41,7 @@ myRouter.route('/data')
   let sql = "CALL PostData ('" + req.body.username + "', '" + req.body.mdp + "', '" + req.body.email + "','" + req.body.location+ "')";
   let query = connexion.query(sql, (err, results) => {
     if(err) throw err;
-    res.send(JSON.stringify({"response": results}));
+    res.send(results);
   });;
 
 
@@ -51,7 +51,7 @@ myRouter.route('/data')
   let sql = "CALL PutData ('" + req.body.username + "', '" + req.body.location + "', '" + req.body.passwordAdmin + "')";
   let query = connexion.query(sql, (err, results) => {
     if(err) throw err;
-    res.send(JSON.stringify({"response": results}));
+    res.send(results);
   });;
 })
 
@@ -59,10 +59,24 @@ myRouter.route('/data')
 myRouter.route('/connexDel/:identifiant/:mdp')
 .get(function(req,res){
   let sql = "CALL UserLogin ('" + req.params.identifiant + "', '" + req.params.mdp + "')";
+  var input = "[{\"email\":\"" + req.params.mdp + "\"}]";
+  var result = "";
+  var responseLogin ="false";
   let query = connexion.query(sql, (err, results) => {
     if(err) throw err;
 
-    res.send(JSON.stringify({"response": results[0]}));
+    if (JSON.stringify(results[0])==input) {
+      responseLogin="true";
+    }
+
+    res.send({"response" : responseLogin});
+
+      //res.send(JSON.stringify({"response": results[0]}));
+      //res.send(JSON.stringify(results[0]));
+
+
+
+
 
 
 
