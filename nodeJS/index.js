@@ -71,7 +71,7 @@ myRouter.route('/connexDel/:identifiant/:mdp')
 
     res.send({"response" : responseLogin});
 
-    
+
 
 
 
