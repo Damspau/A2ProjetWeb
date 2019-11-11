@@ -32,7 +32,7 @@ CESI
                                     <input class="form-control mr-sm-2" name="recherche" type="search" list="recherche" placeholder="Search" aria-label="Search">
 
                                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-                                    <form onsubmit="return validateForm();" class="pure-form autocomplete" style="position: relative;">
+                                    <form onsubmit="return validateForm();" class="pure-form autocomplete">
                                       <datalist id="recherche">
                                         <a href="">
                                           <option>ezggzrtec</option>
