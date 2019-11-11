@@ -23,26 +23,26 @@
 
   <style>
 
-   @media only screen and (min-height: 465px) {
+  /*Footer position*/
 
-  #idk {
-  position: absolute;
+  @media only screen and (min-height: 465px) {
+    #idk {
+      position: absolute;
+    }
   }
 
-}
+  footer {
+    bottom: 0;
+    background-color: black;
+    color: white;
+    position: relative;
+    width: 100%;
+  }
+  footer u {
+    color: orange;
+  }
 
-footer {
-bottom: 0;
-background-color: black;
-color: white;
-position: relative;
-width: 100%;
-}
-footer u {
-  color: orange;
-}
-
-
+  /*-------------------*/
 
 </style>
 
@@ -52,6 +52,8 @@ footer u {
 
 <body>
   <header>
+
+    <!--Script cookies------------------>
 
     <div id="cookiesAccept"></div>
     <div id="cookiesScript">
@@ -125,7 +127,7 @@ footer u {
 
   <section>
 
-    @yield('sectiondsfds')
+    @yield('section')
 
   </section>
 
