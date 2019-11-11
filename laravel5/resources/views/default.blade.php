@@ -51,6 +51,7 @@
 </head>
 
 <body>
+
   <header>
 
     <!--Script cookies------------------>
@@ -131,7 +132,6 @@
 
   </section>
 
-</section>
 
 <aside>
 
