@@ -2,6 +2,28 @@
 
 <!doctype html>
 
+@section('head')
+
+<style>
+
+@media only screen and (min-height: 676px) {
+  #idk {
+    position: absolute;
+  }
+}
+
+@media only screen and (min-height: 825px) and (max-width:971px) {
+  #idk {
+    position: absolute;
+  }
+}
+
+
+</style>
+
+@endsection
+
+
 @section('title')
 CESI
 @endsection
@@ -156,6 +178,8 @@ CESI
         </div>
       </div>
     </div>
+  </br>
+  </br>
     <div class="col-sm-5 col-md-5 col-lg-5">
       <div class="bd-example">
         <div id="carouselExampleCaptions2" class="carousel slide" data-ride="carousel">
@@ -210,5 +234,8 @@ CESI
 </div>
 
 <!-------------------------------->
+
+</br>
+</br>
 
 @endsection

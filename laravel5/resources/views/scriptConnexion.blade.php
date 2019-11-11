@@ -1,7 +1,7 @@
 @extends('default')
 
 @section('title')
-CESI Register
+CESI Login
 @endsection
 
 @section('header')
@@ -104,44 +104,30 @@ CESI Register
 @endif
 </div> -->
 
-<div class="container" style="text-align:center;">
-            <section>
-                <div id="container" >
-                    <a class="hiddenanchor" id="toregister"></a>
-                    <a class="hiddenanchor" id="tologin"></a>
-                    <div id="wrapper">
-                        <div id="register" class="animate form">
-                            <form  method="post" action="scriptInscription" autocomplete="on">
-                            {{ csrf_field() }}
-                                <h1><u> Inscription : </u></h1>
-                              </br>
-                                <p>
-                                    <label for="usernamesignup" class="uname" data-icon="u" >Username : </label>
-                                    <input id="usernamesignup" name="username" required="required" type="text" placeholder="username" />
-                                </p>
-                                <p>
-                                    <label for="passwordsignup" class="youpasswd" data-icon="p" >Password : </label>
-                                    <input id="passwordsignup" name="password" required="required" type="password" placeholder="Mot de passe"/>
-                                </p>
-                                <p>
-                                    <label for="emailsignup" class="umail" data-icon="m" >Email : </label>
-                                    <input id="emailsignup" name="mail" required="required" type="email" placeholder="email" />
-                                </p>
-                                <p>
-                                    <label for="locationsignup" class="ulocation" data-icon="l" >Location : </label>
-                                    <input id="locationsignup" name="location" required="required" type="text" placeholder="location" />
-                                </p>
-                                <p class="signin button">
-                                    <input type="submit" value="S'inscrire"/>
-                                </p>
-                                <p class="change_link">
-                                    Déjà inscrit ?
-                                    <a href="Connexion" class="to_register"> Connexion </a>
-                                </p>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
+<?php
+$bdd = new PDO('mysql:host=localhost;dbname=site_web;charset=utf8', 'root', '');
+
+$pseudo = $_Post['pseudo'];
+$motDePasse = $_Post['motDePasse'];
+
+$requete=$bdd->prepare("Select pseudo FROM utilisateur Where pseudo=:pseudo");
+$requete->bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
+
+$requete->execute();
+$resultat=$requete->fetch();
+
+
+if(!$resultat){
+	echo "Ce pseudo n existe pas aller dans l inscription" ;
+}
+elseif($pseudo=="Degaule65"){
+	include("admin");
+}
+else {
+	echo "Vous etes connecté" ;
+	# code...
+}
+
+?>
+
 @endsection

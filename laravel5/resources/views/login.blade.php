@@ -1,5 +1,19 @@
 @extends('default')
 
+@section('head')
+
+<style>
+
+@media only screen and (min-height: 533px) and (min-width:1018px) {
+  #idk {
+    position: absolute;
+  }
+}
+
+</style>
+
+@endsection
+
 @section('title')
 CESI Login
 @endsection
@@ -103,5 +117,39 @@ CESI Login
 </div>
 @endif
 </div> -->
+
+<div class="container" style="text-align:center;">
+            <section>
+                <div id="container" >
+                    <a class="hiddenanchor" id="toregister"></a>
+                    <a class="hiddenanchor" id="tologin"></a>
+                    <div id="wrapper">
+                        <div id="login" class="animate form">
+                            <form method="post" action="#toregister" autocomplete="on">
+                                {{ csrf_field() }}
+                                <h1>Connexion : </h1>
+                                <p>
+                                    <label for="username" class="uname" data-icon="u" > Username : </label>
+                                    <input id="username" name="pseudo" required="required" type="text" placeholder="pseudo"/>
+                                </p>
+                                <p>
+                                    <label for="password" class="youpasswd" data-icon="p"> Password : </label>
+                                    <input id="password" name="motDePasse" required="required" type="password" placeholder="motdepasse" />
+                                </p>
+
+                                <p class="login button">
+                                    <input type="submit" value="Connexion" />
+                                </p>
+                                <p class="change_link">
+                                    Pas encore inscrit ?
+                                    <a href="Inscription" class="to_register">Inscription</a>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
 
 @endsection
