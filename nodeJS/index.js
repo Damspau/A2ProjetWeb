@@ -71,7 +71,7 @@ myRouter.route('/connexDel/:identifiant/:mdp')
 
     res.send({"response" : responseLogin});
 
-    
+
 
 
 
@@ -84,7 +84,6 @@ myRouter.route('/connexDel/:identifiant/:mdp')
 })
 
 .delete(function(req,res){
-   //res.json({message : "GET connexion", methode : req.method, identifiant : req.params.identifiant, mdp : req.params.mdp });
    let sql = "CALL DeleteData ('" + req.params.identifiant + "', '" + req.params.mdp + "')";
    let query = connexion.query(sql, (err, results) => {
      if(err) throw err;
