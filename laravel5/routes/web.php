@@ -43,6 +43,10 @@ Route::get('/shop', function () {
     return view('shop');
 });
 
+Route::get('/activites', function () {
+    return view('activities');
+});
+
 Route::get('/footer', function () {
     return view('footer');
 });
@@ -53,4 +57,8 @@ Route::get('/nav', function () {
 
 Route::get('/test', function () {
     return view('test');
+});
+
+Route::get('/activitie', function () {
+    return view('activitie');
 });

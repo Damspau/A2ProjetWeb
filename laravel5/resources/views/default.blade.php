@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/slicknav.css">
   <link rel="stylesheet" href="css/goodStyle.css">
+  <link rel="stylesheet" href="css/dams.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
   <!-- JS here -->
@@ -26,11 +27,7 @@
 
   /*Footer position*/
 
-  @media only screen and (min-height: 465px) {
-    #idk {
-      position: absolute;
-    }
-  }
+
 
   footer {
     bottom: 0;
@@ -182,6 +179,6 @@
     </footer>
 
   </body>
-
+@yield('script')
 
   </html>
