@@ -50,3 +50,7 @@ Route::get('/footer', function () {
 Route::get('/nav', function () {
     return view('nav');
 });
+
+Route::get('/test', function () {
+    return view('test');
+});
