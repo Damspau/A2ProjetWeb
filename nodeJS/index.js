@@ -38,7 +38,7 @@ myRouter.route('/data/:userName')
 myRouter.route('/data')
 //POST add a user
 .post(function(req,res){
-  let sql = "CALL PostData ('" + req.body.username + "', '" + req.body.mdp + "', '" + req.body.email + "','" + req.body.location+ "')";
+  let sql = "CALL PostData ('" + req.body.username + "', '" + req.body.password + "', '" + req.body.email + "','" + req.body.location+ "')";
   let query = connexion.query(sql, (err, results) => {
     if(err) throw err;
     res.send(results);
@@ -71,8 +71,7 @@ myRouter.route('/connexDel/:identifiant/:mdp')
 
     res.send({"response" : responseLogin});
 
-      //res.send(JSON.stringify({"response": results[0]}));
-      //res.send(JSON.stringify(results[0]));
+    
 
 
 
