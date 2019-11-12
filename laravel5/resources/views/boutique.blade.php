@@ -55,7 +55,7 @@ Page d'accueil
 
 @endsection
 
-@section('content')
+@section('section')
 <main>
 	<header>
 		<h1 style=" font-size: 150%;text-align: center;"><em>Boutique:</em></h1>
