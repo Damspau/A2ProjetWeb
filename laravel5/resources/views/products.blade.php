@@ -16,7 +16,6 @@
 
 @section('content')
 
-<<<<<<< HEAD
 
 < <p>
     <h1 style="text-align: center;"><u>Shop</u></h1>
