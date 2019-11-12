@@ -1,7 +1,7 @@
 @extends('default')
 
 @section('title')
-CESI Shop
+CESI Login
 @endsection
 
 @section('header')
@@ -23,8 +23,8 @@ CESI Shop
                             <ul id="navigation">
                                 <li><a href="index.html">Home</a></li>
                                 <li><a href="about.html">Activités</a></li>
-                                <li><a class="active" href="Practice.html">Boutique</a></li>
-                                <li><a href="#">Login/Register</a></li>
+                                <li><a href="Practice.html">Boutique</a></li>
+                                <li><a class="active" href="#">Login/Register</a></li>
                                 <li class="mt-2 mb-2">
                                   <form class="form-inline">
                                     <input class="form-control mr-sm-2" name="recherche" type="search" list="recherche" placeholder="Search" aria-label="Search">
@@ -87,5 +87,47 @@ CESI Shop
 @endsection
 
 @section('section')
+
+<!-- <div class="flex-center position-ref full-height">
+@if (Route::has('login'))
+<div class="top-right links">
+@auth
+<a href="{{ url('/home') }}">Home</a>
+@else
+<a href="{{ route('login') }}">Login</a>
+
+@if (Route::has('register'))
+<a href="{{ route('register') }}">Register</a>
+@endif
+@endauth
+</div>
+@endif
+</div> -->
+
+<?php
+$bdd = new PDO('mysql:host=localhost;dbname=site_web;charset=utf8', 'root', '');
+
+$pseudo = $_Post['username'];
+$motDePasse = $_Post['password'];
+
+$requete=$bdd->prepare("Select pseudo FROM username Where username=:username");
+$requete->bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
+
+$requete->execute();
+$resultat=$requete->fetch();
+
+
+if(!$resultat){
+	echo "Ce pseudo n existe pas aller dans l inscription" ;
+}
+elseif($pseudo=="Degaule65"){
+	include("admin");
+}
+else {
+	echo "Vous etes connecté" ;
+	# code...
+}
+
+?>
 
 @endsection

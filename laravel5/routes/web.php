@@ -19,29 +19,30 @@ Route::get('/accueil', function () {
     return view('welcome');
 });
 
+Route::get('/home', function () {
+    return view('welcome');
+});
+
 Route::get('/login', function () {
     return view('login');
-});
-
-Route::get('/legalnotices', function () {
-    return view('legalnotices');
-});
-
-Route::get('/legalnotices', function () {
-    return view('legalnotices');
 });
 
 Route::get('/register', function () {
     return view('register');
 });
 
-Route::get('/boutique', function () {
-    return view('shop');
+Route::get('/legalnotices', function () {
+    return view('legalnotices');
 });
 
-Route::get('/shop', function () {
-    return view('shop');
+Route::get('/activities', function () {
+    return view('activities');
 });
+
+/*Shop*/
+
+Route::get('/shop', 'ProductsController@index');
+
 
 Route::get('/activites', function () {
     return view('activities');
@@ -51,9 +52,11 @@ Route::get('/footer', function () {
     return view('footer');
 });
 
-Route::get('/nav', function () {
-    return view('nav');
-});
+Route::get('/cart', 'ProductsController@cart');
+
+
+Route::get('add-to-cart/{id}', 'ProductsController@addToCart');
+
 
 Route::get('/test', function () {
     return view('test');
@@ -62,3 +65,7 @@ Route::get('/test', function () {
 Route::get('/activitie', function () {
     return view('activitie');
 });
+
+Route::patch('update-cart', 'ProductsController@update');
+
+Route::delete('remove-from-cart', 'ProductsController@remove');
