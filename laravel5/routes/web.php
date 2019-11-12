@@ -11,7 +11,15 @@
 |
 */
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
 Route::get('/accueil', function () {
+    return view('welcome');
+});
+
+Route::get('/home', function () {
     return view('welcome');
 });
 
@@ -25,6 +33,10 @@ Route::get('/register', function () {
 
 Route::get('/legalnotices', function () {
     return view('legalnotices');
+});
+
+Route::get('/activities', function () {
+    return view('activities');
 });
 
 /*Shop*/

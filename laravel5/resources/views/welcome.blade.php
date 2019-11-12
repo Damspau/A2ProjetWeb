@@ -5,20 +5,17 @@
 @section('head')
 
 <style>
-
-@media only screen and (min-height: 676px) {
-  #idk {
-    position: absolute;
+  @media only screen and (min-height: 676px) {
+    #idk {
+      position: absolute;
+    }
   }
-}
 
-@media only screen and (min-height: 825px) and (max-width:971px) {
-  #idk {
-    position: absolute;
+  @media only screen and (min-height: 825px) and (max-width:971px) {
+    #idk {
+      position: absolute;
+    }
   }
-}
-
-
 </style>
 
 @endsection
@@ -45,10 +42,10 @@ CESI
           <div class="main-menu  d-none d-lg-block">
             <nav>
               <ul id="navigation">
-                <li><a class="active" href="index.html">Home</a></li>
-                <li><a href="about.html">Activités</a></li>
-                <li><a href="Practice.html">Boutique</a></li>
-                <li><a href="#">Login/Register</a></li>
+                <li><a class="active" href="{{ url('/home') }}">Home</a></li>
+                <li><a href="{{ url('/activities') }}">Activités</a></li>
+                <li><a href="{{ url('/shop') }}">Boutique</a></li>
+                <li><a href="{{ url('/login') }}">Login/Register</a></li>
                 <li class="mt-2 mb-2">
                   <form class="form-inline">
                     <input class="form-control mr-sm-2" name="recherche" type="search" list="recherche" placeholder="Search" aria-label="Search">
@@ -117,7 +114,7 @@ CESI
 
 <div id="titre">
   <p>
-    <h1 style= "text-align:center;"><u>Bienvenue sur notre site !</u></h1>
+    <h1 style="text-align:center;"><u>Bienvenue sur notre site !</u></h1>
   </p>
 </div>
 
@@ -126,7 +123,7 @@ CESI
 
 <!--carousel----------------->
 
-<div class="container"style= "align:center;">
+<div class="container" style="align:center;">
   <div class="row">
     <div class="col-sm-5 col-md-5 col-lg-5">
       <div class="bd-example">
@@ -138,29 +135,29 @@ CESI
             <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
           </ol>
           <div class="carousel-inner ">
-            <div class="carousel-item active"date-interval="2000">
-              <img src="4.jpg" class="d-block w-100">
+            <div class="carousel-item active" date-interval="2000">
+              <img src="https://cadoetik.org/267160-thickbox_default/kit-crayon-papier-et-marque-page-10-cm-inco.jpg" class="d-block w-100">
               <div class="carousel-caption d-none d-md-block">
                 <h5>Tesla</h5>
                 <p>description</p>
               </div>
             </div>
             <div class="carousel-item ">
-              <img src="5.jpg" class="d-block w-100 ">
+              <img src="https://cadoetik.org/267160-thickbox_default/kit-crayon-papier-et-marque-page-10-cm-inco.jpg" class="d-block w-100 ">
               <div class="carousel-caption d-none d-md-block">
                 <h5>Ford</h5>
                 <p>description</p>
               </div>
             </div>
             <div class="carousel-item ">
-              <img src="6.jpg" class="d-block w-100 ">
+              <img src="https://cadoetik.org/267160-thickbox_default/kit-crayon-papier-et-marque-page-10-cm-inco.jpg" class="d-block w-100 ">
               <div class="carousel-caption d-none d-md-block">
                 <h5>Alfa Romeo</h5>
                 <p>description</p>
               </div>
             </div>
             <div class="carousel-item ">
-              <img src="7.png" class="d-block w-100 ">
+              <img src="https://cadoetik.org/267160-thickbox_default/kit-crayon-papier-et-marque-page-10-cm-inco.jpg" class="d-block w-100 ">
               <div class="carousel-caption d-none d-md-block">
                 <h5>Alfa Romeo</h5>
                 <p>description</p>
@@ -178,8 +175,8 @@ CESI
         </div>
       </div>
     </div>
-  </br>
-  </br>
+    </br>
+    </br>
     <div class="col-sm-5 col-md-5 col-lg-5">
       <div class="bd-example">
         <div id="carouselExampleCaptions2" class="carousel slide" data-ride="carousel">
@@ -190,29 +187,29 @@ CESI
             <li data-target="#carouselExampleCaptions2" data-slide-to="3"></li>
           </ol>
           <div class="carousel-inner ">
-            <div class="carousel-item active"date-interval="2000">
-              <img src="4.jpg" class="d-block w-100">
+            <div class="carousel-item active" date-interval="2000">
+              <img src="https://cadoetik.org/267160-thickbox_default/kit-crayon-papier-et-marque-page-10-cm-inco.jpg" class="d-block w-100">
               <div class="carousel-caption d-none d-md-block">
                 <h5>Tesla</h5>
                 <p>description</p>
               </div>
             </div>
             <div class="carousel-item ">
-              <img src="5.jpg" class="d-block w-100 ">
+              <img src="https://cadoetik.org/267160-thickbox_default/kit-crayon-papier-et-marque-page-10-cm-inco.jpg" class="d-block w-100 ">
               <div class="carousel-caption d-none d-md-block">
                 <h5>Ford</h5>
                 <p>description</p>
               </div>
             </div>
             <div class="carousel-item ">
-              <img src="6.jpg" class="d-block w-100 ">
+              <img src="https://cadoetik.org/267160-thickbox_default/kit-crayon-papier-et-marque-page-10-cm-inco.jpg" class="d-block w-100 ">
               <div class="carousel-caption d-none d-md-block">
                 <h5>Alfa Romeo</h5>
                 <p>description</p>
               </div>
             </div>
             <div class="carousel-item ">
-              <img src="7.png" class="d-block w-100 ">
+              <img src="https://cadoetik.org/267160-thickbox_default/kit-crayon-papier-et-marque-page-10-cm-inco.jpg" class="d-block w-100 ">
               <div class="carousel-caption d-none d-md-block">
                 <h5>Alfa Romeo</h5>
                 <p>description</p>

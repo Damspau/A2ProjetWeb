@@ -24,10 +24,10 @@
                     <div class="main-menu  d-none d-lg-block">
                         <nav>
                             <ul id="navigation">
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="about.html">Activités</a></li>
-                                <li><a class="active" href="Practice.html">Boutique</a></li>
-                                <li><a href="#">Login/Register</a></li>
+                                <li><a href="{{ url('/home') }}">Home</a></li>
+                                <li><a href="{{ url('/activities') }}">Activités</a></li>
+                                <li><a class="active" href="{{ url('/shop') }}">Boutique</a></li>
+                                <li><a href="{{ url('/login') }}">Login/Register</a></li>
                                 <li class="mt-2 mb-2">
                                     <form class="form-inline">
                                         <input class="form-control mr-sm-2" name="recherche" type="search" list="recherche" placeholder="Search" aria-label="Search">
@@ -91,9 +91,9 @@
 
 @section('section')
 
-    <body>
+<body>
 
-        <div class="container">
+    <div class="container">
 
         <div class="row">
             <div class="col-lg-12 col-sm-12 col-12 main-section">
@@ -145,8 +145,8 @@
         @yield('content')
     </div>
 
-@endsection
+    @endsection
 
-@section('script')
- @yield('scripts')
-@endsection
+    @section('script')
+    @yield('scripts')
+    @endsection
