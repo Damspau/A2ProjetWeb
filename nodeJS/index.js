@@ -30,7 +30,13 @@ myRouter.route('/data/:userName')
  let sql = "CALL UserGetData ('" + req.params.userName + "')";
  let query = connexion.query(sql, (err, results) => {
    if(err) throw err;
-   res.send(JSON.stringify({"status": 200, "error": null, "response": results}))
+   if(results[0]==""){
+     res.send(JSON.stringify({"status": 404, "error": "email not found", "response": "email is not register or is not type correctly"}))
+   }
+   else {
+     res.send(JSON.stringify({"status": 200, "error": null, "response": results}))
+   }
+
  });;
 })
 myRouter.route('/data')
@@ -38,7 +44,7 @@ myRouter.route('/data')
 .post(function(req,res){
   let sql = "CALL PostData ('" + req.body.username + "', '" + req.body.password + "', '" + req.body.email + "','" + req.body.location+ "')";
   var input = "{\"email\":\"" + req.body.email + "\"}";
-  var responseLogin = false;
+
   let sqlverify = "SELECT email FROM utilisateur WHERE email = '"+ req.body.email + "';";
   let query = connexion.query(sqlverify, (err, results2) => {
     if(err) throw err;
@@ -46,7 +52,7 @@ myRouter.route('/data')
             {
                 console.log(JSON.stringify(results2[0]))
 
-                responseLogin = true;
+
                 let query = connexion.query(sql, (err, results) => {
                   console.log("hey");
                     if(err) throw err;
@@ -57,14 +63,11 @@ myRouter.route('/data')
                   });;
 
             }
-            if (responseLogin!=true)
-            {
 
-                res.send(JSON.stringify({"status": 404, "error": "Email arleady exist", "response": ""}));
-            }
             else {
-
+                  res.send(JSON.stringify({"status": 404, "error": "Email arleady exist", "response": ""}));
             }
+
   });;
 
 
@@ -73,12 +76,36 @@ myRouter.route('/data')
 })
 //PUT update location of user
 .put(function(req,res){
-  let sql = "CALL PutData ('" + req.body.username + "', '" + req.body.location + "', '" + req.body.passwordAdmin + "', '" + req.body.parameter + "')";
-  let query = connexion.query(sql, (err, results) => {
+  var input = "{\"email\":\"adminMail\"}";
+  let sql = "CALL PutDataLocalisation ('" + req.body.username + "', '" + req.body.location + "', '" + req.body.passwordAdmin + "')";
+
+  let sqlverify = "SELECT email FROM utilisateur WHERE email = 'adminMail' AND password = '"+req.body.passwordAdmin+"';";
+  let query = connexion.query(sqlverify, (err, results2) => {
     if(err) throw err;
-    res.send(JSON.stringify({"status": 200, "error": null, "response": results}));
+
+            if (JSON.stringify(results2[0])==input)
+            {
+                let query = connexion.query(sql, (err, results) => {
+
+                    if(err) throw err;
+                    res.send(JSON.stringify({"status": 200, "error": null, "response": "updated successful"}));
+
+
+
+                  });;
+
+            }
+
+            else {
+                  res.send(JSON.stringify({"status": 404, "error": "wrong password", "response": ""}));
+            }
 
   });;
+
+
+
+
+
 })
 
 //route for delete and connexion
@@ -86,17 +113,19 @@ myRouter.route('/connexDel/:identifiant/:mdp')
 //connexion
 .get(function(req,res){
   let sql = "CALL UserLogin ('" + req.params.identifiant + "', '" + req.params.mdp + "')";
-  var input = "[{\"email\":\"" + req.params.mdp + "\"}]";
+  var input = "[{\"email\":\"" + req.params.identifiant + "\"}]";
   var result = "";
   var responseLogin ="false";
   let query = connexion.query(sql, (err, results) => {
     if(err) throw err;
 
     if (JSON.stringify(results[0])==input) {
-      responseLogin="true";
+      res.send(JSON.stringify({"status": 200, "error": "NULL", "response": "login successful"}));
+    }
+    else {
+      res.send(JSON.stringify({"status": 404, "error": "wrong password", "response": "wrong password or email"}));
     }
 
-    res.send({"response" : responseLogin});
 
 
 
@@ -112,11 +141,39 @@ myRouter.route('/connexDel/:identifiant/:mdp')
 //delete
 .delete(function(req,res){
    //res.json({message : "GET connexion", methode : req.method, identifiant : req.params.identifiant, mdp : req.params.mdp });
+   var input = "{\"email\":\"adminMail\"}";
    let sql = "CALL DeleteData ('" + req.params.identifiant + "', '" + req.params.mdp + "')";
-   let query = connexion.query(sql, (err, results) => {
+
+   let sqlverify = "SELECT email FROM utilisateur WHERE email = 'adminMail' AND password = '"+req.body.passwordAdmin+"';";
+   let query = connexion.query(sqlverify, (err, results2) => {
      if(err) throw err;
-     res.send(JSON.stringify({"response": results}));
+
+             if (JSON.stringify(results2[0])==input)
+             {
+                 let query = connexion.query(sql, (err, results) => {
+
+                     if(err) throw err;
+                     res.send(JSON.stringify({"status": 200, "error": null, "response": "DELETE successful"}));
+
+
+
+                   });;
+
+             }
+
+             else {
+                   res.send(JSON.stringify({"status": 404, "error": "wrong password", "response": "error"}));
+             }
+
    });;
+
+
+
+
+
+
+
+
 })
 
 
