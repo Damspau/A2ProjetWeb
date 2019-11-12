@@ -3,7 +3,7 @@
 @section('head')
 
 <style>
-    @media only screen and (min-height: 603px) {
+     @media only screen and (min-height: 603px) {
         #idk {
             position: absolute;
         }
@@ -15,14 +15,6 @@
 @section('title', 'Cart')
 
 @section('content')
-
-@if(session('success'))
-
-<div class="alert alert-success">
-    {{ session('success') }}
-</div>
-
-@endif
 
 <table id="cart" class="table table-hover table-condensed">
     <thead>
@@ -39,6 +31,7 @@
         <?php $total = 0 ?>
 
         @if(session('cart'))
+
         @foreach(session('cart') as $id => $details)
 
         <?php $total += $details['price'] * $details['quantity'] ?>
@@ -63,13 +56,10 @@
             </td>
         </tr>
         @endforeach
-        @endif
 
+        @endif
     </tbody>
     <tfoot>
-        <tr class="visible-xs">
-            <td class="text-center"><strong>Total {{ $total }}</strong></td>
-        </tr>
         <tr>
             <td><a href="{{ url('/shop') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
             <td colspan="2" class="hidden-xs"></td>
@@ -85,19 +75,18 @@
 
 
 <script type="text/javascript">
+
     $(".update-cart").click(function(e) {
         e.preventDefault();
 
         var ele = $(this);
 
         $.ajax({
-            url: '{{ url('
-            update - cart ') }}',
+            url: '{{ url('update-cart') }}',
             method: "patch",
-            data: {
-                _token: '{{ csrf_token() }}',
-                id: ele.attr("data-id"),
-                quantity: ele.parents("tr").find(".quantity").val()
+            data: {_token: '{{ csrf_token() }}',
+            id: ele.attr("data-id"),
+            quantity: ele.parents("tr").find(".quantity").val()
             },
             success: function(response) {
                 window.location.reload();
@@ -112,11 +101,9 @@
 
         if (confirm("Are you sure")) {
             $.ajax({
-                url: '{{ url('
-                remove - from - cart ') }}',
+                url: '{{ url('remove-from-cart') }}',
                 method: "DELETE",
-                data: {
-                    _token: '{{ csrf_token() }}',
+                data: {_token: '{{ csrf_token() }}',
                     id: ele.attr("data-id")
                 },
                 success: function(response) {

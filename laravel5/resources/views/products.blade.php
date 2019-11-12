@@ -3,7 +3,7 @@
 @section('head')
 
 <style>
-    @media only screen and (min-height: 748px) {
+    @media only screen and (min-height: 1400px) {
         #idk {
             position: absolute;
         }
@@ -17,7 +17,7 @@
 @section('content')
 
 
-< <p>
+<p>
     <h1 style="text-align: center;"><u style="text-decoration-color:red;">Welcome to our shop : </u></h1>
 </p>
 
@@ -27,14 +27,15 @@
 
 <div class="container products">
 
-    @if(session('success'))
 
+    <!-- Afficher message de succès d'ajout d'un produit dans le panier   -->
+     @if(session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
         </div>
-
     @endif
 
+    <!-- Affichage des produits : -->
     <div class="row">
 
         @foreach($products as $product)
