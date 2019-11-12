@@ -107,10 +107,10 @@ CESI Login
 <?php
 $bdd = new PDO('mysql:host=localhost;dbname=site_web;charset=utf8', 'root', '');
 
-$pseudo = $_Post['pseudo'];
-$motDePasse = $_Post['motDePasse'];
+$pseudo = $_Post['username'];
+$motDePasse = $_Post['password'];
 
-$requete=$bdd->prepare("Select pseudo FROM utilisateur Where pseudo=:pseudo");
+$requete=$bdd->prepare("Select pseudo FROM username Where username=:username");
 $requete->bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
 
 $requete->execute();

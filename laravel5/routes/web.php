@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/accueil', function () {
     return view('welcome');
 });
@@ -23,16 +19,12 @@ Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('/legalnotices', function () {
-    return view('legalnotices');
-});
-
-Route::get('/legalnotices', function () {
-    return view('legalnotices');
-});
-
 Route::get('/register', function () {
     return view('register');
+});
+
+Route::get('/legalnotices', function () {
+    return view('legalnotices');
 });
 
 Route::get('/boutique', function () {
@@ -43,14 +35,18 @@ Route::get('/shop', function () {
     return view('shop');
 });
 
-Route::get('/footer', function () {
-    return view('footer');
+Route::get('/article', function () {
+    return view('article');
 });
 
-Route::get('/nav', function () {
-    return view('nav');
-});
+/*Shop*/
 
-Route::get('/test', function () {
-    return view('test');
-});
+Route::get('/', 'ProductsController@index');
+
+Route::get('cart', 'ProductsController@cart');
+
+Route::get('add-to-cart/{id}', 'ProductsController@addToCart');
+
+Route::patch('update-cart', 'ProductsController@update');
+ 
+Route::delete('remove-from-cart', 'ProductsController@remove');
