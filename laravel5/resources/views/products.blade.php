@@ -16,6 +16,10 @@
 
 @section('content')
 
+<p>
+    <h1 style="text-align: center;"><u>Shop</u></h1>
+</p>
+
 <div class="container products">
 
     @if(session('success'))
