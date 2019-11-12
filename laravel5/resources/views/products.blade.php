@@ -17,12 +17,12 @@
 @section('content')
 
 <<<<<<< HEAD
-<!-- <p>
-    <h1 style="text-align: center;"><u>Shop</u></h1>
-</p> -->
 
-=======
->>>>>>> parent of a834003... last commit
+< <p>
+    <h1 style="text-align: center;"><u>Shop</u></h1>
+</p>
+
+
 <div class="container products">
 
     @if(session('success'))
