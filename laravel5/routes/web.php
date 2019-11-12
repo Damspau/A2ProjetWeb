@@ -14,3 +14,24 @@
 Route::get('/', function () {
     return view('template');
 });
+Route::get('/boutique', function () {
+    return view('boutique');
+});
+Route::get('/boutique2', function () {
+    return view('panier/boutique2');
+});
+Route::get('/Article', function () {
+    return view('Article');
+});
+Route::get('/Article2', function () {
+    return view('Article2');
+});
+Route::get('/shop', function () {
+    return view('shop');
+});
+Route::get('/test', function () {
+    return view('test');
+});
+Route::get('/Panier', function () {
+    return view('panier');
+});

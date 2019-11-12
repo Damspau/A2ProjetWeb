@@ -50,10 +50,11 @@ Article
 </nav>
 @endsection
 
-@section('content')
+@section('section')
 <main>
 	<section>
 		<h1 style="top: 15%;left: 20%;text-align: center"><font color="black">Article : nom de l'article </font></h1>
+					<input style= "float: right;" type="submit" value="Ajouter au panier" id="panier" class=" jsValidForm">
 		<ul style="float: left; padding-inline-start: 1%;">
 			<div >
 				<img src="4.jpg" height="35px" onmouseover="changeImageM3('4.jpg')"/><br><br>
@@ -68,68 +69,81 @@ Article
 				<img src="4.jpg" height="35px" onmouseover="changeImageM3('4.jpg')"/><br><br>
 			</div>
 		</ul>
-		<p><img class="ml-2" id="id_image" src="4.jpg" style="top:20%;height:50%;width: 50%;left: 5%;float: left;"/></p><br>
+		<p><img class="ml-2" id="id_image" src="4.jpg" style="height:50%;width: 50%;left: 5%;float: left;margin-right: 1%;"/></p><br>
 		<p><u>Description : </u></p><br><br>
-		<p style="padding-left: 5%;"> Matériel:Polyester.Manches Longues.Blouson Style Militaire Classique pour Automne Manteau Homme Hommes Veste Simili Cuir Côtelé Cuir Véritable Blouson Transition Moto Coton Blouson Homme Veste Homme Homme Veste Mont Blouson Homme Veste à Capuche Homme Blousons et Vestes Doudoune Homme Veste Militaire Style Armée Classique Veste pour Homme Veste Coupe vent Imperméable Homme Veste de survêtement pour homme veste de sport Sport Loisirs Fermeture Éclair Homme Classique Style rétro Patches Flight Jacket Veste
-		➤Occasion: idéal pour la vie quotidienne, fête, plage, vacances, école, t-shirts occasionnels match parfait avec un jean, un legging ou un pantalon shorts.Haute qualité / mode / pas cher / chic / cadeau pour la Saint Valentin / offrez à votre ami, collègue / cadeau pour mère / offrez-vous également le meilleur cadeau .Casual wear or party, night out, going out and so on.</p>
+
+		<p><span style="border: 1px solid white;">Matériel:Polyester.Manches Longues.Blouson Style Militaire Classique pour Automne Manteau Homme Hommes Veste Simili Cuir Côtelé Cuir Véritable Blouson Transition Moto Coton Blouson Homme Veste Homme Homme Veste Mont Blouson Homme Veste à Capuche Homme Blousons et Vestes Doudoune Homme Veste Militaire Style Armée Classique Veste pour Homme Veste Coupe vent Imperméable Homme Veste de survêtement pour homme veste de sport Sport Loisirs Fermeture Éclair Homme Classique Style rétro Patches Flight Jacket Veste.
+		➤Occasion: idéal pour la vie quotidienne, fête, plage, vacances, école, t-shirts occasionnels match parfait avec un jean, un legging ou un pantalon shorts.Haute qualité / mode / pas cher / chic / cadeau pour la Saint Valentin / offrez à votre ami, collègue / cadeau pour mère / offrez-vous également le meilleur cadeau .</span></span></p>
 	</section>
 
 	<div>
 		<aside>
-			<label for="quantity" class="a-native-dropdown">Quantité :</label>
-			<select name="quantity" autocomplete="off" id="quantity" tabindex="0" class="a-native-dropdown">
 
-				<option value="1" selected="">1
-				</option>
+			
+			<form  method="post" name="quantity">
+				<label for="quantity" class="a-native-dropdown"> Quantité :</label>
+				<select name="quantity" autocomplete="off" id="quantity" tabindex="0" class="a-native-dropdown">
 
-				<option value="2">2
-				</option>
+					<option value="1" selected="">1
+					</option>
 
-				<option value="3">3
-				</option>
+					<option value="2">2
+					</option>
 
-				<option value="4">4
-				</option>
+					<option value="3">3
+					</option>
 
-				<option value="5">5
-				</option>
+					<option value="4">4
+					</option>
 
-				<option value="6">6
-				</option>
+					<option value="5">5
+					</option>
 
-				<option value="7">7
-				</option>
+					<option value="6">6
+					</option>
 
-				<option value="8">8
-				</option>
+					<option value="7">7
+					</option>
 
-				<option value="9">9
-				</option>
+					<option value="8">8
+					</option>
 
-				<option value="10">10
-				</option>
+					<option value="9">9
+					</option>
 
-				<option value="11">11
-				</option>
+					<option value="10">10
+					</option>
 
-				<option value="12">12
-				</option>
+					<option value="11">11
+					</option>
 
-				<option value="13">13
-				</option>
+					<option value="12">12
+					</option>
 
-				<option value="14">14
-				</option>                   
+					<option value="13">13
+					</option>
 
-				<option value="15">15
-				</option>
+					<option value="14">14
+					</option>                   
 
-				<input style= "" type="submit" value="Ajouter au panier" id="fpAddBsk" class="btGreen btF jsValidForm">
+					<option value="15">15
+					</option>
 
+				</select>
+				 <?php
+			$choix=1;
+			// if (isset($_POST['quantity']) ) {
+							
+			// 			echo 'vos reponses sont :'.$_POST['quantity'].'<br />';
+			$prix = 6.60;
+			$prix = $choix * $prix;
+				echo "le prix est de ".$prix."€";
+	
+		
+			?> 
+				<input style= "" type="submit" value="Calculer le prix" id="panier" class=" jsValidForm">
+			</form>
 
-
-
-			</select>
 			<br>
 			<br>
 			<br>
