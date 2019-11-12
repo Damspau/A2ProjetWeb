@@ -23,9 +23,6 @@ Route::get('/boutique2', function () {
 Route::get('/Article', function () {
     return view('Article');
 });
-Route::get('/Article2', function () {
-    return view('Article2');
-});
 Route::get('/shop', function () {
     return view('shop');
 });
@@ -34,4 +31,12 @@ Route::get('/test', function () {
 });
 Route::get('/Panier', function () {
     return view('panier');
+});
+Route::get('list','Flight@list');
+
+Route::get('/Article2', function () {
+	$flight =App\Flight::All();
+    return view('Article2,{
+    	
+    }');
 });

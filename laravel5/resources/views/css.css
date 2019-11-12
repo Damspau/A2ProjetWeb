@@ -1,0 +1,24 @@
+.recherche{
+	position: relative;
+}
+h1{
+top: 15%;
+left: 20%;
+text-align: center;
+}
+.panier{
+	float: right;
+}
+.image{
+	float: left; 
+	padding-inline-start: 1%;
+}
+.zoom{
+	height:50%;
+	width: 50%;
+	left: 5%;
+	float: left;
+	margin-right: 1%;
+}
+
+

@@ -80,7 +80,7 @@ Article
 		<aside>
 
 			
-			<form  method="post" name="quantity">
+			<form  method="get" name="quantity">
 				<label for="quantity" class="a-native-dropdown"> Quantité :</label>
 				<select name="quantity" autocomplete="off" id="quantity" tabindex="0" class="a-native-dropdown">
 
@@ -130,17 +130,15 @@ Article
 					</option>
 
 				</select>
-				 <?php
+			<!-- 	 <?php
 			$choix=1;
-			// if (isset($_POST['quantity']) ) {
 							
-			// 			echo 'vos reponses sont :'.$_POST['quantity'].'<br />';
 			$prix = 6.60;
 			$prix = $choix * $prix;
 				echo "le prix est de ".$prix."€";
 	
 		
-			?> 
+			?>  -->
 				<input style= "" type="submit" value="Calculer le prix" id="panier" class=" jsValidForm">
 			</form>
 
