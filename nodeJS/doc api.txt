@@ -1,6 +1,6 @@
 get the data of a user :
 GET REQUEST
-	url : /data/(username)
+	url : /data/(email)
 
 
 register a new user :
