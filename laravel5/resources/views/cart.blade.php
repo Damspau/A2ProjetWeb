@@ -3,7 +3,7 @@
 @section('head')
 
 <style>
-    @media only screen and (min-height: 1194px) and (min-width:970px) {
+    @media only screen and (min-height: 603px) {
         #idk {
             position: absolute;
         }

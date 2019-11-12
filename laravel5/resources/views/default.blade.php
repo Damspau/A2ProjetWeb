@@ -50,7 +50,9 @@
 
 <body>
 
-  <header>
+ <header>
+
+   @yield('nav')
 
     <!--Script cookies------------------>
 
@@ -115,14 +117,9 @@
     </script>
 
     @yield('header')
+</header>
 
 
-
-
-
-  </header>
-
-  @yield('nav')
 
   <section>
 
@@ -141,15 +138,14 @@
       <div class="row">
 
         <div class="col-sm-5 col-md-3 col-lg-3 ">
-          <i class=" navbar-brand" href="#"> <u>Mentions légales : </u></i>
+          <i class=" navbar-brand" href="#"> <u ><a href="{{ url('/legalnotices') }}"style=color:orange;>Mentions légales :</a> </u></i>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
           </button>
           <div>
             <i>Crédits</i>
           </div>
           <div>
-            <i>Politique de protection des données personnelles</i>
+            <i><a href="{{ url('/legalnotices') }}">Politique de protection des données personnelles</a></i>
           </div>
 
         </div>

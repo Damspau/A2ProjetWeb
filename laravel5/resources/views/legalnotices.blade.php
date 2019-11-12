@@ -1,5 +1,17 @@
 @extends('default')
 
+@section('head')
+
+<style>
+    @media only screen and (min-height: 858px) and (min-width:1581px) {
+        #idk {
+            position: absolute;
+        }
+    }
+</style>
+
+@endsection
+
 @section('title')
 CESI Login
 @endsection
@@ -21,10 +33,10 @@ CESI Login
           <div class="main-menu  d-none d-lg-block">
             <nav>
               <ul id="navigation">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">Activités</a></li>
-                <li><a href="Practice.html">Boutique</a></li>
-                <li><a href="#">Login/Register</a></li>
+                <li><a href="{{ url('/home') }}">Home</a></li>
+                <li><a href="{{ url('/activities') }}">Activités</a></li>
+                <li><a href="{{ url('/shop') }}">Boutique</a></li>
+                <li><a href="{{ url('/login') }}">Login/Register</a></li>
                 <li class="mt-2 mb-2">
                   <form class="form-inline">
                     <input class="form-control mr-sm-2" name="recherche" type="search" list="recherche" placeholder="Search" aria-label="Search">
@@ -88,13 +100,24 @@ CESI Login
 
 @section('section')
 
-<p>Éditeur : Association CESI SIREN : 775 722 572 Siège social : 1, avenue du Général de Gaulle Tour PB5 92074 Paris La Défense Tél : 01 44 45 92 00 Fax : 01 44 45 92 98 e-mail : contact@cesi.fr</p>
+</br>
+</br>
 
-<p>Développement & hébergement Poisson Bouge, laboratoire de contenus web dynamiques 7, rue des Cadeniers 44000 Nantes 09 51 71 39 39 e-mail : contact@poissonbouge.fr</p>
+< <p>
+    <h1 style="text-align: center;"><u style="text-decoration-color:red;">Mentions légales : </u></h1>
+</p>
+
+</br>
+</br>
+
+
+<p><u>Éditeur :</u> </br></br>Association CESI SIREN : 775 722 572 Siège social : 1, avenue du Général de Gaulle Tour PB5 92074 Paris La Défense Tél : 01 44 45 92 00 Fax : 01 44 45 92 98 e-mail : contact@cesi.fr</p>
+
+<p><u>Développement & hébergement</u> Poisson Bouge, laboratoire de contenus web dynamiques 7, rue des Cadeniers 44000 Nantes 09 51 71 39 39 e-mail : contact@poissonbouge.fr</p>
 
 <p>Respect de la vie privée et collecte des Données Personnelles Soucieux de protéger la vie privée de ses clients, CESI s’engage dans la protection des données personnelles. Une politique sur la protection des données personnelles rappelle nos principes et nos actions visant au respect de la réglementation applicable en matière de protection des données à caractère personnel.</p>
 
-<p>Pour lire l’intégralité de notre politique sur la Protection des données personnelles cliquez-ici</p>
+<p><b>Pour lire l’intégralité de notre politique sur la Protection des données personnelles</b> <a href="https://www.cesi.fr/politique-de-confidentialite/">cliquez-ici</a></p>
 
 <p>Sécurité Le CESI s’engage à mettre en œuvre tous les moyens nécessaires au bon fonctionnement du site. Cependant, le CESI ne peut pas garantir la continuité absolue de l’accès aux services proposés par le site. Les adhérents sont informés que les informations et services proposés sur le site pourront être interrompus en cas de force majeure et pourront le cas échéant contenir des erreurs techniques.</p>
 

@@ -97,16 +97,16 @@
         <div class="col-lg-12 col-sm-12 col-12 main-section">
             <div class="dropdown">
                 <button type="button" class="btn btn-info" data-toggle="dropdown">
-                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">{{ count(session('cart')) }}</span>
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
                 </button>
                 <div class="dropdown-menu">
                     <div class="row total-header-section">
                         <div class="col-lg-6 col-sm-6 col-6">
-                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="badge badge-pill badge-danger">{{ count(session('cart')) }}</span>
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
                         </div>
 
                         <?php $total = 0 ?>
-                        @foreach(session('cart') as $id => $details)
+                        @foreach((array) session('cart') as $id => $details)
                             <?php $total += $details['price'] * $details['quantity'] ?>
                         @endforeach
 
@@ -138,12 +138,11 @@
         </div>
     </div>
 </div>
-
 <div class="container page">
         @yield('content')
     </div>
 
-    @endsection
+@endsection
 
     @section('script')
     @yield('scripts')

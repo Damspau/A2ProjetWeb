@@ -18,8 +18,11 @@
 
 
 < <p>
-    <h1 style="text-align: center;"><u>Shop</u></h1>
+    <h1 style="text-align: center;"><u style="text-decoration-color:red;">Welcome to our shop : </u></h1>
 </p>
+
+</br>
+</br>
 
 
 <div class="container products">
@@ -37,7 +40,7 @@
         @foreach($products as $product)
             <div class="col-xs-18 col-sm-6 col-md-3">
                 <div class="thumbnail">
-                    <img src="{{ $product->photo }}" width="500" height="300">
+                    <img src="{{ $product->photo }}" width="250" height="150">
                     <div class="caption">
                         <h4>{{ $product->name }}</h4>
                         <p>{{ str_limit(strtolower($product->description), 50) }}</p>
