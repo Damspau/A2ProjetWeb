@@ -7,7 +7,4 @@ use App\Flight;
 
 class flight extends Controller
 {
-    function list(){
-    	return Flight::all();
-    }
 }

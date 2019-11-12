@@ -72,7 +72,7 @@ Article
 		<p><img class="ml-2" id="id_image" src="4.jpg" style="height:50%;width: 50%;left: 5%;float: left;margin-right: 1%;"/></p><br>
 		<p><u>Description : </u></p><br><br>
 
-		<p><span style="border: 1px solid white;">Matériel:Polyester.Manches Longues.Blouson Style Militaire Classique pour Automne Manteau Homme Hommes Veste Simili Cuir Côtelé Cuir Véritable Blouson Transition Moto Coton Blouson Homme Veste Homme Homme Veste Mont Blouson Homme Veste à Capuche Homme Blousons et Vestes Doudoune Homme Veste Militaire Style Armée Classique Veste pour Homme Veste Coupe vent Imperméable Homme Veste de survêtement pour homme veste de sport Sport Loisirs Fermeture Éclair Homme Classique Style rétro Patches Flight Jacket Veste.
+		<p><span >Matériel:Polyester.Manches Longues.Blouson Style Militaire Classique pour Automne Manteau Homme Hommes Veste Simili Cuir Côtelé Cuir Véritable Blouson Transition Moto Coton Blouson Homme Veste Homme Homme Veste Mont Blouson Homme Veste à Capuche Homme Blousons et Vestes Doudoune Homme Veste Militaire Style Armée Classique Veste pour Homme Veste Coupe vent Imperméable Homme Veste de survêtement pour homme veste de sport Sport Loisirs Fermeture Éclair Homme Classique Style rétro Patches Flight Jacket Veste.
 		➤Occasion: idéal pour la vie quotidienne, fête, plage, vacances, école, t-shirts occasionnels match parfait avec un jean, un legging ou un pantalon shorts.Haute qualité / mode / pas cher / chic / cadeau pour la Saint Valentin / offrez à votre ami, collègue / cadeau pour mère / offrez-vous également le meilleur cadeau .</span></span></p>
 	</section>
 

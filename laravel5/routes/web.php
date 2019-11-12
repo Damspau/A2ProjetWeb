@@ -12,31 +12,40 @@
 */
 
 Route::get('/', function () {
-    return view('template');
+	return view('template');
 });
 Route::get('/boutique', function () {
-    return view('boutique');
+	return view('boutique');
 });
 Route::get('/boutique2', function () {
-    return view('panier/boutique2');
+	return view('panier/boutique2');
 });
 Route::get('/Article', function () {
-    return view('Article');
+	return view('Article');
 });
 Route::get('/shop', function () {
-    return view('shop');
+	return view('shop');
 });
 Route::get('/test', function () {
-    return view('test');
+	return view('test');
 });
 Route::get('/Panier', function () {
-    return view('panier');
+	return view('panier');
 });
-Route::get('list','Flight@list');
+Route::get('/Activite', function () {
+	return view('activitie');
+});
+Route::get('/Activite2', function () {
+	return view('activite');
+});
+Route::get('/list',function(){
+	$image =App\Flight::all();
 
-Route::get('/Article2', function () {
-	$flight =App\Flight::All();
-    return view('Article2,{
-    	
-    }');
+	return view ('utilisateurs', [
+		'utilisateurs'=> $image,
+
+	]);
 });
+
+
+

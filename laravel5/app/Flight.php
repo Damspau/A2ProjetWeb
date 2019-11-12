@@ -8,7 +8,3 @@ class Flight extends Model
 {
     //
 }
-<?php
-class Auteur extends Eloquent {}
-
-?>
