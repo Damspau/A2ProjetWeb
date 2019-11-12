@@ -27,23 +27,11 @@ Route::get('/legalnotices', function () {
     return view('legalnotices');
 });
 
-Route::get('/boutique', function () {
-    return view('shop');
-});
-
-Route::get('/shop', function () {
-    return view('shop');
-});
-
-Route::get('/article', function () {
-    return view('article');
-});
-
 /*Shop*/
 
-Route::get('/', 'ProductsController@index');
+Route::get('/shop', 'ProductsController@index');
 
-Route::get('cart', 'ProductsController@cart');
+Route::get('/cart', 'ProductsController@cart');
 
 Route::get('add-to-cart/{id}', 'ProductsController@addToCart');
 
