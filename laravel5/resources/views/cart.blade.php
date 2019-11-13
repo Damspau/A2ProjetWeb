@@ -3,7 +3,7 @@
 @section('head')
 
 <style>
-    @media only screen and (min-height: 603px) {
+     @media only screen and (min-height: 603px) {
         #idk {
             position: absolute;
         }
@@ -46,18 +46,15 @@
                 </div>
             </td>
             <td data-th="Price">${{ $details['price'] }}</td>
-            <div id="quantity">
             <td data-th="Quantity">
-                <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity" /></td>
-            </div>
+                <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity" />
+            </td>
             <td data-th="Subtotal" class="text-center">${{ $details['price'] * $details['quantity'] }}</td>
+            <td class="actions" data-th="">
+                <button class="btn btn-info btn-sm update-cart" data-id="{{ $id }}"><i class="fa fa-refresh"></i></button>
+                <button class="btn btn-danger btn-sm remove-from-cart" data-id="{{ $id }}"><i class="fa fa-trash-o"></i></button>
+            </td>
         </tr>
-        <script>
-            $('#quantity').click(function() {
-                location.reload(true);
-                console.log('test');
-                }); 
-        </script>
         @endforeach
 
         @endif
@@ -67,10 +64,6 @@
             <td><a href="{{ url('/shop') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
             <td colspan="2" class="hidden-xs"></td>
             <td class="hidden-xs text-center"><strong>Total ${{ $total }}</strong></td>
-            <td class="actions" data-th="">
-                <button class="btn btn-danger btn-sm remove-from-cart"><i class="fa fa-trash-o"></i></button>
-            </td>
-
         </tr>
     </tfoot>
 </table>
@@ -83,12 +76,42 @@
 
 <script type="text/javascript">
 
+    $(".update-cart").click(function(e) {
+        e.preventDefault();
+
+        var ele = $(this);
+
+        $.ajax({
+            url: '{{ url('update-cart') }}',
+            method: "patch",
+            data: {_token: '{{ csrf_token() }}',
+            id: ele.attr("data-id"),
+            quantity: ele.parents("tr").find(".quantity").val()
+            },
+            success: function(response) {
+                window.location.reload();
+            }
+        });
+    });
+
     $(".remove-from-cart").click(function(e) {
         e.preventDefault();
-        window.location.href='{{ url('/reset') }}';
-        });
 
+        var ele = $(this);
 
+        if (confirm("Are you sure")) {
+            $.ajax({
+                url: '{{ url('remove-from-cart') }}',
+                method: "DELETE",
+                data: {_token: '{{ csrf_token() }}',
+                    id: ele.attr("data-id")
+                },
+                success: function(response) {
+                    window.location.reload();
+                }
+            });
+        }
+    });
 </script>
 
 @endsection
