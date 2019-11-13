@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSourceTable extends Migration
+class CreateActiviteTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,10 +15,13 @@ class CreateSourceTable extends Migration
     {
         Schema::create('actives', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('description');
-            $table->decimal('like');
-
+            $table->integrer('idUser');
+            $table->string('nomActivite');
+            $table->date('dateActivite');
+            $table->string('descriptionActivite');
+            $table->varchar('localisation');
+            $table->varchar('url');
+            $table->decimal('likeActivite');
         });
     }
 

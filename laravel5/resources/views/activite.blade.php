@@ -179,6 +179,15 @@ CESI
 
       </script> 
       <a href=" Inscription" target="_blank" class="monBoutton">-> Inscription <- </a>
+<?php
+$titles = DB::table('acrobranche')->pluck('nom');
+?>
+      @foreach ($active as $active)
+
+    <p> {{ $active ->nomActivite }}</p>
+@endforeach
+
+
       <h1 >Nom Activite <button type="button" onclick="compteur()" class= "fas false fa-heart coeur"><b id='nb'>0</b></button></h1>
 
     </div>

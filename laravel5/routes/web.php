@@ -27,9 +27,15 @@ Route::get('/shop', function () {
 Route::get('/Panier', function () {
 	return view('panier');
 });
+
 Route::get('/Activite2', function () {
-	return view('activite');
+	$activites =App\Active::all();
+	return view ('activite', [
+		'active'=> $activites,
+	]);
 });
+
+
 Route::get('/test', function () {
 	return view('BDD');
 });
