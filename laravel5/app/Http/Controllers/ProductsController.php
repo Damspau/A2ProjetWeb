@@ -79,7 +79,20 @@ class ProductsController extends Controller
 
     public function quantity (){
 
-        return view('cart');
+         $thisid = $_POST['id'];
+         $thisquantity = $_POST['quantity'];
+
+                 $cart = session()->get('cart');
+
+
+          //check quantity//
+        if(isset($cart[$thisid])) {
+
+            $cart[$thisid]['quantity'] = $thisquantity;
+
+            session()->put('cart', $cart);
+        }
+        return view ('cart');
     }
 
 }

@@ -53,21 +53,20 @@
                     </td>
                     <td data-th="Price">${{ $details['price'] }}</td>
                     <td data-th="Quantity">
-                        <input type="number" value="{{ $details['quantity'] }}" class="form-control quantity" />
+                     <form name="quantity" method="POST" action="{{ url('/quantity') }}">
+                     @csrf
+                     <input id="id" name="id" type="hidden" value="{{ $id }}">
+                     <input type="number" id="quantity" name="quantity" value="{{ $details['quantity'] }}" class="form-control quantity" />
+                     <input type="submit" name="btn" value="Ok" class="btForm"/>
+                    </form>
                     </td>
                     <td data-th="Subtotal" class="text-center">${{ $details['price'] * $details['quantity'] }}</td>
-                    <td class="actions" data-th="">
-                        <button class="btn btn-info btn-sm update-cart" data-id="{{ $id }}"><i class="fa fa-refresh"></i></button>
-                    </td>
                 </tr>
             @endforeach
         @endif
 
         </tbody>
         <tfoot>
-        <tr class="visible-xs">
-            <td class="text-center"><strong>Total {{ $total }}</strong></td>
-        </tr>
         <tr>
             <td><a href="{{ url('/shop') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
             <td colspan="2" class="hidden-xs"></td>
