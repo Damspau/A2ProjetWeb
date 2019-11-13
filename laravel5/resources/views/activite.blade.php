@@ -23,7 +23,7 @@
     font-size: 70%;
   }
   .rounded{
-    float: left;
+    float: center;
     height:30%;
     width: 30%;
     margin-top: 1%;
@@ -43,8 +43,8 @@
   .true{
     color: red;
   }
-    .false{
-color: #636e72;
+  .false{
+    color: #636e72;
   }
 
   .fa-heart{
@@ -161,56 +161,33 @@ CESI
   <section class="jumbotron text-center">
     <div >
 
-      <script type="text/javascript"> 
-        var x=0; 
-        var y=false;
-        function compteur() 
-        { 
-          x = x+1; 
-          y==true;
-          if (x == 2) {
-            x = x-2;
-            y==false;
-          }
-          document.getElementById('false').innerHTML = y;
-          document.getElementById('nb').innerHTML = x;
+      <a href=" Inscription" target="_blank" class="monBoutton">-> Inscription <- </a> 
 
-        } 
-
-      </script> 
-      <a href=" Inscription" target="_blank" class="monBoutton">-> Inscription <- </a>
+      <script type="text/javascript">
+        
+      </script>
 <?php
-$titles = DB::table('acrobranche')->pluck('nom');
+$activite = DB::table('actives')
+->where('id', '=', '1')
+->get();
 ?>
-      @foreach ($active as $active)
+      @foreach($activite as $active)
 
-    <p> {{ $active ->nomActivite }}</p>
-@endforeach
-
-
-      <h1 >Nom Activite <button type="button" onclick="compteur()" class= "fas false fa-heart coeur"><b id='nb'>0</b></button></h1>
-
+      <h1 >{{ $active->nomActivite }} <button type="button" onclick="compteur()" class= "fas false fa-heart coeur"><b>{{ $active->likeActivite }} </b></button></h1>
     </div>
   </section>
-  <img class="rounded" src="6.jpg" >
-  <img class="rounded" src="6.jpg" >
-  <img class="rounded" src="6.jpg" >
+  <img class="rounded" src="{{ $active->url }}" >
 
   <p><u>Présentation : </u></p>
   
-  <p><span>Matériel:Polyester.Manches Longues.Blouson Style Militaire Classique pour Automne Manteau Homme Hommes Veste Simili Cuir Côtelé Cuir Véritable Blouson Transition Moto Coton Blouson Homme Veste Homme Homme Veste Mont Blouson Homme Veste à Capuche Homme Blousons et Vestes Doudoune Homme Veste Militaire Style Armée Classique Veste pour Homme Veste Coupe vent Imperméable Homme Veste de survêtement pour homme veste de sport Sport Loisirs Fermeture Éclair Homme Classique Style rétro Patches Flight Jacket Veste.
-  </span></p><br>
-  <p><span>➤Occasion: idéal pour la vie quotidienne, fête, plage, vacances, école, t-shirts occasionnels match parfait avec un jean, un legging ou un pantalon shorts.Haute qualité / mode / pas cher / chic / cadeau pour la Saint Valentin / offrez à votre ami, collègue / cadeau pour mère / offrez-vous également le meilleur cadeau .</span></p><br>
-  <p><u>Ouverture : </u></p>
-  <p><span>➤Occasion: idéal pour la vie quotidienne, fête, plage, vacances, école, t-shirts occasionnels match parfait avec un jean, un legging ou un pantalon shorts.Haute qualité / mode / pas cher / chic / cadeau pour la Saint Valentin / offrez à votre ami, collègue / cadeau pour mère / offrez-vous également le meilleur cadeau .</span></p><br>
-  <p><u>Qualification : </u></p>
-  <p><span>➤Occasion: idéal pour la vie quotidienne, fête, plage, vacances, école, t-shirts occasionnels match parfait avec un jean, un legging ou un pantalon shorts.Haute qualité / mode / pas cher / chic / cadeau pour la Saint Valentin / offrez à votre ami, collègue / cadeau pour mère / offrez-vous également le meilleur cadeau .</span></p><br>
-  <p><u>Localisation : </u></p>
-  <p><span>➤Occasion: idéal pour la vie quotidienne, fête, plage, vacances, école, t-shirts occasionnels match parfait avec un jean, un legging ou un pantalon shorts.Haute qualité / mode / pas cher / chic / cadeau pour la Saint Valentin / offrez à votre ami, collègue / cadeau pour mère / offrez-vous également le meilleur cadeau .</span></p><br>
+  <p >{{ $active->descriptionActivite }}</p><br>
+
+  <p><u>Date :</u>{{ $active->dateActivite }}  </p>
+  <p><u>Localisation :</u>{{ $active->localisation }}  </p>
 
   <section id="comments">
     <div id="respond" class="comment-respond">
-      <h3 id="reply-title" style="text-align:center;" class="comment-reply-title">Commenter l'activité </h3>
+      <h3 id="reply-title" style="text-align:center;" class="comment-reply-title">Commenter l'activité </h3><br>
       <form method="post" id="commentform" class="comment-form">
         <textarea style="float: right;" cols="90" rows="10"></textarea>
 
@@ -222,14 +199,7 @@ $titles = DB::table('acrobranche')->pluck('nom');
       </form>
     </div>
   </section>
-
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
+  @endforeach
   <br>
   <br>
 

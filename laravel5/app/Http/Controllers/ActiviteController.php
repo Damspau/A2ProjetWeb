@@ -4,13 +4,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Resquest;
-use App\Activite;
+use App\Active;
 
 class ActiviteController extends Controller
 {
 	public function index(){
-		$activite2 = Activite::all();
-		return view('1',compact('1'));
+		$activite = active::all();
+		return view('activite',compact('activite'));
 
 
 	}
