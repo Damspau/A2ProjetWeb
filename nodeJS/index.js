@@ -31,10 +31,10 @@ myRouter.route('/data/:userName')
  let query = connexion.query(sql, (err, results) => {
    if(err) throw err;
    if(results[0]==""){
-     res.send(JSON.stringify({"status": 404, "error": "email not found", "response": "email is not register or is not type correctly"}))
+     res.send({"status": 404, "error": "email not found", "response": "email is not register or is not type correctly"})
    }
    else {
-     res.send(JSON.stringify({"status": 200, "error": null, "response": results}))
+     res.send({"status": 200, "error": null, "response": results})
    }
 
  });;
@@ -88,7 +88,7 @@ myRouter.route('/data')
                 let query = connexion.query(sql, (err, results) => {
 
                     if(err) throw err;
-                    res.send(JSON.stringify({"status": 200, "error": null, "response": "updated successful"}));
+                    res.send(JSON.stringify({"status": 200 , "error": null , "response": "updated successful"}));
 
 
 
@@ -120,10 +120,10 @@ myRouter.route('/connexDel/:identifiant/:mdp')
     if(err) throw err;
 
     if (JSON.stringify(results[0])==input) {
-      res.send(JSON.stringify({"status": 200, "error": "NULL", "response": "login successful"}));
+      res.send({"status": 200, "error": "NULL", "response": "login successful"});
     }
     else {
-      res.send(JSON.stringify({"status": 404, "error": "wrong password", "response": "wrong password or email"}));
+      res.send({"status": 404, "error": "wrong password", "response": "wrong password or email"});
     }
 
 

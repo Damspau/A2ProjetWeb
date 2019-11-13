@@ -66,6 +66,10 @@ Route::get('/activitie', function () {
     return view('activitie');
 });
 
+Route::get('/connexion', function () {
+    return view('scriptConnexion');
+});
+
 Route::patch('update-cart', 'ProductsController@update');
 
 Route::delete('remove-from-cart', 'ProductsController@remove');

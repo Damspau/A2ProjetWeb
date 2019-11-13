@@ -1,3 +1,4 @@
+
 @extends('default')
 
 @section('title')
@@ -87,47 +88,128 @@ CESI Login
 @endsection
 
 @section('section')
-
-<!-- <div class="flex-center position-ref full-height">
-@if (Route::has('login'))
-<div class="top-right links">
-@auth
-<a href="{{ url('/home') }}">Home</a>
-@else
-<a href="{{ route('login') }}">Login</a>
-
-@if (Route::has('register'))
-<a href="{{ route('register') }}">Register</a>
-@endif
-@endauth
-</div>
-@endif
-</div> -->
-
+<p>
+  Login en cours
+</p>
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=site_web;charset=utf8', 'root', '');
+//$pseudo = $_POST['username'];
+//$motDePasse = $_POST['password'];
+$email = "tre@jesuisunfilsdepute.fr";
+$motDePasse = "tre";
+$urlco ="http://localhost:3000/connexDel/". $email . "/" . $motDePasse;
+$client = new GuzzleHttp\Client();
+$response = $client->request('GET', $urlco);
+$valeur = Session::get('clef');
 
-$pseudo = $_Post['username'];
-$motDePasse = $_Post['password'];
+$response = $response->getBody();
+$response = json_decode ($response, true);
 
-$requete=$bdd->prepare("Select pseudo FROM username Where username=:username");
-$requete->bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
+if ($response['response']=="login successful")
+ {
 
-$requete->execute();
-$resultat=$requete->fetch();
+   $urlco ="http://localhost:3000/data/". $email ;
+   $client = new GuzzleHttp\Client();
+   $response = $client->request('GET', $urlco);
+
+    $response=json_decode ($response->getBody(), true);
+
+    //echo var_dump( $response['response'][0][0]['localisation']);
 
 
-if(!$resultat){
-	echo "Ce pseudo n existe pas aller dans l inscription" ;
-}
-elseif($pseudo=="Degaule65"){
-	include("admin");
-}
-else {
-	echo "Vous etes connecté" ;
-	# code...
-}
 
-?>
+    Session::put('login', 'true');
+    Session::put('rang', $response['response'][1][0]['idrang']);
+    Session::put('username', $response['response'][2][0]['username']);
+
+ }
+
+ else
+  {
+    echo "wrong password";
+  }
+
+ ?>
+
+
+
+
+
+
+
+@endsection
+
+@section('header')
+
+@section('script')
+<script>
+// jQuery(document).ready(function(){
+//     var email = "";
+//     var password = "";
+//     var result = [];
+//     var login = "";
+//
+//
+//     $.ajax({
+//        url : 'http://localhost:3000/connexDel/'+ email + '/'+ password, // La ressource ciblée
+//        type : 'GET',
+//        dataType : 'json',
+//        success : function(code_json, statut){
+//          for(var i in code_json)
+//    result.push([i, code_json [i]]);
+//
+//          if (result[0]=="status,200")
+//          {
+//             //var loginArray =[];
+//
+//             //login = String(result[3]);
+//
+//             //loginArray=login.split(",");
+//             //alert (loginArray[1]);
+//             var sendTo = [];
+//             $.ajax({
+//        url : 'http://localhost:3000/data/'+ email,
+//        type : 'GET',
+//        dataType : 'json',
+//        success : function(code_json2, statut){
+//          var result2 = [];
+//          var result3 = [];
+//          var result4 = [];
+//          var idrang = "";
+//          var username ="";
+//          for(var i in code_json2)
+//          {
+//            result2.push([i, code_json2 [i]]);
+//          }
+//          console.log (JSON.stringify(result2[2][1][1][0]));
+//
+//          console.log (JSON.stringify(result2[2][1][2][0]));
+//          //$.post('file.php', {result2[2][1][1][0],result2[2][1][2][0]});
+//
+//
+//
+//        },
+//        error : function(resultat, statut, erreur){
+//               alert(erreur);
+//             }
+//     });
+//
+//          }
+//
+//          else
+//          {
+//
+//          }
+//
+//      },
+//        error : function(resultat, statut, erreur){
+//               alert(erreur);
+//             }
+//     });
+//
+//
+// });
+
+
+</script>
 
 @endsection
