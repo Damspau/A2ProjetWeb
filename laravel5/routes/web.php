@@ -73,3 +73,5 @@ Route::get('/connexion', function () {
 Route::patch('update-cart', 'ProductsController@update');
 
 Route::delete('remove-from-cart', 'ProductsController@remove');
+
+Route::post('/loginscript', 'LoginRegister@login');

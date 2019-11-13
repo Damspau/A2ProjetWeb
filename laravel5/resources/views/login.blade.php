@@ -126,22 +126,22 @@ CESI Login
       <a class="hiddenanchor" id="tologin"></a>
       <div id="wrapper">
         <div id="login" class="animate form">
-          <form method="post" action="#toregister" autocomplete="on">
+          <form method="post" action="{{ url('/loginscript') }}" autocomplete="on">
             {{ csrf_field() }}
             <h1><u>Connexion : </u></h1>
             <br>
             <br>
             <p>
-              <label for="username" class="uname" data-icon="u"> Username : </label>
-              <input id="username" name="pseudo" required="required" type="text" placeholder="pseudo" />
+              <label for="username" class="uname" data-icon="u"> Email : </label>
+              <input id="username" name="pseudo" required="required" type="text" placeholder="email" />
             </p>
             <p>
-              <label for="password" class="youpasswd" data-icon="p"> Password : </label>
+              <label for="password" class="youpasswd" data-icon="p"> Mot de passe : </label>
               <input id="password" name="motDePasse" required="required" type="password" placeholder="motdepasse" />
             </p>
 
             <p class="login button">
-              <input type="submit" value="Connexion" />
+              <input type="submit" value="Connexion" onclick=""/>
             </p>
             <p class="change_link">
               Pas encore inscrit ?
