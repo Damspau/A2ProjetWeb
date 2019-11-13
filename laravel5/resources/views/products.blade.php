@@ -3,7 +3,7 @@
 @section('head')
 
 <style>
-    @media only screen and (min-height: 1400px) {
+    @media only screen and (min-height: 889px) and (min-width:1076px) {
         #idk {
             position: absolute;
         }
@@ -40,7 +40,7 @@
 
         @foreach($products as $product)
             <div class="col-xs-18 col-sm-6 col-md-3">
-                <div class="thumbnail">
+                <div class="img">
                     <img src="{{ $product->photo }}" width="250" height="150">
                     <div class="caption">
                         <h4>{{ $product->name }}</h4>
