@@ -19,6 +19,8 @@
   }
   .coeur{
     float: right;
+    color: black;
+    font-size: 70%;
   }
   .rounded{
     float: left;
@@ -38,8 +40,11 @@
     background-color: orange !important;
   }
 
-  .fa-heart:hover{
-    color: #d63031;
+  .true{
+    color: red;
+  }
+    .false{
+color: #636e72;
   }
 
   .fa-heart{
@@ -48,6 +53,14 @@
   }
   .commentaire{
     top: 50%; left: 50%;
+  }
+  .monBoutton {
+    background-color: green;
+    Color:white;
+    float: left;
+    font-weight: bold;
+    padding: 1% 2%;
+    cursor: pointer;   
   }
 
 </style>
@@ -148,7 +161,25 @@ CESI
   <section class="jumbotron text-center">
     <div >
 
-      <h1 >Nom Activite <button type="button"  class="fas fa-heart coeur"> 1</button></h1>
+      <script type="text/javascript"> 
+        var x=0; 
+        var y=false;
+        function compteur() 
+        { 
+          x = x+1; 
+          y==true;
+          if (x == 2) {
+            x = x-2;
+            y==false;
+          }
+          document.getElementById('false').innerHTML = y;
+          document.getElementById('nb').innerHTML = x;
+
+        } 
+
+      </script> 
+      <a href=" Inscription" target="_blank" class="monBoutton">-> Inscription <- </a>
+      <h1 >Nom Activite <button type="button" onclick="compteur()" class= "fas false fa-heart coeur"><b id='nb'>0</b></button></h1>
 
     </div>
   </section>
@@ -168,14 +199,32 @@ CESI
   <p><u>Localisation : </u></p>
   <p><span>➤Occasion: idéal pour la vie quotidienne, fête, plage, vacances, école, t-shirts occasionnels match parfait avec un jean, un legging ou un pantalon shorts.Haute qualité / mode / pas cher / chic / cadeau pour la Saint Valentin / offrez à votre ami, collègue / cadeau pour mère / offrez-vous également le meilleur cadeau .</span></p><br>
 
+  <section id="comments">
+    <div id="respond" class="comment-respond">
+      <h3 id="reply-title" style="text-align:center;" class="comment-reply-title">Commenter l'activité </h3>
+      <form method="post" id="commentform" class="comment-form">
+        <textarea style="float: right;" cols="90" rows="10"></textarea>
 
-  <form name="inscription" class="commentaire" method="post" action="saisie">
+        <p class="form-textarea req"><label for="comment">Entré votre commentaire: </label><textarea name="comment" id="comment"placeholder="saisier votre commentaire" cols="60" rows="5%"></textarea></p>
 
-   Entrez votre commentaire :<input type="text" placeholder="saisier votre commentaire" /> <br/>
+        <p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Envoyer"> <input type="hidden" name="comment_post_ID" value="72408" id="comment_post_ID">
+          <input type="hidden" name="comment_parent" id="comment_parent" value="0">
+        </p>
+      </form>
+    </div>
+  </section>
 
-   <input type="submit" name="valider" value="Envoyer"/>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
 
- </form>
+</form>
 
 
 </main>
