@@ -1,0 +1,13 @@
+.btn-sm:hover
+{
+  background-color: orange !important;
+}
+
+.fa-heart:hover{
+  color: #d63031;
+}
+
+.fa-heart{
+  color: #636e72;
+  margin: margin-right;
+}

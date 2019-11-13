@@ -35,10 +35,6 @@ Route::get('/legalnotices', function () {
     return view('legalnotices');
 });
 
-Route::get('/activities', function () {
-    return view('activities');
-});
-
 /*Shop*/
 
 Route::get('/shop', 'ProductsController@index');
@@ -51,3 +47,6 @@ Route::get('reset', 'ProductsController@reset');
 
 Route::post('quantity', 'ProductsController@quantity');
 
+/*Activities*/
+
+Route::get('/activities', 'ActivitiesController@index');
