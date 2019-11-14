@@ -135,7 +135,7 @@
 
   </aside>
 
-  <footer class="" id="idk">
+  <!-- <footer class="" id="idk">
 
     <div class="container">
       <div class="row">
@@ -165,7 +165,7 @@
 
       </div>
 
-  </footer>
+  </footer> -->
 
 </body>
 

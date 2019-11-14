@@ -35,10 +35,9 @@ Route::get('/Panier', function () {
 // 	]);
 // });
 Route::get('/Activite2','ActiviteController@index');
+Route::post('/test','ActiviteController@quantity');
+Route::post('/allImg','ActiviteController@all');
 
-Route::get('/test', function () {
-	return view('BDD');
-});
 Route::get('/list',function(){
 	$activites =App\Activite::all();
 	return view ('BDD', [

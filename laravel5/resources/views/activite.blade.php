@@ -30,6 +30,19 @@
     margin-right: 1%;
     margin-left: 1%;
   }
+  .element.style{
+    float: right;
+    margin-left: 0%;
+    margin-right: 0%;
+
+  }
+  .rounded2{
+    height:15%;
+    width: 15%;
+    margin-top: 1%;
+    margin-right: 1%;
+    margin-left: 1%;
+  }
   .jumbotron {
     padding: 1rem 1rem;
     margin-bottom: 0rem; 
@@ -164,46 +177,115 @@ CESI
       <a href=" Inscription" target="_blank" class="monBoutton">-> Inscription <- </a> 
 
       <script type="text/javascript">
-        
+
       </script>
-<?php
-$activite = DB::table('actives')
-->where('id', '=', '1')
-->get();
-?>
+      <?php
+
+      $activite = DB::table('actives')
+      ->where('id', '=', '1')
+      ->get();
+
+      $photo = DB::table('photo')
+      ->where([
+        ['idActivite', '=', '1'],
+        ['idphoto', '=', '1'],
+      ])
+      ->get();
+
+      $ah = DB::table('photo')
+      ->where([
+        ['idActivite', '=', '1'],
+        ['idphoto', '<>', '1'],
+      ])
+      ->get();
+
+      $commentaire = DB::table('commentaire')
+      ->where('idActivite', '=', '1')
+      ->groupBy('idCommentaire')
+      ->get();
+
+
+      ?>
+
+
       @foreach($activite as $active)
 
       <h1 >{{ $active->nomActivite }} <button type="button" onclick="compteur()" class= "fas false fa-heart coeur"><b>{{ $active->likeActivite }} </b></button></h1>
     </div>
+    @endforeach
   </section>
-  <img class="rounded" src="{{ $active->url }}" >
+  @foreach($photo as $img)
 
+  <img class="rounded" src="{{ $img->url }}" >
+  <img class="rounded2" src="{{ $img->url }}" >
+
+  @endforeach
+  @foreach($activite as $active)
   <p><u>Présentation : </u></p>
   
   <p >{{ $active->descriptionActivite }}</p><br>
 
-  <p><u>Date :</u>{{ $active->dateActivite }}  </p>
-  <p><u>Localisation :</u>{{ $active->localisation }}  </p>
-
+  <p><u>Date :</u> {{ $active->dateActivite }}  </p>
+  <p><u>Localisation :</u> {{ $active->localisation }}  </p>
+  @endforeach
   <section id="comments">
     <div id="respond" class="comment-respond">
-      <h3 id="reply-title" style="text-align:center;" class="comment-reply-title">Commenter l'activité </h3><br>
-      <form method="post" id="commentform" class="comment-form">
-        <textarea style="float: right;" cols="90" rows="10"></textarea>
+      <h3 id="reply-title" style="text-align:center;" class="comment-reply-title">Commenter l'activité: </h3><br>
+      <div style="float: right;width: 60%;height: 530px; margin-right:5%;margin-bottom:5%; border:20% solid #67ab9f; background-color:#b3d8d2;overflow:scroll; ">
+        <for>
+          <?php
+          if (Session::has('username')){
+            $username=Sesion::get('username');
+          }
+          ?>
+          <form method="post" action="{{url('/test')}}" class="comment-form">
+            {{ csrf_field() }}
+            @foreach($ah as $comm)
+            
+            @foreach($commentaire as $coucou)
+            <img class="rounded" src="{{ $comm->url }}">
 
-        <p class="form-textarea req"><label for="comment">Entré votre commentaire: </label><textarea name="comment" id="comment"placeholder="saisier votre commentaire" cols="60" rows="5%"></textarea></p>
+            <p>Commenter par: $username {{ $coucou->contenuCommentaire }}</p><br>
+            @endforeach
+            @endforeach
 
-        <p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Envoyer"> <input type="hidden" name="comment_post_ID" value="72408" id="comment_post_ID">
-          <input type="hidden" name="comment_parent" id="comment_parent" value="0">
-        </p>
-      </form>
-    </div>
-  </section>
-  @endforeach
-  <br>
-  <br>
 
+     
+            
+            <div class="img">
+              <img class="rounded" src="{{ $comm->url }}">
+
+            </div>
+
+
+
+          </div>
+
+          <p><label for="comment">Entrer votre commentaire:</label></p>
+          <input class="form-control mr-sm-2" style="width: 25%;float: left;" type="text" name="commentaire" placeholder="Entrer votre commentaire"></input> 
+          <p class="form-submit">
+            <input name="envoie" type="submit"  class="submit" value="Envoyer"><br><br>
+          </p>
+
+          {{ csrf_field() }}
+          <input class="form-control mr-sm-2" style="width: 25%;" type="text" name="url" placeholder="déposer votre url pour imager cet événement">
+        </form><br><br><br><br><br><br><br><br><br><br><br><br>
+
+      </div>
+    </section>
+
+
+    <br>
+    <br>
+
+  </form>
+<form method="get" action="{{url('/all')}}">
+   <a href="path_to_file" download="allImg"> <input name="envoie" type="submit"  class="submit" value="Download"></a>
 </form>
+   
+
+
+
 
 
 </main>
