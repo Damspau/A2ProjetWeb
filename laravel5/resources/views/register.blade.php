@@ -59,8 +59,17 @@ CESI Register
               <input id="emailsignup" name="mail" required="required" type="email" placeholder="email" />
             </p>
             <p>
-              <label for="locationsignup" class="ulocation" data-icon="l">Location : </label>
-              <input id="locationsignup" name="location" required="required" type="text" placeholder="location" />
+              <label for="locationsignup" class="ulocation" data-icon="l">Localisation : </label>
+              <select name="locationsignup" id="pays">
+           <option value="france">Pau</option>
+           <option value="espagne">Bordeaux</option>
+           <option value="italie">Toulouse</option>
+           <option value="royaume-uni">Paris</option>
+           <option value="canada">Rouen</option>
+           <option value="etats-unis">Lyon</option>
+           <option value="chine">Arras</option>
+           <option value="japon">La Rochelle</option>
+       </select>
             </p>
             <p class="signin button">
               <input type="submit" value="S'inscrire" />

@@ -53,9 +53,11 @@ if (Session::get('rang')>1){
 
     if (isset($response))
     {
-      echo "<div class=\"alert alert-success\" role=\"alert\">
-  ".$response."
-</div>";
+      echo "<div class=\"alert alert-success\" role=\"alert\">".$response."</div>";
+    }
+    if (isset($send))
+    {
+      echo "<div class=\"alert alert-info\" role=\"alert\"> Informations utilisateur: </br>Rang: ".$send[0]." </br>Username: ".$send[1]."</div>";
     }
 
     if (isset($erreur))
@@ -134,8 +136,8 @@ if (Session::get('rang')>1){
               <input id="passwordmodifier" name="motDePasse" required="required" type="password" placeholder="motdepasse" />
             </p>
             <p>
-              <label for="location" class="youpasswd" data-icon="p"> Location: </label>
-              <input id="location" name="location" required="required" type="password" placeholder="motdepasse" />
+              <label for="location" class="uname" data-icon="p"> Location: </label>
+              <input id="location" name="location" required="required" type="required" placeholder="Location" />
             </p>
 
             <p class="login button">

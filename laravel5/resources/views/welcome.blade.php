@@ -33,17 +33,22 @@ CESI
 <?php
 if (Session::get('login')=='true'){
     echo "<li><a>Bienvenue ".Session::get('username')."</a></li>";
+    ?>
+      <li><a href=" {{ url('/logout') }}">Logout</a></li>;
+      <?php
+
 if (Session::get('rang')>1){
-  ?>
-    <li><a href=" {{ url('/admingestion') }}">BDE/ADMIN</a></li>";
-    <?php 
+
 }
 
 }
 
 else
 {
-echo "<li><a href=\"{{ url('/login') }}\">Login/Register</a></li>";
+  ?>
+    <li><a href="{{ url('/login') }}">Login/Register</a></li>;
+    <?php
+
 }
 
 ?>

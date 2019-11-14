@@ -56,7 +56,7 @@ myRouter.route('/data')
                 let query = connexion.query(sql, (err, results) => {
                   console.log("hey");
                     if(err) throw err;
-                    res.send(JSON.stringify({"status": 200, "error": null, "response": results}));
+                    res.send({"status": 200, "error": null, "response": results});
 
 
 
@@ -65,7 +65,7 @@ myRouter.route('/data')
             }
 
             else {
-                  res.send(JSON.stringify({"status": 404, "error": "Email arleady exist", "response": ""}));
+                  res.send({"status": 404, "error": "Email arleady exist", "response": ""});
             }
 
   });;
@@ -77,7 +77,7 @@ myRouter.route('/data')
 //PUT update location of user
 .put(function(req,res){
   var input = "{\"email\":\"adminMail\"}";
-  let sql = "CALL PutDataLocalisation ('" + req.body.username + "', '" + req.body.location + "', '" + req.body.passwordAdmin + "')";
+
 
   let sqlverify = "SELECT email FROM utilisateur WHERE email = 'adminMail' AND password = '"+req.body.passwordAdmin+"';";
   let query = connexion.query(sqlverify, (err, results2) => {
@@ -85,10 +85,11 @@ myRouter.route('/data')
 
             if (JSON.stringify(results2[0])==input)
             {
+                let sql = "CALL PutDataLocalisation ('" + req.body.email + "', '" + req.body.location + "')";
                 let query = connexion.query(sql, (err, results) => {
 
                     if(err) throw err;
-                    res.send(JSON.stringify({"status": 200 , "error": null , "response": "updated successful"}));
+                    res.send({"status": 200 , "error": null , "response": "updated successful"});
 
 
 
@@ -97,7 +98,7 @@ myRouter.route('/data')
             }
 
             else {
-                  res.send(JSON.stringify({"status": 404, "error": "wrong password", "response": ""}));
+                  res.send({"status": 404, "error": "wrong password", "response": ""});
             }
 
   });;

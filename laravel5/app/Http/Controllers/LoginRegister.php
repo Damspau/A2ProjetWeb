@@ -11,11 +11,11 @@ class LoginRegister extends Controller
     {
 
       $email = $_POST['pseudo'];
-      $motDePasse = $_POST['motDePasse'];
+      $motDePasse = Hash::make($_POST['motDePasse']);
       $urlco ="http://localhost:3000/connexDel/". $email . "/" . $motDePasse;
       $client = new GuzzleHttp\Client();
       $response = $client->request('GET', $urlco);
-    
+
 
       $response = $response->getBody();
       $response = json_decode ($response, true);
@@ -51,7 +51,7 @@ class LoginRegister extends Controller
 
     public function register ()
     {
-      $email = $_POST['mail'];
+      $email = Hash::make($_POST['mail']);
       $username=$_POST['username'];
       $password=$_POST['password'];
       $location=$_POST['location'];
@@ -83,4 +83,11 @@ class LoginRegister extends Controller
        }
 
     }
+  public function logout ()
+   {
+     Session::put('login', 'false');
+     Session::put('rang', '0');
+     Session::put('username', "");
+     return view('Welcome');
+   }
 }

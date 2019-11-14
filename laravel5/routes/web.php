@@ -80,6 +80,7 @@ Route::delete('remove-from-cart', 'ProductsController@remove');
 
 Route::post('/loginscript', 'LoginRegister@login');
 Route::post('/registerscript', 'LoginRegister@register');
+Route::get('/logout', 'LoginRegister@logout');
 
 //AdminRoutes:
 Route::post('/deleteUser', 'adminFunctions@delete');
