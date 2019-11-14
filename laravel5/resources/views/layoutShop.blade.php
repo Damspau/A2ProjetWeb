@@ -90,27 +90,29 @@
 
 </br>
 
-<!--Traitements spécifiques pour les membres du BDE 
+<!--Traitements spécifiques pour les membres du BDE
  ils peuvent ajouter, supprimer des produits avec nom,
-description et prix en les classant par catégories   -->
-
+description et prix   -->
 <?php if (Session::get('rang') == 2) { ?>
-
     <a href="{{ url('/modifications') }}">
         <button type="button" class="btn btn-primary pull-left">
             <i class="fa fa-shopping-cart" aria-hidden="true"></i>Modifier boutique : BDE seulement !
         </button>
     </a>
+    <br>
 
-<?php }; ?>
+  <?php }else { ?><h6 style="text-align:left;color:red;"><?php echo 'Pas Membre du BDE pour modifier la boutique !'; } ?></h6>
 
-<a href="{{ url('/cart') }}">
-    <button type="button" class="btn btn-primary pull-right">
-        <i class="fa fa-shopping-cart" aria-hidden="true"></i>Panier
-    </button>
-</a>
-</br>
-</br>
+@yield('trois')
+
+<!-- Session::get('username') -->
+
+    <a href="{{ url('/stargate') }}">
+        <button type="button" class="btn btn-primary pull-right">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>Panier (Sauvegarde automatique si etudiant)
+        </button>
+    </a>
+
 <div class="container page">
     @yield('content')
 </div>

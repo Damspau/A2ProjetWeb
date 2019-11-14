@@ -41,22 +41,28 @@ Route::get('/modifications', function () {
 
 /*Shop*/
 
-Route::get('shop', 'ProductsController@index');
+Route::get('/shop', 'ProductsController@index');
 
-Route::get('cart', 'ProductsController@cart');
+Route::get('/ShopCroissant', 'ProductsController@trierCroi');
 
-Route::get('add-to-cart/{id}', 'ProductsController@addToCart');
+Route::get('/ShopDecroissant', 'ProductsController@trierDec');
 
-Route::get('reset', 'ProductsController@reset');
+Route::get('/cart', 'ProductsController@cartVide');
 
-Route::post('quantity', 'ProductsController@quantity');
+Route::get('/{username}', 'ProductsController@cart');
 
-Route::post('addProducts', 'ProductsController@addProducts');
+Route::get('/add-to-cart/{id}/{username}', 'ProductsController@addToCart');
 
-Route::post('delProducts', 'ProductsController@delProducts');
+Route::get('/reset/{username}', 'ProductsController@reset');
 
-Route::get('cart/{username}', 'ProductsController@mail');
+Route::post('/quantity', 'ProductsController@quantity');
+
+Route::post('/addProducts', 'ProductsController@addProducts');
+
+Route::post('/delProducts', 'ProductsController@delProducts');
+
+Route::get('/cart/{username}/{mail}/{prix}', 'SendEmailController@index');
 
 /*Activities*/
 
-Route::get('activities', 'ActivitiesController@index');
+Route::get('/activities', 'ActivitiesController@index');

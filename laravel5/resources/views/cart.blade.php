@@ -1,11 +1,10 @@
-<?php setcookie('pseudo', 'M@teo21', time() + 365 * 24 * 3600, null, null, false, true); ?>
-
 @extends('layoutShop')
 
 @section('head')
 
 <style>
-    @media only screen and (min-height: 603px) {
+
+     @media only screen and (min-height: 843px) and (min-width:993px) {
         #idk {
             position: absolute;
         }
@@ -39,59 +38,60 @@
 
         <?php $total = 0 ?>
 
-        @if(session('cart'))
-        @foreach(session('cart') as $id => $details)
+<?php
+    foreach ($users as $client) {
 
-        <?php $total += $details['price'] * $details['quantity'] ?>
+      foreach($products as $product){
+            if ($product->id == $client->idArticle){
+              ?>
 
-        <tr>
-            <td data-th="Product">
-                <div class="row">
-                    <div class="col-sm-3 hidden-xs"><img src="{{ $details['photo'] }}" width="100" height="100" class="img-responsive" /></div>
-                    <div class="col-sm-9">
-                        <h4 class="nomargin">{{ $details['name'] }}</h4>
-                    </div>
-                </div>
-            </td>
-            <td data-th="Price">${{ $details['price'] }}</td>
-            <td data-th="Quantity">
-                <form name="quantity" method="POST" action="{{ url('quantity') }}">
-                    @csrf
-                    <input id="id" name="id" type="hidden" value="{{ $id }}">
-                    <input type="number" id="quantity" name="quantity" value="{{ $details['quantity'] }}" class="form-control quantity" />
-                    <input type="submit" name="btn" value="Ok" class="btForm" />
-                </form>
-            </td>
-            <td data-th="Subtotal" class="text-center">${{ $details['price'] * $details['quantity'] }}</td>
-        </tr>
-        @endforeach
-        @endif
 
-    </tbody>
-    <tfoot>
-        <tr>
-            <td><a href="{{ url('shop') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
-            <td colspan="2" class="hidden-xs"></td>
-            <td class="hidden-xs text-center"><strong>Total ${{ $total }}</strong></td>
-            <td><a href="{{ url('reset') }}"><button class="btn btn-danger btn-sm remove-from-cart"><i class="fa fa-trash-o"></i></button></a></td>
-        </tr>
-    </tfoot>
+  <?php $total += $product['price'] * $client->quantity ?>
+
+  <tr>
+      <td data-th="Product">
+          <div class="row">
+              <div class="col-sm-3 hidden-xs"><img src="{{ $product['photo'] }}" width="100" height="100" class="img-responsive" /></div>
+              <div class="col-sm-9">
+                  <h4 class="nomargin">{{ $product['name'] }}</h4>
+              </div>
+          </div>
+      </td>
+      <td data-th="Price">${{ $product['price'] }}</td>
+      <td data-th="Quantity">
+          <form name="quantity" method="POST" action="{{ url('quantity') }}">
+              @csrf
+              <input id="id" name="id" type="hidden" value="{{ $product->id }}">
+              <input type="number" id="quantity" name="quantity" value="{{ $client->quantity }}" class="form-control quantity" />
+              <input type="submit" name="btn" value="Ok" class="btForm" />
+          </form>
+      </td>
+      <td data-th="Subtotal" class="text-center">${{ $product['price'] * $client->quantity }}</td>
+  </tr>
+  <?php
+          }
+      }
+    }
+?>
+</tbody>
+<tfoot>
+<tr>
+    <td><a href="{{ url('/shop') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+    <td colspan="2" class="hidden-xs">
+
+      <a href="<?php echo (Session::get('rang') == 1) ? url('cart/' . Session::get('username') . '/' . Session::get('mail') . '/' . $total) : url('/login');  ?>">
+
+            <button type="button" class="btn btn-primary pull-right">
+              <i class="fa fa-shopping-cart" aria-hidden="true"></i> Passer commande : étudiants connectés seulement !
+            </button>
+      </a>
+
+    </td>
+    <td class="hidden-xs text-center"><strong>Total ${{ $total }}</strong></td>
+    <td><a href="{{ url('/reset/' . Session::get('username')) }}"><button class="btn btn-danger btn-sm remove-from-cart"><i class="fa fa-trash-o"></i></button></a></td>
+</tr>
+</tfoot>
 </table>
 
 
-
-<!-- Session::get('rang') == 1
-Session::get('username')
--->
-
-<a href="<?php echo (true) ? url('cart/' . "test") : url('/login');  ?>">
-    <button type="button" class="btn btn-primary pull-right">
-        <i class="fa fa-shopping-cart" aria-hidden="true"></i>Passer commande : étudiants connectés seulement !
-    </button>
-</a>
-
-@endsection
-
-
-@section('scripts')
 @endsection

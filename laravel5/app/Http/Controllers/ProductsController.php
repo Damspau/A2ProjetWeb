@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Users;
 use DB;
 use Illuminate\Http\Request;
 
@@ -11,17 +12,27 @@ class ProductsController extends Controller
     public function index()
     {
         $products = Product::all();
-
         return view('products', compact('products'));
     }
 
-    public function cart()
+    public function cart($username)
+    {
+        $users = DB::table('users')->select('idArticle', 'quantity')->where('username', '=', $username)->get();
+        $products = Product::all();
+        return view('cart', compact('users'), compact('products'));
+    }
+
+    public function cartVide()
     {
         return view('cart');
     }
 
-    public function addToCart($id)
+
+    public function addToCart($id, $username)
     {
+
+      /*  Vérification id article : */
+
         $product = Product::find($id);
 
         if(!$product) {
@@ -30,52 +41,52 @@ class ProductsController extends Controller
 
         }
 
-        $cart = session()->get('cart');
+        /*  Ajout dans la BDD : */
 
-        // if cart is empty then this the first product
-        if(!$cart) {
+        if (Users::where('username', '=', $username)->count() > 0){
 
-            $cart = [
-                    $id => [
-                        "name" => $product->name,
-                        "quantity" => 1,
-                        "price" => $product->price,
-                        "photo" => $product->photo
-                    ]
-            ];
-
-            session()->put('cart', $cart);
-
-            return redirect()->back()->with('success', 'Product added to cart successfully!');
+          if(Users::where('idArticle', '=', $id)->count() > 0){
+            //  check if this product exist for this user then increment quantity
+            DB::table('users')->where([
+                ['username', $username],
+                ['idArticle', $id]])
+                ->increment('quantity');
+          }
+          else{
+            DB::table('users')->insert([
+                ['username' => "$username",
+                 'idArticle' => "$id",
+                 'quantity' => "1"
+               ],
+            ]);
+          }
         }
-
-        // if cart not empty then check if this product exist then increment quantity
-        if(isset($cart[$id])) {
-
-            $cart[$id]['quantity']++;
-
-            session()->put('cart', $cart);
-
-            return redirect()->back()->with('success', 'Product added to cart successfully!');
-
+        else{
+          DB::table('users')->insert([
+              ['username' => "$username",
+               'idArticle' => "$id",
+               'quantity' => "1"
+             ],
+          ]);
         }
-
-        // if item not exist in cart then add to cart with quantity = 1
-        $cart[$id] = [
-            "name" => $product->name,
-            "quantity" => 1,
-            "price" => $product->price,
-            "photo" => $product->photo
-        ];
-
-        session()->put('cart', $cart);
-
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
+          return redirect()->back()->with('success', 'Produit correctement ajouté au panier !');
     }
 
-    public function reset (){
-        session()->flush();
-        return view('cart');
+    public function trierDec (){
+      $products = Product::orderBy('price', 'desc')->get();
+      return view('products', compact('products'));
+    }
+
+    public function trierCroi (){
+      $products = Product::orderBy('price', 'asc')->get();
+      return view('products', compact('products'));
+    }
+
+    public function reset ($username){
+
+      DB::table('users')
+      ->where('username', $username)->delete();
+      return redirect()->back()->with('success', 'Panier correctement supprimé !');
     }
 
     public function quantity (){
@@ -121,13 +132,6 @@ class ProductsController extends Controller
         DB::table('products')
         ->where('name', '=', $thisname)->delete();
         return redirect()->back()->with('success', 'Produit correctement supprimé !');
-    }
-
-    public function mail($username)
-    {
-        // $thisname = $_POST['name'];
-
-        return redirect()->back()->with('success', "Mail $username envoyé !");
     }
 
 }

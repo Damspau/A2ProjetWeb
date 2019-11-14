@@ -2,18 +2,55 @@
 
 @section('head')
 
+<style>
+
+     @media only screen and (min-height: 930px) and (min-width:1309px) {
+        #idk {
+            position: absolute;
+        }
+    }
+
+    .head{
+      background-color:grey;
+    }
+</style>
+
+
 @endsection
 
 @section('title', 'Products')
 
+@section('trois')
+
+<a href="{{ url('/shop') }}">
+    <button type="button" class="btn btn-primary pull-left">
+        <i class="fa fa-shopping-cart" aria-hidden="true"></i>Afficher les trois articles les plus commandés !
+    </button>
+</a>
+
+@endsection
+
 @section('content')
+
 
 
 <p>
     <h1 style="text-align: center;"><u style="text-decoration-color:black;">Boutique : </u></h1>
 </p>
 
-</br>
+    <a href="{{ url('/ShopCroissant') }}">
+    <button type="button" class="btn refresh">
+        <i class="fa fa-shopping-cart" aria-hidden="true"></i>Trier dans l'ordre croissant des prix !
+    </button>
+  </a>
+
+
+<a href="{{ url('/ShopDecroissant') }}">
+    <button type="button" class="btn refresh">
+        <i class="fa fa-shopping-cart" aria-hidden="true"></i>Trier dans l'ordre décroissant des prix !
+    </button>
+</a>
+
 </br>
 
 <div class="container products">
@@ -37,7 +74,9 @@
                     <h4>{{ $product->name }}</h4>
                     <p>{{ str_limit(strtolower($product->description), 50) }}</p>
                     <p><strong>Price: </strong> {{ $product->price }}$</p>
-                    <p class="btn-holder"><a href="{{ url('add-to-cart/'.$product->id) }}" class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p>
+                    <!-- Session::get('rang') == 1
+                    Session::get('username') -->
+                    <p class="btn-holder"><a href="<?php echo (true) ? url('add-to-cart/'. $product->id . '/' . "stargate") : url('/login')?>" class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p>
                 </div>
             </div>
         </div>
@@ -49,11 +88,4 @@
 
 <br>
 <br>
-
-<a href="{{ url('/shop') }}">
-    <button type="button" class="btn btn-primary pull-center">
-        <i class="fa fa-shopping-cart" aria-hidden="true"></i>Afficher les trois articles les plus commandés !
-    </button>
-</a>
-
 @endsection

@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->text("description")->nullable();
             $table->string("photo", 255)->nullable();
             $table->decimal("price", 6, 2);
+            $table->integer("nbrCommandes");
             $table->timestamps();
         });
     }
