@@ -89,15 +89,31 @@
 @section('section')
 
 </br>
+
+<!--Traitements spécifiques pour les membres du BDE 
+ ils peuvent ajouter, supprimer des produits avec nom,
+description et prix en les classant par catégories 
+dans le if mettre : Session::get('rang') == 2 -->
+
+<?php if (true) { ?>
+
+    <a href="{{ url('/modifications') }}">
+        <button type="button" class="btn btn-primary pull-left">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>Modifier boutique : BDE seulement !
+        </button>
+    </a>
+
+<?php }; ?>
+
 <a href="{{ url('/cart') }}">
     <button type="button" class="btn btn-primary pull-right">
-      <i class="fa fa-shopping-cart" aria-hidden="true"></i>Panier
+        <i class="fa fa-shopping-cart" aria-hidden="true"></i>Panier
     </button>
 </a>
 </br>
 </br>
 <div class="container page">
- @yield('content')
+    @yield('content')
 </div>
 
 @endsection

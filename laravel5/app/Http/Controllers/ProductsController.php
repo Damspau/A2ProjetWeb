@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use DB;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
@@ -93,6 +94,33 @@ class ProductsController extends Controller
             session()->put('cart', $cart);
         }
         return view ('cart');
+    }
+
+    public function addProducts()
+    {
+        $thisname = $_POST['name'];
+        $thisdescription = $_POST['description'];
+        $thisphoto = $_POST['photo'];
+        $thisprice = $_POST['price'];
+
+        DB::table('products')->insert(
+            ['name' => $thisname,
+             'description' => $thisdescription,
+             'photo' => $thisphoto,
+             'price' => $thisprice
+             ]
+        );
+        return redirect()->back()->with('success', 'Produit correctement ajouté à la BDD !');
+
+    }
+
+    public function delProducts()
+    {
+        $thisname = $_POST['name'];
+
+        DB::table('products')
+        ->where('name', '=', $thisname)->delete();
+        return redirect()->back()->with('success', 'Produit correctement supprimé !');
     }
 
 }
