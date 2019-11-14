@@ -80,7 +80,7 @@
 
 
 
-<!-- Session::get('rang') == 1 
+<!-- Session::get('rang') == 1
 Session::get('username')
 -->
 

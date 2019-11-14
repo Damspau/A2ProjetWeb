@@ -5,13 +5,8 @@
 @section('head')
 
 <style>
-  @media only screen and (min-height: 676px) {
-    #idk {
-      position: absolute;
-    }
-  }
 
-  @media only screen and (min-height: 982px) and (max-width:984px) {
+  @media only screen and (min-height: 918px) and (min-width:1000px) {
     #idk {
       position: absolute;
     }
@@ -42,9 +37,9 @@ CESI
           <div class="main-menu  d-none d-lg-block">
             <nav>
               <ul id="navigation">
-                <li><a class="active" href="{{ url('/home') }}">Home</a></li>
+                <li><a  href="{{ url('/home') }}">Home</a></li>
                 <li><a href="{{ url('/activities') }}">Activités</a></li>
-                <li><a href="{{ url('/shop') }}">Boutique</a></li>
+                <li><a class="active" href="{{ url('/shop') }}">Boutique</a></li>
                 <li><a href="{{ url('/login') }}">Login/Register</a></li>
                 <li class="mt-2 mb-2">
                   <form class="form-inline">
@@ -109,6 +104,10 @@ CESI
 
 @section('section')
 
+<!-- Vérifier membre du BDE !
+Session::get('rang') == 2 -->
+
+<?php if (Session::get('rang') == 2) { ?>
 </br>
 
 <a href="{{ url('/shop') }}">
@@ -203,5 +202,7 @@ CESI
 
 </br>
 </br>
+
+<?php }else { ?><h1 style="text-align:center;color:red;"><?php echo 'Pas Membre du BDE pour modifier la boutique !'; } ?></h1>
 
 @endsection

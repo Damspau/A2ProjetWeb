@@ -2,14 +2,6 @@
 
 @section('head')
 
-<style>
-    @media only screen and (min-height: 889px) and (min-width:1076px) {
-        #idk {
-            position: absolute;
-        }
-    }
-</style>
-
 @endsection
 
 @section('title', 'Products')
@@ -55,8 +47,11 @@
 
 </div>
 
+<br>
+<br>
+
 <a href="{{ url('/shop') }}">
-    <button type="button" class="btn btn-primary pull-right">
+    <button type="button" class="btn btn-primary pull-center">
         <i class="fa fa-shopping-cart" aria-hidden="true"></i>Afficher les trois articles les plus commandés !
     </button>
 </a>
