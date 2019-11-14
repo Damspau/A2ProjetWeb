@@ -143,8 +143,10 @@ myRouter.route('/connexDel/:identifiant/:mdp')
    //res.json({message : "GET connexion", methode : req.method, identifiant : req.params.identifiant, mdp : req.params.mdp });
    var input = "{\"email\":\"adminMail\"}";
    let sql = "CALL DeleteData ('" + req.params.identifiant + "', '" + req.params.mdp + "')";
+   console.log(req.params.identifiant);
+   console.log(req.params.mdp);
 
-   let sqlverify = "SELECT email FROM utilisateur WHERE email = 'adminMail' AND password = '"+req.body.passwordAdmin+"';";
+   let sqlverify = "SELECT email FROM utilisateur WHERE email = 'adminMail' AND password = '"+req.params.mdp+"';";
    let query = connexion.query(sqlverify, (err, results2) => {
      if(err) throw err;
 
@@ -162,7 +164,7 @@ myRouter.route('/connexDel/:identifiant/:mdp')
              }
 
              else {
-                   res.send(JSON.stringify({"status": 404, "error": "wrong password", "response": "error"}));
+                   res.send(JSON.stringify({"status": 404, "error": "wrong password", "response": "Error"}));
              }
 
    });;

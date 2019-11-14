@@ -1,8 +1,14 @@
 <?php
-Session::put('login', 'false');
-Session::put('rang', '0');
-Session::put('username', '');
 
+if (Session::has('login')){
+//do nothing because there is no such thing like "hasnot" in laravel
+
+}
+else {
+  Session::put('login', 'false');
+  Session::put('rang', '0');
+  Session::put('username', '');
+}
  ?>
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -127,13 +133,6 @@ Session::put('username', '');
       }
     </script>
 
-    @yield('header')
-
-
-
-
-
-
 
 
 
@@ -154,6 +153,7 @@ Session::put('username', '');
               <nav>
                 <ul id="navigation">
                   @yield('nav')
+                  @yield('header')
                   <li class="mt-2 mb-2">
                     <form class="form-inline">
                       <input class="form-control mr-sm-2" name="recherche" type="search" list="recherche" placeholder="Search" aria-label="Search">
@@ -225,7 +225,7 @@ Session::put('username', '');
 
   </aside>
 
-  <footer class="" id="idk">
+  <!-- <footer class="" id="idk"> -->
 
     <div class="container">
       <div class="row">

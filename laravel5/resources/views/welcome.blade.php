@@ -32,8 +32,15 @@ CESI
 <li><a href="{{ url('/shop') }}">Boutique</a></li>
 <?php
 if (Session::get('login')=='true'){
-echo "<li><a>Bienvenue ".Session::get('username')."</a></li>";
+    echo "<li><a>Bienvenue ".Session::get('username')."</a></li>";
+if (Session::get('rang')>1){
+  ?>
+    <li><a href=" {{ url('/admingestion') }}">BDE/ADMIN</a></li>";
+    <?php 
 }
+
+}
+
 else
 {
 echo "<li><a href=\"{{ url('/login') }}\">Login/Register</a></li>";

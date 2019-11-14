@@ -9,13 +9,13 @@ class LoginRegister extends Controller
 {
     public function login()
     {
-      //$email = "tre@jesuisunfilsdepute.fr";
+
       $email = $_POST['pseudo'];
       $motDePasse = $_POST['motDePasse'];
       $urlco ="http://localhost:3000/connexDel/". $email . "/" . $motDePasse;
       $client = new GuzzleHttp\Client();
       $response = $client->request('GET', $urlco);
-      $valeur = Session::get('clef');
+    
 
       $response = $response->getBody();
       $response = json_decode ($response, true);
@@ -43,13 +43,44 @@ class LoginRegister extends Controller
 
        else
         {
-          return view('login');
+          $erreur="error: wrong email or password";
+          return view('login')->with('erreur', $erreur);
 
         }
     }
 
     public function register ()
     {
+      $email = $_POST['mail'];
+      $username=$_POST['username'];
+      $password=$_POST['password'];
+      $location=$_POST['location'];
+      $urlco ="http://localhost:3000/data/";
+      $client = new GuzzleHttp\Client();
+      $response = $client->post($urlco, [GuzzleHttp\RequestOptions::JSON => ['username' => $username, 'password' => $password, 'email' => $email,'location' => $location]]);
+
+
+      $response = $response->getBody();
+      $response = json_decode ($response, true);
+
+      if ($response['status']=="200")
+       {
+
+
+
+          Session::put('login', 'true');
+          Session::put('rang', '1');
+          Session::put('username', $username);
+          return view('Welcome');
+
+       }
+
+       elseif ($response['status']=="404")
+       {
+         $erreur="error: email arleady registered";
+         return view('register')->with('erreur', $erreur);
+
+       }
 
     }
 }

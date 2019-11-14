@@ -70,8 +70,18 @@ Route::get('/connexion', function () {
     return view('scriptConnexion');
 });
 
+Route::get('/admingestion', function () {
+    return view('admin');
+});
+
 Route::patch('update-cart', 'ProductsController@update');
 
 Route::delete('remove-from-cart', 'ProductsController@remove');
 
 Route::post('/loginscript', 'LoginRegister@login');
+Route::post('/registerscript', 'LoginRegister@register');
+
+//AdminRoutes:
+Route::post('/deleteUser', 'adminFunctions@delete');
+Route::post('/editUser', 'adminFunctions@locationModification');
+Route::post('/getUser', 'adminFunctions@userGetData');
