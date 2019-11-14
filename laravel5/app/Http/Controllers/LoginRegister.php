@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use GuzzleHttp;
 use Session;
+use Hash;
 class LoginRegister extends Controller
 {
     public function login()
     {
 
-      $email = $_POST['pseudo'];
-      $motDePasse = Hash::make($_POST['motDePasse']);
+      $email = $_POST['username'];
+      $motDePasse = $_POST['motDePasse'];
       $urlco ="http://localhost:3000/connexDel/". $email . "/" . $motDePasse;
       $client = new GuzzleHttp\Client();
       $response = $client->request('GET', $urlco);
@@ -51,7 +52,7 @@ class LoginRegister extends Controller
 
     public function register ()
     {
-      $email = Hash::make($_POST['mail']);
+      $email = $_POST['mail'];
       $username=$_POST['username'];
       $password=$_POST['password'];
       $location=$_POST['location'];

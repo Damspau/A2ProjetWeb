@@ -42,38 +42,35 @@ CESI Register
       <a class="hiddenanchor" id="tologin"></a>
       <div id="wrapper">
         <div id="register" class="animate form">
-          <form method="post" action="{{ url('registerscript') }}" autocomplete="on">
+          <form method="post" action="{{ url('/registerscript') }}" autocomplete="on">
             {{ csrf_field() }}
-            <h1><u> Inscription : </u></h1>
-            </br>
+            <h1><u>Inscription : </u></h1>
+            <br>
+            <br>
             <p>
-              <label for="usernamesignup" class="uname" data-icon="u">Username : </label>
-              <input id="usernamesignup" name="username" required="required" type="text" placeholder="username" />
-            </p>
-            <p>
-              <label for="passwordsignup" class="youpasswd" data-icon="p">Password : </label>
-              <input id="passwordsignup" name="password" required="required" type="password" placeholder="Mot de passe" />
+              <label for="email" class="uname" data-icon="u"> Email : </label>
+              <input id="email" name="mail" required="required" type="text" placeholder="email" />
             </p>
             <p>
-              <label for="emailsignup" class="umail" data-icon="m">Email : </label>
-              <input id="emailsignup" name="mail" required="required" type="email" placeholder="email" />
+              <label for="password" class="youpasswd" data-icon="p"> Mot de passe : </label>
+              <input id="password" name="password" required="required" type="password" placeholder="motdepasse" />
             </p>
             <p>
-              <label for="locationsignup" class="ulocation" data-icon="l">Localisation : </label>
-              <select name="locationsignup" id="pays">
-           <option value="france">Pau</option>
-           <option value="espagne">Bordeaux</option>
-           <option value="italie">Toulouse</option>
-           <option value="royaume-uni">Paris</option>
-           <option value="canada">Rouen</option>
-           <option value="etats-unis">Lyon</option>
-           <option value="chine">Arras</option>
-           <option value="japon">La Rochelle</option>
-       </select>
+              <label for="username" class="youpasswd" data-icon="p"> Username : </label>
+              <input id="username" name="username" required="required" type="text" placeholder="username" />
             </p>
-            <p class="signin button">
-              <input type="submit" value="S'inscrire" />
+            <p>
+              <label for="location" class="youpasswd" data-icon="p"> Localisation : </label>
+              <input id="location" name="location" required="required" type="text" placeholder="location" />
             </p>
+
+
+            <p class="register button">
+              <input type="submit" value="Inscription" onclick=""/>
+            </p>
+
+          </form>
+        </div>
             <?php
 
             if (isset($erreur))
@@ -86,10 +83,26 @@ CESI Register
               Déjà inscrit ?
               <a href="{{ url('/login') }}" class="to_register"> Connexion </a>
             </p>
-          </form>
+
         </div>
       </div>
     </div>
   </section>
 </div>
+@endsection
+@section('script')
+<script>
+    $('#link').on('submit', function (e) {
+        e.preventDefault();
+        var $form = $(this),
+                $select = $form.find('select'),
+                links = $select.val();
+        if (links.length > 0) {
+            for (i in links) {
+                link = links[i];
+                window.open(link);
+            }
+        }
+    });
+</script>
 @endsection

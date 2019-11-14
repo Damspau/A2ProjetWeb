@@ -82,7 +82,7 @@ if (Session::get('rang')>1){
       <a class="hiddenanchor" id="toregister"></a>
       <a class="hiddenanchor" id="tologin"></a>
       <div id="wrapper">
-        <div id="login" class="animate form">
+        <div id="loginform" class="animate form">
           <h5><u>Supprimer un utilisateur </u></h5>
           <form method="post" action="{{ url('/deleteUser') }}" autocomplete="on">
             {{ csrf_field() }}
@@ -120,7 +120,7 @@ if (Session::get('rang')>1){
       <a class="hiddenanchor" id="toregister"></a>
       <a class="hiddenanchor" id="tologin"></a>
       <div id="wrapper">
-        <div id="login" class="animate form">
+        <div id="localisationUtilisateur" class="animate form">
           <h5><u>Modifier la localisation d'un utilisateur </u></h5>
           <form method="post" action="{{ url('/editUser') }}" autocomplete="on">
             {{ csrf_field() }}
