@@ -47,6 +47,8 @@ Route::get('/ShopCroissant', 'ProductsController@trierCroi');
 
 Route::get('/ShopDecroissant', 'ProductsController@trierDec');
 
+Route::get('/troisMeilleurs', 'ProductsController@troisMeilleurs');
+
 Route::get('/cart', 'ProductsController@cartVide');
 
 Route::get('/{username}', 'ProductsController@cart');

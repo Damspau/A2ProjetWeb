@@ -20,16 +20,6 @@
 
 @section('title', 'Products')
 
-@section('trois')
-
-<a href="{{ url('/shop') }}">
-    <button type="button" class="btn btn-primary pull-left">
-        <i class="fa fa-shopping-cart" aria-hidden="true"></i>Afficher les trois articles les plus commandés !
-    </button>
-</a>
-
-@endsection
-
 @section('content')
 
 
@@ -39,15 +29,21 @@
 </p>
 
     <a href="{{ url('/ShopCroissant') }}">
-    <button type="button" class="btn refresh">
+    <button type="button" class="btn btn-outline-dark">
         <i class="fa fa-shopping-cart" aria-hidden="true"></i>Trier dans l'ordre croissant des prix !
     </button>
   </a>
 
 
 <a href="{{ url('/ShopDecroissant') }}">
-    <button type="button" class="btn refresh">
+    <button type="button" class="btn btn-outline-dark">
         <i class="fa fa-shopping-cart" aria-hidden="true"></i>Trier dans l'ordre décroissant des prix !
+    </button>
+</a>
+
+<a href="{{ url('/troisMeilleurs') }}">
+    <button type="button" class="btn btn-outline-dark">
+        <i class="fa fa-shopping-cart" aria-hidden="true"></i>Trois meilleurs produits ! 
     </button>
 </a>
 
@@ -74,9 +70,7 @@
                     <h4>{{ $product->name }}</h4>
                     <p>{{ str_limit(strtolower($product->description), 50) }}</p>
                     <p><strong>Price: </strong> {{ $product->price }}$</p>
-                    <!-- Session::get('rang') == 1
-                    Session::get('username') -->
-                    <p class="btn-holder"><a href="<?php echo (true) ? url('add-to-cart/'. $product->id . '/' . "stargate") : url('/login')?>" class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p>
+                    <p class="btn-holder"><a href="<?php echo (Session::get('rang') == 1) ? url('add-to-cart/'. $product->id . '/' . Session::get('username')) : url('/login')?>" class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p>
                 </div>
             </div>
         </div>

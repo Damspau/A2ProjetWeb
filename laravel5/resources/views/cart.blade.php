@@ -25,6 +25,8 @@
 
 @endif
 
+@if(  Session::get('username') == $username )
+
 <table id="cart" class="table table-hover table-condensed">
     <thead>
         <tr>
@@ -62,6 +64,7 @@
           <form name="quantity" method="POST" action="{{ url('quantity') }}">
               @csrf
               <input id="id" name="id" type="hidden" value="{{ $product->id }}">
+              <input id="username" name="username" type="hidden" value="{{ Session::get('username') }}">
               <input type="number" id="quantity" name="quantity" value="{{ $client->quantity }}" class="form-control quantity" />
               <input type="submit" name="btn" value="Ok" class="btForm" />
           </form>
@@ -79,11 +82,14 @@
     <td><a href="{{ url('/shop') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
     <td colspan="2" class="hidden-xs">
 
-      <a href="<?php echo (Session::get('rang') == 1) ? url('cart/' . Session::get('username') . '/' . Session::get('mail') . '/' . $total) : url('/login');  ?>">
+      <!-- Session::get('rang') == 1 -->
 
+      <a href="<?php echo (true) ? url('cart/' . Session::get('username') . '/' . Session::get('mail') . '/' . $total) : url('/login');  ?>">
+        <a href="<?php echo (true) ? url('/') : url('/login');  ?>">
             <button type="button" class="btn btn-primary pull-right">
               <i class="fa fa-shopping-cart" aria-hidden="true"></i> Passer commande : étudiants connectés seulement !
             </button>
+          </a>
       </a>
 
     </td>
@@ -93,5 +99,9 @@
 </tfoot>
 </table>
 
+@else
 
+<h1 style="text-align:center;color:red;">Mauvais accès !</h1>
+
+@endif
 @endsection

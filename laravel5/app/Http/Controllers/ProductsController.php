@@ -19,7 +19,7 @@ class ProductsController extends Controller
     {
         $users = DB::table('users')->select('idArticle', 'quantity')->where('username', '=', $username)->get();
         $products = Product::all();
-        return view('cart', compact('users'), compact('products'));
+        return view('cart', compact('users'), compact('products'))->with('username', $username);
     }
 
     public function cartVide()
@@ -82,6 +82,11 @@ class ProductsController extends Controller
       return view('products', compact('products'));
     }
 
+    public function troisMeilleurs (){
+      $products = Product::orderBy('nbrCommandes', 'desc')->take(3)->get();
+      return view('products', compact('products'));
+    }
+
     public function reset ($username){
 
       DB::table('users')
@@ -91,20 +96,17 @@ class ProductsController extends Controller
 
     public function quantity (){
 
-         $thisid = $_POST['id'];
+         $id = $_POST['id'];
+         $username = $_POST['username'];
          $thisquantity = $_POST['quantity'];
 
-                 $cart = session()->get('cart');
-
-
           //check quantity//
-        if(isset($cart[$thisid])) {
+          DB::table('users')->where([
+              ['username', $username],
+              ['idArticle', $id]])
+              ->update(['quantity' => $thisquantity]);
 
-            $cart[$thisid]['quantity'] = $thisquantity;
-
-            session()->put('cart', $cart);
-        }
-        return view ('cart');
+          return redirect()->back()->with('success', 'Quantité correctement prise en compte !');
     }
 
     public function addProducts()

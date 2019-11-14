@@ -103,11 +103,7 @@ description et prix   -->
 
   <?php }else { ?><h6 style="text-align:left;color:red;"><?php echo 'Pas Membre du BDE pour modifier la boutique !'; } ?></h6>
 
-@yield('trois')
-
-<!-- Session::get('username') -->
-
-    <a href="{{ url('/stargate') }}">
+      <a href="<?php echo (Session::get('rang') == 2) ? url('/' . Session::get('username')) : url('/login');  ?>">
         <button type="button" class="btn btn-primary pull-right">
             <i class="fa fa-shopping-cart" aria-hidden="true"></i>Panier (Sauvegarde automatique si etudiant)
         </button>
@@ -117,8 +113,4 @@ description et prix   -->
     @yield('content')
 </div>
 
-@endsection
-
-@section('script')
-@yield('scripts')
 @endsection
