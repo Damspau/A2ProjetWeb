@@ -123,4 +123,11 @@ class ProductsController extends Controller
         return redirect()->back()->with('success', 'Produit correctement supprimé !');
     }
 
+    public function mail($username)
+    {
+        // $thisname = $_POST['name'];
+
+        return redirect()->back()->with('success', "Mail $username envoyé !");
+    }
+
 }

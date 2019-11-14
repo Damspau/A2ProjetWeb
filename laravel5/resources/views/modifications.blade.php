@@ -11,7 +11,7 @@
     }
   }
 
-  @media only screen and (min-height: 825px) and (max-width:971px) {
+  @media only screen and (min-height: 982px) and (max-width:984px) {
     #idk {
       position: absolute;
     }

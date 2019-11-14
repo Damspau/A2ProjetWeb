@@ -55,4 +55,10 @@
 
 </div>
 
+<a href="{{ url('/shop') }}">
+    <button type="button" class="btn btn-primary pull-right">
+        <i class="fa fa-shopping-cart" aria-hidden="true"></i>Afficher les trois articles les plus commandés !
+    </button>
+</a>
+
 @endsection

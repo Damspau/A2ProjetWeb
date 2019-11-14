@@ -92,10 +92,9 @@
 
 <!--Traitements spécifiques pour les membres du BDE 
  ils peuvent ajouter, supprimer des produits avec nom,
-description et prix en les classant par catégories 
-dans le if mettre : Session::get('rang') == 2 -->
+description et prix en les classant par catégories   -->
 
-<?php if (true) { ?>
+<?php if (Session::get('rang') == 2) { ?>
 
     <a href="{{ url('/modifications') }}">
         <button type="button" class="btn btn-primary pull-left">

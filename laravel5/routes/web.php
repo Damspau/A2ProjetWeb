@@ -41,9 +41,9 @@ Route::get('/modifications', function () {
 
 /*Shop*/
 
-Route::get('/shop', 'ProductsController@index');
+Route::get('shop', 'ProductsController@index');
 
-Route::get('/cart', 'ProductsController@cart');
+Route::get('cart', 'ProductsController@cart');
 
 Route::get('add-to-cart/{id}', 'ProductsController@addToCart');
 
@@ -55,6 +55,8 @@ Route::post('addProducts', 'ProductsController@addProducts');
 
 Route::post('delProducts', 'ProductsController@delProducts');
 
+Route::get('cart/{username}', 'ProductsController@mail');
+
 /*Activities*/
 
-Route::get('/activities', 'ActivitiesController@index');
+Route::get('activities', 'ActivitiesController@index');
