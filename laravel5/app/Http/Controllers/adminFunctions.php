@@ -83,7 +83,7 @@ class adminFunctions extends Controller
 
       else {
         $send = [];
-        array_push ($send,$response['response'][1][0]['idrang'],$response['response'][2][0]['username'],$response['response'][1][0]['idUser']) ;
+        array_push ($send,$response['response'][1][0]['idrang'],$response['response'][2][0]['username']) ;
 
         return view('admin')->with('send', $send);
       }

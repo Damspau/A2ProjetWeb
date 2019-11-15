@@ -1,16 +1,15 @@
 <?php
 
-if (Session::has('login')){
-//do nothing because there is no such thing like "hasnot" in laravel
+if (Session::has('login')) {
+  //do nothing because there is no such thing like "hasnot" in laravel
 
-}
-else {
+} else {
   Session::put('login', 'false');
   Session::put('rang', '0');
   Session::put('username', '');
-
+  Session::put('email', '');
 }
- ?>
+?>
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -23,12 +22,16 @@ else {
 
   <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/slicknav.css"><!--Menu-navbar -->
-  <link rel="stylesheet" href="css/goodStyle.css"><!--navbar -->
+  <link rel="stylesheet" href="css/slicknav.css">
+  <!--Menu-navbar -->
+  <link rel="stylesheet" href="css/goodStyle.css">
+  <!--navbar -->
   <link rel="stylesheet" type="text/css" href="css/shop.css">
 
   <link rel="stylesheet" href="css/dams.css">
 
+  <!--footer CSS -->
+  <link rel="stylesheet" href="css/footer.css">
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -46,19 +49,15 @@ else {
   @yield('head')
   <style>
 
-    /*Footer position*/
+    @font-face {
+      font-family: "title";
 
-    footer {
-      bottom: 0;
-      background-color: black;
-      color: white;
-      position: relative;
-      width: 100%;
+      src: url('css/Madame.ttf');
     }
-
-
-    footer u {
-      color: orange;
+    h1 {
+      text-align: center;
+      font-size: 55px;
+      font-family: "title", Helvetica, Arial, sans-serif;
     }
 
     /*-------------------*/
@@ -70,9 +69,9 @@ else {
 
 <body>
 
- <header>
+  <header>
 
-   
+
 
     <!--Script cookies------------------>
 
@@ -154,7 +153,28 @@ else {
               <nav>
                 <ul id="navigation">
                   @yield('nav')
-                  @yield('header')
+                  <?php
+                  if (Session::get('login') == 'true') {
+                    echo "<li><a>Bienvenue " . Session::get('username') . "</a></li>";
+                    ?>
+                    <li><a href=" {{ url('/logout') }}">Logout</a></li>;
+                    <?php
+
+                      if (Session::get('rang') > 1) {
+                        ?>
+                      <li><a href=" {{ url('/admingestion') }}">Admin/Bde</a></li>;
+                    <?php
+                      }
+                    } else {
+                      ?>
+                    <li><a href="{{ url('/login') }}">Login/Register</a></li>;
+                  <?php
+                  }
+
+                  ?>
+
+
+
                   <li class="mt-2 mb-2">
                     <form class="form-inline">
                       <input class="form-control mr-sm-2" name="recherche" type="search" list="recherche" placeholder="Search" aria-label="Search">
@@ -227,40 +247,75 @@ else {
 
   </aside>
 
-  <!-- <footer class="" id="idk"> -->
+  <footer id="footer" class="footer-1">
+    <div class="main-footer widgets-dark">
+      <div class="container">
+        <div class="row">
 
-    <div class="container">
-      <div class="row">
-
-        <div class="col-sm-5 col-md-3 col-lg-3 ">
-          <i class=" navbar-brand" href="#"> <u ><a href="{{ url('/legalnotices') }}"style=color:orange;>Mentions légales :</a> </u></i>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          </button>
-          <div>
-            <i>Crédits</i>
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="widget no-box">
+              <h5 class="widget-title">BDE CESI<span></span></h5>
+              <p>BDE fondé en 1878 par Jacky Puebert !</p>
+            </div>
           </div>
-          <div>
-            <i><a href="{{ url('/legalnotices') }}">Politique de protection des données personnelles</a></i>
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="widget no-box">
+              <h5 class="widget-title">A propos<span></span></h5>
+              <ul class="thumbnail-widget">
+                <li>
+                  <div class="thumb-content"><a href="{{ url('/legalnotices') }}">Mentions légales</a></div>
+                </li>
+                <li>
+                  <div class="thumb-content"><a href="{{ url('/credits') }}">Crédits</a></div>
+                </li>
+                <li>
+                  <div class="thumb-content"><a href="{{ url('/legalnotices') }}">Politique de protection des données personnelles</a></div>
+                </li>
+                <li>
+                  <div class="thumb-content"><a href="{{ url('/cgv') }}">Conditions d'achats</a></div>
+                </li>
+              </ul>
+            </div>
           </div>
 
-        </div>
-        <div class="col-sm-5 col-md-3 col-lg-3 ">
-          <i class="navbar-brand"><u> Contactez-nous :</u></i>
-          <div><i>Téléphone : 05 59 32 57 62</i></div>
-          <div><i id=sizeAdresseMail>Adresse mail : quentin.desens@viacesi.fr</i></div>
-        </div>
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="widget no-box">
+              <h5 class="widget-title">Pour commencer <span></span></h5>
+              <p>Pour pouvoir effectuer des achats il faut avoir un compte ! </p>
+              <a class="btn btn-primary" href="{{ url('/login') }}">S'enregistrer maintenant</a>
+            </div>
+          </div>
 
-        <div class="col-sm-5 col-md-3 col-lg-3 ">
-          <i class="navbar-brand"><u> © CESI 2019</u></i>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2902.8354489013727!2d-0.3117529842849723!3d43.31770398207772!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5648107b30e995%3A0xd938961626e8938!2s8%20Rue%20des%20Fr%C3%A8res%20Charles%20et%20Alcide%20d&#39;%20Orbigny%2C%2064000%20Pau!5e0!3m2!1sfr!2sfr!4v1573392921733!5m2!1sfr!2sfr" width="175" height="75" frameborder="0" style="border:0;" allowfullscreen=""></iframe> </div>
+          <div class="col-xs-12 col-sm-6 col-md-3">
+
+            <div class="widget no-box">
+              <h5 class="widget-title">Nous contacter <span></span></h5>
+              <p>Téléphone : 05 59 32 57 62</p>
+              <p>Mail : <a href="mailto:bde.cesi@viacesi.fr" title="glorythemes">bde.cesi@viacesi.fr</a></p>
+              <p> <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2902.8354489013727!2d-0.3117529842849723!3d43.31770398207772!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5648107b30e995%3A0xd938961626e8938!2s8%20Rue%20des%20Fr%C3%A8res%20Charles%20et%20Alcide%20d&#39;%20Orbigny%2C%2064000%20Pau!5e0!3m2!1sfr!2sfr!4v1573392921733!5m2!1sfr!2sfr" width="175" height="75" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+              </p>
+            </div>
+          </div>
+        </div>
 
       </div>
+    </div>
+    </div>
 
+    <div class="footer-copyright">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <p>Copyright Company BDECESI © 2019. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </footer>
 
 </body>
 
-  @yield('script')
+@yield('script')
 
 
 

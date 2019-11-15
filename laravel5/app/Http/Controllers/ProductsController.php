@@ -120,7 +120,8 @@ class ProductsController extends Controller
             ['name' => $thisname,
              'description' => $thisdescription,
              'photo' => $thisphoto,
-             'price' => $thisprice
+             'price' => $thisprice,
+             'nbrCommandes' => 1
              ]
         );
         return redirect()->back()->with('success', 'Produit correctement ajouté à la BDD !');

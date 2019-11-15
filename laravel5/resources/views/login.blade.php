@@ -28,22 +28,6 @@ CESI Login
 
 @section('section')
 
-<!-- <div class="flex-center position-ref full-height">
-@if (Route::has('login'))
-<div class="top-right links">
-@auth
-<a href="{{ url('/home') }}">Home</a>
-@else
-<a href="{{ route('login') }}">Login</a>
-
-@if (Route::has('register'))
-<a href="{{ route('register') }}">Register</a>
-@endif
-@endauth
-</div>
-@endif
-</div> -->
-
 <br>
 <br>
 
@@ -61,7 +45,7 @@ CESI Login
             <br>
             <p>
               <label for="username" class="uname" data-icon="u"> Email : </label>
-              <input id="username" name="pseudo" required="required" type="text" placeholder="email" />
+              <input id="username" name="username" required="required" type="text" placeholder="email" />
             </p>
             <p>
               <label for="password" class="youpasswd" data-icon="p"> Mot de passe : </label>

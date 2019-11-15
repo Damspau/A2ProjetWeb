@@ -25,7 +25,7 @@
 
 @endif
 
-@if(  Session::get('username') == $username )
+@if( Session::get('username') == $username )
 
 <table id="cart" class="table table-hover table-condensed">
     <thead>
@@ -82,14 +82,12 @@
     <td><a href="{{ url('/shop') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
     <td colspan="2" class="hidden-xs">
 
-      <!-- Session::get('rang') == 1 -->
+      <!--  -->
 
-      <a href="<?php echo (true) ? url('cart/' . Session::get('username') . '/' . Session::get('mail') . '/' . $total) : url('/login');  ?>">
-        <a href="<?php echo (true) ? url('/') : url('/login');  ?>">
+      <a href="<?php echo (Session::get('rang') >= 1) ? url('cart/' . Session::get('username') . '/' . Session::get('email') . '/' . $total) : url('/login');  ?>">
             <button type="button" class="btn btn-primary pull-right">
               <i class="fa fa-shopping-cart" aria-hidden="true"></i> Passer commande : étudiants connectés seulement !
             </button>
-          </a>
       </a>
 
     </td>

@@ -35,6 +35,14 @@ Route::get('/legalnotices', function () {
     return view('legalnotices');
 });
 
+Route::get('/credits', function () {
+    return view('credits');
+});
+
+Route::get('/cgv', function () {
+    return view('cgv');
+});
+
 Route::get('/modifications', function () {
     return view('modifications');
 });
@@ -52,7 +60,7 @@ Route::get('/troisMeilleurs', 'ProductsController@troisMeilleurs');
 
 Route::get('/cart', 'ProductsController@cartVide');
 
-Route::get('/{username}', 'ProductsController@cart');
+Route::get('/panier/{username}', 'ProductsController@cart');
 
 Route::get('/add-to-cart/{id}/{username}', 'ProductsController@addToCart');
 
@@ -74,17 +82,6 @@ Route::get('/activites', function () {
     return view('activities');
 });
 
-
-//Route::get('/cart', 'ProductsController@cart');
-
-
-//Route::get('add-to-cart/{id}', 'ProductsController@addToCart');
-
-
-
-
-
-
 Route::get('/connexion', function () {
     return view('scriptConnexion');
 });
@@ -93,9 +90,9 @@ Route::get('/admingestion', function () {
     return view('admin');
 });
 
-Route::post('/loginscript', 'LoginRegister@login');
-Route::post('/registerscript', 'LoginRegister@register');
-Route::get('/logout', 'LoginRegister@logout');
+Route::post('/loginscript', 'LoginRegisterController@login');
+Route::post('/registerscript', 'LoginRegisterController@register');
+Route::get('/logout', 'LoginRegisterController@logout');
 
 //AdminRoutes:
 Route::post('/deleteUser', 'adminFunctions@delete');

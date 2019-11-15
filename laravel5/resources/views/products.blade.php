@@ -70,7 +70,7 @@
                     <h4>{{ $product->name }}</h4>
                     <p>{{ str_limit(strtolower($product->description), 50) }}</p>
                     <p><strong>Price: </strong> {{ $product->price }}$</p>
-                    <p class="btn-holder"><a href="<?php echo (Session::get('rang') == 1) ? url('add-to-cart/'. $product->id . '/' . Session::get('username')) : url('/login')?>" class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p>
+                    <p class="btn-holder"><a href="<?php echo (Session::get('rang') >= 1) ? url('add-to-cart/'. $product->id . '/' . Session::get('username')) : url('/login')?>" class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p>
                 </div>
             </div>
         </div>

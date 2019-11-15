@@ -1,4 +1,7 @@
+
+
 <p>Nouvelle commande de {{ $data['username']}}  !</p>
-<p>Nous avons bien pris en compte votre commande et nous répondrons à cette adresse email qui est la votre : {{ $data['mail']}}  </p>
-<p>Votre commande est pour un montant total de : {{ $data['prix']}}  !</p>
-<p>Nous vous contacterons prochainement pour un rdv, merci !</p>
+<p>Vous avez reçu une nouvelle commande, il faut répondre à cette adresse : {{ $data['mail']}}  </p>
+<p>Cette commande est pour un montant total de : {{ $data['prix']}}  !</p>
+<p>A contacter prochainement pour un rdv !</p>
+
