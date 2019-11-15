@@ -37,8 +37,9 @@ Route::get('/credit', function () {
 // 		'active'=> $activites,
 // 	]);
 // });
+Route::get('/Activite2/{id}','ActiviteController@index2');
 Route::get('/Activite2','ActiviteController@index');
-Route::post('/test','ActiviteController@quantity');
+Route::post('/test/{id}','ActiviteController@quantity');
 Route::get('/like','ActiviteController@like');
 
 

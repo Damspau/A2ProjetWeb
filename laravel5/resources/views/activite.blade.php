@@ -188,54 +188,49 @@ CESI
 
 			<a href=" Inscription" target="_blank" class="monBoutton">-> Inscription <- </a> 
 
-			<script type="text/javascript">
 
-function compteur(){
-
-		DB::table('like')->increment('Like');
-			return null;
-}
-
-			</script>
 
 			<!--Récupération des données souhaités  -->
 			<?php
 
 			$activite = DB::table('actives')
-			->where('id', '=', '1')
+			->where('id', '=', $id)
 			->get();
 
 			$photo = DB::table('photo')
 			->where([
-				['idActivite', '=', '1'],
-				['idphoto', '=', '1'],
+				['idActivite', '=', $id],
+				['idphoto', '=', $id],
 			])
 			->get();
 
 			$ah = DB::table('fusion')
 			->where([
-				['idActivite', '=', '1'],
+				['idActivite', '=', $id],
 			])
 			->get();
 
 			$commentaire = DB::table('fusion')
 			->where([
-				['idActivite', '=', '1'],
+
+				['idActivite', '=', $id],
 			])
 			->groupBy('idFusion')
 			->get();
 
 			$count = DB::table('like')
 
-			->where('idActivite', '=', '1')
+			->where('idActivite', '=', $id)
 			->get();
 			?>
 
 			<!--lancement de la commande foreach pour la récupération du titre de l'activité ainsi que du nombre de Like que l'activité possède  -->
 			@foreach($count as $coeur)
 			@foreach($activite as $active)
-
-			<h1 >{{ $active->nomActivite }} <button type="button" onclick="javascript:like" class= "fas false fa-heart coeur"> <b>{{ $coeur->Like }} </b></button></h1>
+			<div id="boutonactu">
+				<h1 >{{ $active->nomActivite }} <button id="envoielike" type="button" class= "fas false fa-heart coeur"> <b>{{ $coeur->Like }} </b></button></h1>
+			</div>
+			
 		</div>
 		@endforeach
 		@endforeach
@@ -269,7 +264,7 @@ function compteur(){
 					}
 					?>
 					<!-- Affichage des commentaires/ images -->
-					<form method="post" action="{{url('/test')}}" class="comment-form">
+					<form method="post" action="{{url(/test/<?php echo $id ?>)}}" class="comment-form">
 						{{ csrf_field() }}
 						@foreach($ah as $comm)
 
@@ -303,7 +298,35 @@ function compteur(){
 	<form method="get" action="{{url('/all')}}">
 		<a href="path_to_file" download="allImg"> <input name="envoie" type="submit"  class="submit" value="Download"></a>
 	</form>
-
+<?php $tavariable="ok" ?>
 </main>
+
+@endsection
+
+@section('script')
+<script>
+	$('#envoielike').click(function(){
+		var php = "<?php echo $tavariable; ?>";
+		console.log(php);
+		$.ajax({
+       url : 'http://localhost:8000/like', // La ressource ciblée
+       type : 'GET', // Le type de la requête HTTP.
+       data : 'utilisateur=',
+       success:
+       		function(retour){
+       			location.reload()
+       			console.log(retour);
+       		}
+    });
+     
+   	
+		
+
+   
+});
+
+
+</script>
+
 
 @endsection
