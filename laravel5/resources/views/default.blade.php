@@ -1,3 +1,16 @@
+<?php
+
+if (Session::has('login')){
+//do nothing because there is no such thing like "hasnot" in laravel
+
+}
+else {
+  Session::put('login', 'false');
+  Session::put('rang', '0');
+  Session::put('username', '');
+
+}
+ ?>
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -13,6 +26,10 @@
   <link rel="stylesheet" href="css/slicknav.css"><!--Menu-navbar -->
   <link rel="stylesheet" href="css/goodStyle.css"><!--navbar -->
   <link rel="stylesheet" type="text/css" href="css/shop.css">
+
+  <link rel="stylesheet" href="css/dams.css">
+
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
   <!-- JS here -->
@@ -22,11 +39,13 @@
   <script src="js/jquery.slicknav.min.js"></script>
   <script src="js/main.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  @yield('jqueryVersion')
+
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
   @yield('head')
   <style>
+
     /*Footer position*/
 
     footer {
@@ -36,6 +55,7 @@
       position: relative;
       width: 100%;
     }
+
 
     footer u {
       color: orange;
@@ -116,8 +136,83 @@
       }
     </script>
 
-    @yield('header')
-</header>
+
+  </header>
+  <div class="header-area ">
+    <div id="sticky-header" class="main-header-area">
+      <div class="container-fluid p-0">
+        <div class="row align-items-center justify-content-between no-gutters">
+          <div class="col-xl-2 col-lg-2">
+            <div class="logo-img">
+              <a href="index.html">
+                <img class="w-50" src="https://arras.cesi.fr/wp-content/uploads/sites/9/2019/05/Cesi_Logo_INGENIEUR_RVB-HD-500x296.jpg" alt="">
+              </a>
+            </div>
+          </div>
+          <div class="col-xl-7 col-lg-8">
+            <div class="main-menu  d-none d-lg-block">
+              <nav>
+                <ul id="navigation">
+                  @yield('nav')
+                  @yield('header')
+                  <li class="mt-2 mb-2">
+                    <form class="form-inline">
+                      <input class="form-control mr-sm-2" name="recherche" type="search" list="recherche" placeholder="Search" aria-label="Search">
+
+                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+                      <form onsubmit="return validateForm();" class="pure-form autocomplete">
+                        <datalist id="recherche">
+                          <a href="">
+                            <option>ezggzrtec</option>
+                          </a>
+                          <a href="">
+                            <option></option>
+                          </a>
+                          <a href="">
+                            <option></option>
+                          </a>
+                          <a href="">
+                            <option></option>
+                          </a>
+                          <a href="">
+                            <option> </option>
+                          </a>
+                          <a href="">
+                            <option> </option>
+                          </a>
+                          <a href="">
+                            <option></option>
+                          </a>
+                          <a href="">
+                            <option></option>
+                          </a>
+                          <a href="">
+                            <option></option>
+                          </a>
+                        </datalist>
+                      </form>
+                    </form>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-2 d-none d-lg-block">
+            <div class="social_media_links">
+              <ul>
+                <li><a target="_blank" href="https://www.facebook.com/CESIingenieurs/"> <i class="fa fa-facebook"></i> </a></li>
+                <li><a target="_blank" href="https://twitter.com/GroupeCESI?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"> <i class="fa fa-twitter"></i> </a></li>
+                <li><a target="_blank" href="https://www.instagram.com/campus_cesi/?hl=fr"> <i class="fa fa-instagram"></i> </a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="mobile_menu d-block d-lg-none"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 
@@ -132,7 +227,7 @@
 
   </aside>
 
-  <footer class="" id="idk">
+  <!-- <footer class="" id="idk"> -->
 
     <div class="container">
       <div class="row">
@@ -165,7 +260,9 @@
 
 </body>
 
-@yield('script')
+  @yield('script')
+
+
 
 
 </html>

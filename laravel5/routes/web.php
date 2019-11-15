@@ -43,6 +43,7 @@ Route::get('/modifications', function () {
 
 Route::get('/shop', 'ProductsController@index');
 
+
 Route::get('/ShopCroissant', 'ProductsController@trierCroi');
 
 Route::get('/ShopDecroissant', 'ProductsController@trierDec');
@@ -68,3 +69,35 @@ Route::get('/cart/{username}/{mail}/{prix}', 'SendEmailController@index');
 /*Activities*/
 
 Route::get('/activities', 'ActivitiesController@index');
+
+Route::get('/activites', function () {
+    return view('activities');
+});
+
+
+//Route::get('/cart', 'ProductsController@cart');
+
+
+//Route::get('add-to-cart/{id}', 'ProductsController@addToCart');
+
+
+
+
+
+
+Route::get('/connexion', function () {
+    return view('scriptConnexion');
+});
+
+Route::get('/admingestion', function () {
+    return view('admin');
+});
+
+Route::post('/loginscript', 'LoginRegister@login');
+Route::post('/registerscript', 'LoginRegister@register');
+Route::get('/logout', 'LoginRegister@logout');
+
+//AdminRoutes:
+Route::post('/deleteUser', 'adminFunctions@delete');
+Route::post('/editUser', 'adminFunctions@locationModification');
+Route::post('/getUser', 'adminFunctions@userGetData');

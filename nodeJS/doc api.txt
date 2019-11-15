@@ -1,0 +1,32 @@
+get the data of a user :
+GET REQUEST
+	url : /data/(email)
+
+
+register a new user :
+POST REQUEST
+	inside the body:
+		username
+		password
+		email
+		location
+	url : /data
+
+update the location of a user:
+PUT REQUEST
+	inside the body:
+		username
+		location
+		passwordAdmin
+	url : /data
+
+
+Login (return "response: true" if username and password are correct, false if it's wrong)
+GET REQUEST
+	url : /connexDel/(username)/(password)
+
+
+delete a user 
+DELETE
+	url : /connexDel/(username)/adminPassword
+

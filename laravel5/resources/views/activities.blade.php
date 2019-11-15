@@ -1,3 +1,4 @@
+
 	@extends('default')
 
 	@section('head')
@@ -124,7 +125,7 @@
 	</br>
 
 		<!-- Affichage des activities : -->
-			
+
 		<div class="album py-5 bg-light">
 			<div class="container">
 				<div class="row">
@@ -148,7 +149,7 @@
 			</div>
 		</div>
 	</div>
-</div> 
+</div>
 
 
 	@endsection
