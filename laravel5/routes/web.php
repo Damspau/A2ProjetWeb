@@ -27,6 +27,9 @@ Route::get('/shop', function () {
 Route::get('/Panier', function () {
 	return view('panier');
 });
+Route::get('/credit', function () {
+	return view('Crédit');
+});
 
 // Route::get('/Activite2', function () {
 // 	$activites =App\Active::all();
@@ -36,7 +39,8 @@ Route::get('/Panier', function () {
 // });
 Route::get('/Activite2','ActiviteController@index');
 Route::post('/test','ActiviteController@quantity');
-Route::post('/allImg','ActiviteController@all');
+Route::get('/like','ActiviteController@like');
+
 
 Route::get('/list',function(){
 	$activites =App\Activite::all();

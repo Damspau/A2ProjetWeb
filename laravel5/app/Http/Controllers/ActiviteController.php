@@ -16,9 +16,8 @@ class ActiviteController extends Controller
 		return view('activite',compact('activite'));
 		$commentaire = commentaire::all();
 		return view('activite',compact('activite'));
-		$fusion = fusion::all();
+		$like = like::all();
 		return view('activite',compact('activite'));
-
 
 	}
 	public function quantity (){
@@ -40,5 +39,19 @@ class ActiviteController extends Controller
 			]);
 return view('activite');
 	
+}
+public function like (){
+
+		DB::table('like')->increment('Like');
+
+
+	
+
+return null;
+
+
+
+
+
 }
 }
