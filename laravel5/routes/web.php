@@ -38,6 +38,9 @@ Route::get('/legalnotices', function () {
 Route::get('/activities', function () {
     return view('activities');
 });
+Route::get('/credit', function () {
+	return view('Crédit');
+});
 
 /*Shop*/
 
@@ -86,3 +89,8 @@ Route::get('/logout', 'LoginRegister@logout');
 Route::post('/deleteUser', 'adminFunctions@delete');
 Route::post('/editUser', 'adminFunctions@locationModification');
 Route::post('/getUser', 'adminFunctions@userGetData');
+//Ativites:
+Route::get('/Activite2/{id}','ActiviteController@index2');
+Route::get('/Activite2','ActiviteController@index');
+Route::post('/test/{id}','ActiviteController@quantity');
+Route::get('/like','ActiviteController@like');
