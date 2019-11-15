@@ -63,6 +63,14 @@ CESI Register
               <label for="location" class="youpasswd" data-icon="p"> Localisation : </label>
               <input id="location" name="location" required="required" type="text" placeholder="location" />
             </p>
+            <p>
+              <label for="nom" class="youpasswd" data-icon="p"> Nom : </label>
+              <input id="nom" name="nom" required="required" type="text" placeholder="location" />
+            </p>
+            <p>
+              <label for="prenom" class="youpasswd" data-icon="p"> Prenom : </label>
+              <input id="prenom" name="prenom" required="required" type="text" placeholder="location" />
+            </p>
 
 
             <p class="register button">

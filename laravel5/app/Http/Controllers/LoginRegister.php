@@ -56,9 +56,11 @@ class LoginRegister extends Controller
       $username=$_POST['username'];
       $password=$_POST['password'];
       $location=$_POST['location'];
+      $nom=$_POST['nom'];
+      $prenom=$_POST['prenom'];
       $urlco ="http://localhost:3000/data/";
       $client = new GuzzleHttp\Client();
-      $response = $client->post($urlco, [GuzzleHttp\RequestOptions::JSON => ['username' => $username, 'password' => $password, 'email' => $email,'location' => $location]]);
+      $response = $client->post($urlco, [GuzzleHttp\RequestOptions::JSON => ['username' => $username, 'password' => $password, 'email' => $email,'location' => $location, 'nom' => $nom, 'prenom' => $prenom ]]);
 
 
       $response = $response->getBody();
@@ -86,9 +88,7 @@ class LoginRegister extends Controller
     }
   public function logout ()
    {
-     Session::put('login', 'false');
-     Session::put('rang', '0');
-     Session::put('username', "");
+     session()->flush();
      return view('Welcome');
    }
 }

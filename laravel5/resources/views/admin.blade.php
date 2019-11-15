@@ -22,23 +22,7 @@ Admin / BDE
                 <li><a href="{{ url('/home') }}">Home</a></li>
                 <li><a href="{{ url('/activities') }}">Activités</a></li>
                 <li><a href="{{ url('/shop') }}">Boutique</a></li>
-                <?php
-                if (Session::get('login')=='true'){
-                    echo "<li><a>Bienvenue ".Session::get('username')."</a></li>";
-                if (Session::get('rang')>1){
-                  ?>
-                    <li><a href=" {{ url('/admingestion') }}" class="active">BDE/ADMIN</a></li>";
-                    <?php
-                }
 
-                }
-
-                else
-                {
-                echo "<li><a href=\"{{ url('/login') }}\">Login/Register</a></li>";
-                }
-
-                ?>
 
 @endsection
 
@@ -46,6 +30,7 @@ Admin / BDE
 
 <?php
 if (Session::get('rang')>1){
+
   ?>
 
 
@@ -57,7 +42,7 @@ if (Session::get('rang')>1){
     }
     if (isset($send))
     {
-      echo "<div class=\"alert alert-info\" role=\"alert\"> Informations utilisateur: </br>Rang: ".$send[0]." </br>Username: ".$send[1]."</div>";
+      echo "<div class=\"alert alert-info\" role=\"alert\"> Informations utilisateur: </br>Rang: ".$send[0]." </br>Username: ".$send[1]. "</br>Nom: ".$send[2]." </br>Prenom: ".$send[3]."</div>";
     }
 
     if (isset($erreur))
@@ -75,12 +60,13 @@ if (Session::get('rang')>1){
 
 <br>
 <br>
-<h1><u>ADMIN : </u></h1>
+<h1><u>Gestion : </u></h1>
+<?php  if (Session::get('rang')>3)
+{ ?>
 <div class="container" style="text-align:left;">
   <section>
     <div id="container">
-      <a class="hiddenanchor" id="toregister"></a>
-      <a class="hiddenanchor" id="tologin"></a>
+      <a class="hiddenanchor" id="todelete"></a>
       <div id="wrapper">
         <div id="loginform" class="animate form">
           <h5><u>Supprimer un utilisateur </u></h5>
@@ -111,6 +97,7 @@ if (Session::get('rang')>1){
     </div>
   </section>
 </div>
+<?php } ?>
 
 
 

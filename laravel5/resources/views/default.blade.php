@@ -155,6 +155,30 @@ else {
                 <ul id="navigation">
                   @yield('nav')
                   @yield('header')
+                  <?php
+                  if (Session::get('login')=='true'){
+                      echo "<li><a>Bienvenue ".Session::get('username')."</a></li>";
+                      ?>
+                        <li><a href=" {{ url('/logout') }}">Logout</a></li>;
+                        <?php
+
+                  if (Session::get('rang')>1){
+                    ?>
+                  <li><a href=" {{ url('/admingestion') }}">Admin/Bde</a></li>;
+                  <?php
+                  }
+
+                  }
+
+                  else
+                  {
+                    ?>
+                      <li><a href="{{ url('/login') }}">Login/Register</a></li>;
+                      <?php
+
+                  }
+
+                  ?>
                   <li class="mt-2 mb-2">
                     <form class="form-inline">
                       <input class="form-control mr-sm-2" name="recherche" type="search" list="recherche" placeholder="Search" aria-label="Search">

@@ -30,28 +30,7 @@ CESI
 <li><a class="active" href="{{ url('/home') }}">Home</a></li>
 <li><a href="{{ url('/activities') }}">Activités</a></li>
 <li><a href="{{ url('/shop') }}">Boutique</a></li>
-<?php
-if (Session::get('login')=='true'){
-    echo "<li><a>Bienvenue ".Session::get('username')."</a></li>";
-    ?>
-      <li><a href=" {{ url('/logout') }}">Logout</a></li>;
-      <?php
 
-if (Session::get('rang')>1){
-
-}
-
-}
-
-else
-{
-  ?>
-    <li><a href="{{ url('/login') }}">Login/Register</a></li>;
-    <?php
-
-}
-
-?>
 
 
 @endsection

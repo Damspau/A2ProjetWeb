@@ -61,7 +61,7 @@ CESI Login
             <br>
             <p>
               <label for="username" class="uname" data-icon="u"> Email : </label>
-              <input id="username" name="pseudo" required="required" type="text" placeholder="email" />
+              <input id="username" name="username" required="required" type="text" placeholder="email" />
             </p>
             <p>
               <label for="password" class="youpasswd" data-icon="p"> Mot de passe : </label>
