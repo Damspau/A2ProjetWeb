@@ -94,3 +94,8 @@ Route::get('/Activite2/{id}','ActiviteController@index2');
 Route::get('/Activite2','ActiviteController@index');
 Route::post('/test/{id}','ActiviteController@quantity');
 Route::get('/like','ActiviteController@like');
+Route::post('/addactivite','bdefonctions@addactivite');
+
+Route::get('/bdegestion',function() {
+  return view('bdegestion');
+});

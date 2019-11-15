@@ -26,8 +26,8 @@ class ActiviteController extends Controller
 
 		$activite = active::all();
 		return view('activite')->with('id',$id);
-		
-		
+
+
 
 	}
 	public function quantity ($id){
@@ -36,10 +36,10 @@ class ActiviteController extends Controller
 		$url = $_POST['url'];
 
 		DB::table('commentaire')->insert(
-			[	
+			[
 				'idUser' => 7,
 			 	'idActivite' => $id,
-			 	'contenuCommentaire' => $commentaire, 
+			 	'contenuCommentaire' => $commentaire,
 			]);
 		$idPhoto=DB::table('photo')
 		->select('idPhoto', '=', '7')
@@ -52,18 +52,18 @@ class ActiviteController extends Controller
 
 
 		DB::table('photo')->insert(
-			[	
+			[
 				'idUser' => 7,
 			 	'idActivite' => $id,
-			 	'url' => $url, 
+			 	'url' => $url,
 			]);
 		DB::table('commentaire')->insert(
-			[	
+			[
 				'idPhoto'=>$idPhoto,
 
-			]);	
+			]);
 return view('activite');
-	
+
 }
 public function like (){
 
@@ -74,7 +74,7 @@ public function like (){
 
 
 
-	
+
 
 return $test;
 
