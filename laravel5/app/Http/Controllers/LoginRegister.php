@@ -38,6 +38,7 @@ class LoginRegister extends Controller
           Session::put('login', 'true');
           Session::put('rang', $response['response'][1][0]['idrang']);
           Session::put('username', $response['response'][2][0]['username']);
+          Session::put('email', $email);
           return view('Welcome');
 
        }
@@ -74,6 +75,7 @@ class LoginRegister extends Controller
           Session::put('login', 'true');
           Session::put('rang', '1');
           Session::put('username', $username);
+          Session::put('email', $email);
           return view('Welcome');
 
        }

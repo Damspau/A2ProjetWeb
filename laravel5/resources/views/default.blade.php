@@ -8,6 +8,7 @@ else {
   Session::put('login', 'false');
   Session::put('rang', '0');
   Session::put('username', '');
+  Session::put('email', '');
 
 }
  ?>
