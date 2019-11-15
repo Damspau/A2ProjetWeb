@@ -263,13 +263,13 @@ if (Session::has('login')) {
               <h5 class="widget-title">A propos<span></span></h5>
               <ul class="thumbnail-widget">
                 <li>
-                  <div class="thumb-content"><a href="{{ url('/legalnotices') }}">Mentions légales</a></div>
+                  <div class="thumb-content"><a href="{{ url('/cgu') }}">Mentions légales</a></div>
                 </li>
                 <li>
                   <div class="thumb-content"><a href="{{ url('/credits') }}">Crédits</a></div>
                 </li>
                 <li>
-                  <div class="thumb-content"><a href="{{ url('/legalnotices') }}">Politique de protection des données personnelles</a></div>
+                  <div class="thumb-content"><a href="{{ url('/cgu') }}">Politique de protection des données personnelles</a></div>
                 </li>
                 <li>
                   <div class="thumb-content"><a href="{{ url('/cgv') }}">Conditions d'achats</a></div>

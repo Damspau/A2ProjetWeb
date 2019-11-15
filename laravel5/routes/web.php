@@ -31,8 +31,8 @@ Route::get('/register', function () {
     return view('register');
 });
 
-Route::get('/legalnotices', function () {
-    return view('legalnotices');
+Route::get('/cgu', function () {
+    return view('cgu');
 });
 
 Route::get('/credits', function () {
