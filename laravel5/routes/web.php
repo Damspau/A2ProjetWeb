@@ -13,15 +13,11 @@ Route::get('/', function () {
 
     return view('welcome');
 });
-Route::get('/boutique', function () {
-	return view('boutique');
-});
-Route::get('/boutique2', function () {
-	return view('panier/boutique2');
-});
+
 Route::get('/Article', function () {
 	return view('Article');
 });
+
 Route::get('/shop', function () {
 	return view('shop');
 });
@@ -29,12 +25,7 @@ Route::get('/Panier', function () {
 	return view('panier');
 });
 
-// Route::get('/Activite2', function () {
-// 	$activites =App\Active::all();
-// 	return view ('activite', [
-// 		'active'=> $activites,
-// 	]);
-// });
+
 Route::get('/Activite2','ActiviteController@index');
 Route::post('/test','ActiviteController@quantity');
 Route::post('/allImg','ActiviteController@all');
@@ -46,13 +37,7 @@ Route::get('/list',function(){
 	]);
 });
 
-Route::get('/accueil', function () {
-    return view('welcome');
-});
 
-Route::get('/home', function () {
-    return view('welcome');
-});
 
 Route::get('/login', function () {
     return view('login');
