@@ -72,7 +72,7 @@ else {
 
  <header>
 
-   @yield('nav')
+   
 
     <!--Script cookies------------------>
 
