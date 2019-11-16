@@ -23,12 +23,6 @@ class ProductsController extends Controller
         return view('cart', compact('users'), compact('products'))->with('username', $username);
     }
 
-    public function cartVide()
-    {
-        return view('cart');
-    }
-
-
     public function addToCart($id, $username)
     {
 
@@ -88,12 +82,41 @@ class ProductsController extends Controller
       return view('products', compact('products'));
     }
 
-    public function reset ($username){
+    public function resetall (){
+
+      $username = $_REQUEST['username'];
 
       DB::table('users')
       ->where('username', $username)->delete();
-      return redirect()->back()->with('success', 'Panier correctement supprimé !');
+
+      // fin du traitement
+
+      $users = DB::table('users')->select('idArticle', 'quantity')->where('username', '=', $username)->get();
+      $products = Product::all();
+
+      return view('cart', compact('users'), compact('products'))->with('username', $username);
+
     }
+
+    public function reset (){
+
+      $username = $_REQUEST['username'];
+      $id=$_REQUEST['id'];
+
+      DB::table('users')
+      ->where([
+          ['username', $username],
+          ['idArticle', $id]])->delete();
+
+      // fin du traitement
+
+      $users = DB::table('users')->select('idArticle', 'quantity')->where('username', '=', $username)->get();
+      $products = Product::all();
+
+      return view('cart', compact('users'), compact('products'))->with('username', $username);
+
+    }
+
 
     public function quantity (){
 
@@ -107,15 +130,12 @@ class ProductsController extends Controller
               ['idArticle', $id]])
               ->update(['quantity' => $thisquantity]);
 
-              $username = $_REQUEST['username'];
-              $users = DB::table('users')->select('idArticle', 'quantity')->where('username', '=', $username)->get();
-              $products = Product::all();
+          // fin du traitement
 
+          $users = DB::table('users')->select('idArticle', 'quantity')->where('username', '=', $username)->get();
+          $products = Product::all();
 
-              return view('cart', compact('users'), compact('products'))->with('username', $username);
-
-
-          // return redirect()->back()->with('success', 'Quantité correctement prise en compte !');
+          return view('cart', compact('users'), compact('products'))->with('username', $username);
     }
 
     public function addProducts()

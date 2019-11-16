@@ -4,7 +4,7 @@
 
 <style>
 
-footer{
+ footer{
   position: absolute;
    width: 100%; height: 50px;
    bottom: 0; left: 0; right: 0;
@@ -71,6 +71,14 @@ footer{
           </form>
       </td>
       <td data-th="Subtotal" class="text-center">${{ $product['price'] * $client->quantity }}</td>
+      <td>
+        <form name="reset" method="POST" action="{{ url('/reset') }}">
+            @csrf
+            <input id="id" name="id" type="hidden" value="{{ $product->id }}">
+            <input id="username" name="username" type="hidden" value="{{ Session::get('username') }}">
+            <input class="btn btn-danger btn-sm remove-from-cart" type="submit" name="btn" value="Delete only this product !" class="btForm" >
+        </form>
+      </td>
   </tr>
   <?php
           }
@@ -83,15 +91,25 @@ footer{
     <td><a href="{{ url('/shop') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
     <td colspan="2" class="hidden-xs">
 
-      <a href="<?php echo (Session::get('rang') >= 1) ? url('cart/' . Session::get('username') . '/' . Session::get('email') . '/' . $total) : url('/login');  ?>">
-            <button type="button" class="btn btn-primary pull-right">
-              <i class="fa fa-shopping-cart" aria-hidden="true"></i> Passer commande : étudiants connectés seulement !
-            </button>
-      </a>
-
+      <form name="commander" method="POST" action="{{ url('/commander') }}">
+          @csrf
+          <input id="prix" name="prix" type="hidden" value="{{ $total }}">
+          <input id="username" name="username" type="hidden" value="{{ Session::get('username') }}">
+          <input id="mail" name="mail" type="hidden" value="{{ Session::get('email') }}">
+          <input class="btn btn-success" type="submit" name="btn" value="Commander !" class="btForm" >
+      </form>
+      
     </td>
     <td class="hidden-xs text-center"><strong>Total ${{ $total }}</strong></td>
-    <td><a href="{{ url('/reset/' . Session::get('username')) }}"><button class="btn btn-danger btn-sm remove-from-cart"><i class="fa fa-trash-o"></i></button></a></td>
+    <td>
+
+      <form name="reset" method="POST" action="{{ url('/resetall') }}">
+          @csrf
+          <input id="username" name="username" type="hidden" value="{{ Session::get('username') }}">
+          <input class="btn btn-danger btn-sm remove-from-cart" type="submit" name="btn" value="Delete all" class="btForm" >
+      </form>
+
+    </td>
 </tr>
 </tfoot>
 </table>

@@ -112,6 +112,7 @@ Session::get('rang') == 2 -->
   </br></br></br></br></br>
 
 
-<?php } else { ?><h1 style="text-align:center;color:red;"><?php echo 'Pas Membre du BDE pour modifier la boutique !';} ?></h1>
+<?php } else { ?></br></br><h1 style="text-align:center;color:red;"><?php echo 'Pas Membre du BDE pour modifier la boutique !';
+} ?></h1> </br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
 
   @endsection

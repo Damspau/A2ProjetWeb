@@ -61,7 +61,9 @@ Route::post('/panier', 'ProductsController@cart');
 
 Route::get('/add-to-cart/{id}/{username}', 'ProductsController@addToCart');
 
-Route::get('/reset/{username}', 'ProductsController@reset');
+Route::post('/resetall', 'ProductsController@resetall');
+
+Route::post('/reset', 'ProductsController@reset');
 
 Route::post('/quantity', 'ProductsController@quantity');
 
@@ -69,7 +71,7 @@ Route::post('/addProducts', 'ProductsController@addProducts');
 
 Route::post('/delProducts', 'ProductsController@delProducts');
 
-Route::get('/cart/{username}/{mail}/{prix}', 'SendEmailController@index');
+Route::post('/commander', 'SendEmailController@index');
 
 /*Activities*/
 

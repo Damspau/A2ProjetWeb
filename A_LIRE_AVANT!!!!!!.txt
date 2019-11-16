@@ -1,0 +1,17 @@
+Pour la BDD locale :
+
+-lancer un invité de commande depuis le dossier laravel5
+-"php artisan migrate"
+-"php artisan db:seed --class=ProductsSeeder"
+-"php artisan db:seed --class=ActivitiesSeeder"
+
+Pour la BDD nationale (utilisateurs) :
+
+-Depuis phpMyAdmin créer une base : national (utf-8)
+-Importer le script sql ci-joint de ce fichier txt (national.sql)
+
+Pour lançer le serveur Node.js :
+
+-lancer un invité de commande depuis le dossier nodeJS
+-"node index.js"
+
