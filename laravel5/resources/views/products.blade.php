@@ -1,28 +1,29 @@
 @extends('layoutShop')
 
-@section('head')
+@section('title', 'Products')
 
-<style>
+@section('panier')
 
-     @media only screen and (min-height: 930px) and (min-width:1309px) {
-        #idk {
-            position: absolute;
-        }
-    }
+  <?php if (Session::get('rang') >= 2){ ?>
 
-    .head{
-      background-color:grey;
-    }
-</style>
+    <form class="pull-right" name="username" method="POST" action="{{ url('/panier') }}">
+      @csrf
+      <input id="username" name="username" type="hidden" value="{{ Session::get('username') }}">
+      <input type="submit" name="btn" value="Afficher votre panier !" class="btForm" />
+    </form>
+
+<?php  }else { ?>
+
+    <a href="{{ url('/login') }}">
+        <button type="button" class="btn btn-outline-dark pull-right">
+          <i class="fa fa-shopping-cart" aria-hidden="true"></i>Non connecté !
+        </button>
+   </a> <?php } ?>
 
 
 @endsection
 
-@section('title', 'Products')
-
 @section('content')
-
-
 
 <p>
     <h1 style="text-align: center;"><u style="text-decoration-color:black;">Boutique : </u></h1>
@@ -43,7 +44,7 @@
 
 <a href="{{ url('/troisMeilleurs') }}">
     <button type="button" class="btn btn-outline-dark">
-        <i class="fa fa-shopping-cart" aria-hidden="true"></i>Trois meilleurs produits ! 
+        <i class="fa fa-shopping-cart" aria-hidden="true"></i>Trois meilleurs produits !
     </button>
 </a>
 

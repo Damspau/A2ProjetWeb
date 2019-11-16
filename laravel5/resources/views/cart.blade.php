@@ -4,11 +4,12 @@
 
 <style>
 
-     @media only screen and (min-height: 843px) and (min-width:993px) {
-        #idk {
-            position: absolute;
-        }
-    }
+footer{
+  position: absolute;
+   width: 100%; height: 50px;
+   bottom: 0; left: 0; right: 0;
+}
+
 </style>
 
 @endsection
@@ -61,12 +62,12 @@
       </td>
       <td data-th="Price">${{ $product['price'] }}</td>
       <td data-th="Quantity">
-          <form name="quantity" method="POST" action="{{ url('quantity') }}">
+          <form name="quantity" method="POST" action="{{ url('/quantity') }}">
               @csrf
               <input id="id" name="id" type="hidden" value="{{ $product->id }}">
               <input id="username" name="username" type="hidden" value="{{ Session::get('username') }}">
-              <input type="number" id="quantity" name="quantity" value="{{ $client->quantity }}" class="form-control quantity" />
-              <input type="submit" name="btn" value="Ok" class="btForm" />
+              <input type="number" id="quantity" name="quantity" value="{{ $client->quantity }}" class="form-control quantity" >
+              <input type="submit" name="btn" value="Ok" class="btForm" >
           </form>
       </td>
       <td data-th="Subtotal" class="text-center">${{ $product['price'] * $client->quantity }}</td>
@@ -81,8 +82,6 @@
 <tr>
     <td><a href="{{ url('/shop') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
     <td colspan="2" class="hidden-xs">
-
-      <!--  -->
 
       <a href="<?php echo (Session::get('rang') >= 1) ? url('cart/' . Session::get('username') . '/' . Session::get('email') . '/' . $total) : url('/login');  ?>">
             <button type="button" class="btn btn-primary pull-right">

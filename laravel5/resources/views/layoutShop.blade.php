@@ -1,5 +1,9 @@
 @extends('default')
 
+@section('head')
+@yield('head')
+@endsection
+
 @section('title')
 @yield('title')
 @endsection
@@ -30,13 +34,7 @@ description et prix   -->
 <?php } else { ?><h6 style="text-align:left;color:red;"><?php echo 'Pas Membre du BDE pour modifier la boutique !';
                                                         } ?></h6>
 
-
-    <a href="<?php echo (Session::get('rang') >= 2) ? url('/panier/' . Session::get('username')) : url('/login');  ?>">
-        <button type="button" class="btn btn-primary pull-right">
-            <i class="fa fa-shopping-cart" aria-hidden="true"></i>Panier (Sauvegarde automatique si etudiant)
-        </button>
-    </a>
-
+@yield('panier')
     <div class="container page">
         @yield('content')
     </div>

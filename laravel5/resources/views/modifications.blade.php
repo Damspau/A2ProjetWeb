@@ -1,22 +1,7 @@
 @extends('default')
 
-<!doctype html>
-
-@section('head')
-
-<style>
-  @media only screen and (min-height: 918px) and (min-width:1000px) {
-    #idk {
-      position: absolute;
-    }
-  }
-</style>
-
-@endsection
-
-
 @section('title')
-CESI
+CESI Custom Shop
 @endsection
 
 @section('nav')
@@ -24,7 +9,6 @@ CESI
 <li><a href="{{ url('/home') }}">Home</a></li>
 <li><a href="{{ url('/activities') }}">Activités</a></li>
 <li><a class="active" href="{{ url('/shop') }}">Boutique</a></li>
-
 
 @endsection
 
@@ -51,7 +35,6 @@ Session::get('rang') == 2 -->
   </div>
 
   </br>
-
 
   <!--Opérations possibles----------------->
 
@@ -126,10 +109,9 @@ Session::get('rang') == 2 -->
 
   <!-------------------------------->
 
-  </br>
-  </br>
+  </br></br></br></br></br>
 
-<?php } else { ?><h1 style="text-align:center;color:red;"><?php echo 'Pas Membre du BDE pour modifier la boutique !';
-                                                          } ?></h1>
+
+<?php } else { ?><h1 style="text-align:center;color:red;"><?php echo 'Pas Membre du BDE pour modifier la boutique !';} ?></h1>
 
   @endsection

@@ -15,8 +15,9 @@ class ProductsController extends Controller
         return view('products', compact('products'));
     }
 
-    public function cart($username)
+    public function cart()
     {
+        $username = $_REQUEST['username'];
         $users = DB::table('users')->select('idArticle', 'quantity')->where('username', '=', $username)->get();
         $products = Product::all();
         return view('cart', compact('users'), compact('products'))->with('username', $username);
@@ -96,9 +97,9 @@ class ProductsController extends Controller
 
     public function quantity (){
 
-         $id = $_POST['id'];
-         $username = $_POST['username'];
-         $thisquantity = $_POST['quantity'];
+         $id = $_REQUEST['id'];
+         $username = $_REQUEST['username'];
+         $thisquantity = $_REQUEST['quantity'];
 
           //check quantity//
           DB::table('users')->where([
@@ -106,7 +107,15 @@ class ProductsController extends Controller
               ['idArticle', $id]])
               ->update(['quantity' => $thisquantity]);
 
-          return redirect()->back()->with('success', 'Quantité correctement prise en compte !');
+              $username = $_REQUEST['username'];
+              $users = DB::table('users')->select('idArticle', 'quantity')->where('username', '=', $username)->get();
+              $products = Product::all();
+
+
+              return view('cart', compact('users'), compact('products'))->with('username', $username);
+
+
+          // return redirect()->back()->with('success', 'Quantité correctement prise en compte !');
     }
 
     public function addProducts()

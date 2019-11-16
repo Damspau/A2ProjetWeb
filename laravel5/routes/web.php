@@ -43,14 +43,13 @@ Route::get('/cgv', function () {
     return view('cgv');
 });
 
-Route::get('/modifications', function () {
-    return view('modifications');
-});
-
 /*Shop*/
 
 Route::get('/shop', 'ProductsController@index');
 
+Route::get('/modifications', function () {
+    return view('modifications');
+});
 
 Route::get('/ShopCroissant', 'ProductsController@trierCroi');
 
@@ -58,9 +57,7 @@ Route::get('/ShopDecroissant', 'ProductsController@trierDec');
 
 Route::get('/troisMeilleurs', 'ProductsController@troisMeilleurs');
 
-Route::get('/cart', 'ProductsController@cartVide');
-
-Route::get('/panier/{username}', 'ProductsController@cart');
+Route::post('/panier', 'ProductsController@cart');
 
 Route::get('/add-to-cart/{id}/{username}', 'ProductsController@addToCart');
 
