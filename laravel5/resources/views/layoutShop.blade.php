@@ -39,4 +39,8 @@ description et prix   -->
         @yield('content')
     </div>
 
-    @endsection
+@endsection
+
+@section('script')
+@yield('script')
+@endsection

@@ -18,7 +18,7 @@ if (Session::has('login')) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" type="image/x-icon" href="https://arras.cesi.fr/wp-content/uploads/sites/9/2019/05/Cesi_Logo_INGENIEUR_RVB-HD-500x296.jpg">
 
-  <!-- CSS here -->
+  <!-- CSS here ------------------------------------>
 
   <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -27,24 +27,27 @@ if (Session::has('login')) {
   <link rel="stylesheet" href="css/header.css">
   <!--navbar -->
   <link rel="stylesheet" type="text/css" href="css/shop.css">
-
-  <link rel="stylesheet" href="css/dams.css">
-
   <!--footer CSS -->
   <link rel="stylesheet" href="css/footer.css">
-
+  <!--bootstrap CSS-->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-  <!-- JS here -->
+  <!-- JS here ------------------------------------------>
 
   <script src="js/vendor/jquery-1.12.4.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="js/jquery.slicknav.min.js"></script>
   <script src="js/main.js"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   @yield('jqueryVersion')
 
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<!-- Autocomplete ! ------->
+  <link href="http://demo.expertphp.in/css/jquery.ui.autocomplete.css" rel="stylesheet">
+  <script src="http://demo.expertphp.in/js/jquery.js"></script>
+  <script src="http://demo.expertphp.in/js/jquery-ui.min.js"></script>
 
   @yield('head')
   <style>
@@ -60,7 +63,6 @@ if (Session::has('login')) {
       font-family: "title", Helvetica, Arial, sans-serif;
     }
 
-    /*-------------------*/
   </style>
 
   <title> @yield('title')</title>
@@ -109,7 +111,7 @@ if (Session::has('login')) {
 
                   ?>
 
-                  <li class="mt-2 mb-2">
+                  <!-- <li class="mt-2 mb-2">
                     <form class="form-inline">
                       <input class="form-control mr-sm-2" name="recherche" type="search" list="recherche" placeholder="Search" aria-label="Search">
 
@@ -146,7 +148,7 @@ if (Session::has('login')) {
                         </datalist>
                       </form>
                     </form>
-                  </li>
+                  </li> -->
                 </ul>
               </nav>
             </div>

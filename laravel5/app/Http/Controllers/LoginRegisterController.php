@@ -31,11 +31,6 @@ class LoginRegisterController extends Controller
 
           $response=json_decode ($response->getBody(), true);
 
-
-
-
-
-
           Session::put('login', 'true');
           Session::put('rang', $response['response'][1][0]['idrang']);
           Session::put('username', $response['response'][2][0]['username']);
@@ -67,8 +62,6 @@ class LoginRegisterController extends Controller
 
       if ($response['status']=="200")
        {
-
-
 
           Session::put('login', 'true');
           Session::put('rang', '1');

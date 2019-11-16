@@ -9,20 +9,24 @@ use Illuminate\Http\Request;
 
 class ProductsController extends Controller
 {
+  // Affichage de tout les produits !--------------------//
     public function index()
     {
         $products = Product::all();
         return view('products', compact('products'));
     }
 
+    // Affichage du panier !-------------------------------//
     public function cart()
     {
         $username = $_REQUEST['username'];
+
         $users = DB::table('users')->select('idArticle', 'quantity')->where('username', '=', $username)->get();
         $products = Product::all();
         return view('cart', compact('users'), compact('products'))->with('username', $username);
     }
 
+    // Ajouter un article au panier !---------------------------//
     public function addToCart($id, $username)
     {
 

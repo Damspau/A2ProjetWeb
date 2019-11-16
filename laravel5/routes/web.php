@@ -73,6 +73,12 @@ Route::post('/delProducts', 'ProductsController@delProducts');
 
 Route::post('/commander', 'SendEmailController@index');
 
+// Autocomplete Search Shop
+
+Route::get('autocomplete', 'SearchController@autocomplete')->name('autocomplete');
+
+Route::post('/ShopSearch', 'SearchController@resultSearch');
+
 /*Activities*/
 
 Route::get('/activities', 'ActivitiesController@index');
