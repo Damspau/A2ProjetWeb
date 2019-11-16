@@ -27,6 +27,8 @@ CESI accueil
 
 </br>
 
+<a id="haut"></a>
+
 <div id="titre">
   <p>
     <h1 style="text-align:center;"><u>Conditions générales de vente !</u></h1>
@@ -127,6 +129,17 @@ CESI accueil
 <p>Voilà pour le modèle type, j'espère qu'il va vous aider à éviter les principaux conflits auxquels les personnes qui vendent en ligne sont confrontées. Laissez-moi un commentaire pour me dire si cela vous aide !</p>
 <p>A noter : le modèle est fourni ici afin que vous puissiez vous documenter convenablement et comprendre ce que sont les conditions générales de vente, comment elles sont structurées, ce qu'il y faut mettre ainsi que les plus grosses erreurs à éviter (la prudence recommande de vous faire assister par un professionnel - mais il vous en coûtera facilement +2.000€). Pour l'exemple, j'ai ajouté des clauses en rouge qui sont illicites (!) afin de vous donner ce qu'il ne faut pas faire.</p>
 
+</br>
+
+<div class="text-center" id="haut">
+
+  <a href="{{ url('#haut') }}">
+    <button type="button" class="btn btn-primary">
+      Retourner en haut de la page !
+    </button>
+  </a>
+
+</br>
 </br>
 
 @endsection

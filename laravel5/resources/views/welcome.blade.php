@@ -38,9 +38,11 @@ CESI accueil
 @endsection
 
 @section('nav')
+
 <li><a class="active" href="{{ url('/home') }}">Home</a></li>
 <li><a href="{{ url('/activities') }}">Activités</a></li>
 <li><a href="{{ url('/shop') }}">Boutique</a></li>
+
 @endsection
 
 @section('section')

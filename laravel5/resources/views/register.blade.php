@@ -3,11 +3,12 @@
 @section('head')
 
 <style>
-  @media only screen and (min-height: 724px) and (min-width: 1022px) {
-    #idk {
-      position: absolute;
-    }
-  }
+
+footer{
+  position: absolute;
+   width: 100%; height: 50px;
+   bottom: 0; left: 0; right: 0;
+}
 
 </style>
 
@@ -17,22 +18,22 @@
 CESI Register
 @endsection
 
-@section('header')
+@section('nav')
 
+<li><a href="{{ url('/home') }}">Home</a></li>
+<li><a href="{{ url('/activities') }}">Activités</a></li>
+<li><a href="{{ url('/shop') }}">Boutique</a></li>
 
-                <li><a href="{{ url('/home') }}">Home</a></li>
-                <li><a href="{{ url('/activities') }}">Activités</a></li>
-                <li><a href="{{ url('/shop') }}">Boutique</a></li>
-                <li><a class="active" href="{{ url('/login') }}">Login/Register</a></li>
+@endsection
 
+@section('active')
+
+class="active"
 
 @endsection
 
 @section('section')
 
-
-
-<br>
 <br>
 
 <div class="container" style="text-align:center;">
@@ -87,9 +88,9 @@ CESI Register
         </div>
       </div>
     </div>
-  </section>
-</div>
+
 @endsection
+
 @section('script')
 <script>
     $('#link').on('submit', function (e) {

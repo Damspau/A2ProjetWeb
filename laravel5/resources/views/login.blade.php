@@ -3,11 +3,13 @@
 @section('head')
 
 <style>
-  @media only screen and (min-height: 533px) and (min-width:1018px) {
-    #idk {
-      position: absolute;
-    }
-  }
+
+footer{
+  position: absolute;
+   width: 100%; height: 50px;
+   bottom: 0; left: 0; right: 0;
+}
+
 </style>
 
 @endsection
@@ -16,13 +18,17 @@
 CESI Login
 @endsection
 
-@section('header')
+@section('nav')
 
+<li><a href="{{ url('/home') }}">Home</a></li>
+<li><a href="{{ url('/activities') }}">Activités</a></li>
+<li><a href="{{ url('/shop') }}">Boutique</a></li>
 
-                <li><a href="{{ url('/home') }}">Home</a></li>
-                <li><a href="{{ url('/activities') }}">Activités</a></li>
-                <li><a href="{{ url('/shop') }}">Boutique</a></li>
-                <li><a class="active" href="{{ url('/login') }}">Login/Register</a></li>
+@endsection
+
+@section('active')
+
+class="active"
 
 @endsection
 
@@ -32,7 +38,6 @@ CESI Login
 <br>
 
 <div class="container" style="text-align:center;">
-  <section>
     <div id="container">
       <a class="hiddenanchor" id="toregister"></a>
       <a class="hiddenanchor" id="tologin"></a>
@@ -55,6 +60,7 @@ CESI Login
             <p class="login button">
               <input type="submit" value="Connexion" onclick=""/>
             </p>
+
             <?php
 
             if (isset($erreur))
@@ -64,7 +70,6 @@ CESI Login
 </div>";
             }?>
 
-
             <p class="change_link">
               Pas encore inscrit ?
               <a href="{{ url('/register') }}" class="to_register">Inscription</a>
@@ -73,8 +78,9 @@ CESI Login
         </div>
       </div>
     </div>
-  </section>
 </div>
-</div>
+
+
+
 
 @endsection

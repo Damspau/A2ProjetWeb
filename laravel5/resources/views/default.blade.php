@@ -24,7 +24,7 @@ if (Session::has('login')) {
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/slicknav.css">
   <!--Menu-navbar -->
-  <link rel="stylesheet" href="css/goodStyle.css">
+  <link rel="stylesheet" href="css/header.css">
   <!--navbar -->
   <link rel="stylesheet" type="text/css" href="css/shop.css">
 
@@ -71,72 +71,6 @@ if (Session::has('login')) {
 
   <header>
 
-
-
-    <!--Script cookies------------------>
-
-    <div id="cookiesAccept"></div>
-    <div id="cookiesScript">
-
-    </div>
-    <script>
-      /** PARAM ////////////////////// */
-      var bndIdCookiesInfos = 'cookiesAccept';
-      var bndIdCookiesScript = 'cookiesScript';
-      var contentInfosMessage = 'Ce site utilise des cookies afin d\'analyser le trafic et de mesurer les performances des annonces. En poursuivant votre navigation sur ce site, vous en acceptez l\'utilisation.';
-      var contentInfosMessageLinkMore = '';
-      /** .PARAM ////////////////////// */
-
-      var blkInfos = null;
-      var blkScript = null;
-      var htmlChecked = null;
-      window.onload = function() {
-        if ((document.getElementById(bndIdCookiesInfos)) && (document.getElementById(bndIdCookiesScript))) {
-          var cookiesAccepted = null;
-          blkInfos = document.getElementById(bndIdCookiesInfos);
-          blkScript = document.getElementById(bndIdCookiesScript);
-          htmlChecked = true;
-          if (sessionStorage.getItem("cookiesAccepted")) {
-            cookiesAccepted = sessionStorage.getItem("cookiesAccepted");
-          } else {
-            sessionStorage.setItem('cookiesAccepted', 'null');
-          }
-          CookiesAreAccepted(cookiesAccepted);
-        }
-      };
-
-      function CookiesAreAccepted(param) {
-        if (htmlChecked === true) {
-          if (param === 'true') {
-            sessionStorage.setItem('cookiesAccepted', 'true');
-            blkInfos.remove();
-          } else if (param === 'false') {
-            sessionStorage.setItem('cookiesAccepted', 'false');
-            blkInfos.remove();
-            blkScript.remove();
-          } else {
-            var htmlContent = '<div style="z-index: 9999 !important;position: fixed !important;background-color: rgba(51, 51, 51, 0.6);color:#fff;bottom: 0;width: 100%;padding: 10px;">';
-            htmlContent += '<div style="float: left;"><em>' + contentInfosMessage + '</em>';
-            if (contentInfosMessageLinkMore != '') {
-              htmlContent += ' <a href="' + contentInfosMessageLinkMore + '" style="color:#fff;text-decoration: underline;">en savoir +</a>';
-            }
-            htmlContent += '</div>';
-            htmlContent += '<div style="float: right;">';
-            htmlContent += '<span id="btnAcceptCookies" style="padding:5px;background-color:green;cursor:pointer;" onclick="CookiesAreAccepted(\'true\');">ACCEPTER</span>  ';
-            htmlContent += '<span id="btnDeclineCookies" style="padding:5px;background-color:red;cursor:pointer;" onclick="CookiesAreAccepted(\'false\');">REFUSER</span>  ';
-            htmlContent += '</div></div>';
-            blkInfos.innerHTML = htmlContent;
-          }
-        }
-      }
-
-      function ClearCookieschoices() {
-        sessionStorage.removeItem('cookiesAccepted');
-      }
-    </script>
-
-
-  </header>
   <div class="header-area ">
     <div id="sticky-header" class="main-header-area">
       <div class="container-fluid p-0">
@@ -152,7 +86,9 @@ if (Session::has('login')) {
             <div class="main-menu  d-none d-lg-block">
               <nav>
                 <ul id="navigation">
+
                   @yield('nav')
+
                   <?php
                   if (Session::get('login') == 'true') {
                     echo "<li><a>Bienvenue " . Session::get('username') . "</a></li>";
@@ -162,18 +98,16 @@ if (Session::has('login')) {
 
                       if (Session::get('rang') > 1) {
                         ?>
-                      <li><a href=" {{ url('/admingestion') }}">Admin/Bde</a></li>;
+                      <li><a href="{{ url('/admingestion') }}">Admin/Bde</a></li>;
                     <?php
                       }
                     } else {
                       ?>
-                    <li><a href="{{ url('/login') }}">Login/Register</a></li>;
+                    <li><a @yield('active') href="{{ url('/login') }}">Login/Register</a></li>;
                   <?php
                   }
 
                   ?>
-
-
 
                   <li class="mt-2 mb-2">
                     <form class="form-inline">
@@ -182,11 +116,11 @@ if (Session::has('login')) {
                       <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
                       <form onsubmit="return validateForm();" class="pure-form autocomplete">
                         <datalist id="recherche">
-                          <a href="">
-                            <option>ezggzrtec</option>
+                          <a href="{{ url('/shop') }}">
+                            <option>boutique</option>
                           </a>
-                          <a href="">
-                            <option></option>
+                          <a href="{{ url('/accueil') }}">
+                            <option>accueil</option>
                           </a>
                           <a href="">
                             <option></option>
@@ -234,7 +168,9 @@ if (Session::has('login')) {
     </div>
   </div>
 
+  <!-- header -->
 
+  </header>
 
   <section>
 
@@ -245,7 +181,11 @@ if (Session::has('login')) {
 
   <aside>
 
+    @yield('aside')
+
   </aside>
+
+  <!-- Footer -->
 
   <footer id="footer" class="footer-1">
     <div class="main-footer widgets-dark">
@@ -256,20 +196,22 @@ if (Session::has('login')) {
             <div class="widget no-box">
               <h5 class="widget-title">BDE CESI<span></span></h5>
               <p>BDE fondé en 1878 par Jacky Puebert !</p>
+              <ul class="thumbnail-widget">
+                <li>
+                  <div class="thumb-content"><a href="{{ url('/credits') }}">Crédits</a></div>
+                </li>
+              </ul>
             </div>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-3">
             <div class="widget no-box">
-              <h5 class="widget-title">A propos<span></span></h5>
+              <h5 class="widget-title">Informations utiles<span></span></h5>
               <ul class="thumbnail-widget">
                 <li>
                   <div class="thumb-content"><a href="{{ url('/cgu') }}">Mentions légales</a></div>
                 </li>
                 <li>
-                  <div class="thumb-content"><a href="{{ url('/credits') }}">Crédits</a></div>
-                </li>
-                <li>
-                  <div class="thumb-content"><a href="{{ url('/cgu') }}">Politique de protection des données personnelles</a></div>
+                  <div class="thumb-content"><a href="{{ url('/cgu#données') }}">Politique de protection des données personnelles</a></div>
                 </li>
                 <li>
                   <div class="thumb-content"><a href="{{ url('/cgv') }}">Conditions d'achats</a></div>
@@ -316,6 +258,71 @@ if (Session::has('login')) {
 </body>
 
 @yield('script')
+
+<!--Script cookies------------------>
+
+<div id="cookiesAccept"></div>
+<div id="cookiesScript">
+
+</div>
+
+<script>
+
+  /** PARAM ////////////////////// */
+  var bndIdCookiesInfos = 'cookiesAccept';
+  var bndIdCookiesScript = 'cookiesScript';
+  var contentInfosMessage = 'Ce site utilise des cookies afin d\'analyser le trafic et de mesurer les performances des annonces. En poursuivant votre navigation sur ce site, vous en acceptez l\'utilisation.';
+  var contentInfosMessageLinkMore = '';
+  /** .PARAM ////////////////////// */
+
+  var blkInfos = null;
+  var blkScript = null;
+  var htmlChecked = null;
+  window.onload = function() {
+    if ((document.getElementById(bndIdCookiesInfos)) && (document.getElementById(bndIdCookiesScript))) {
+      var cookiesAccepted = null;
+      blkInfos = document.getElementById(bndIdCookiesInfos);
+      blkScript = document.getElementById(bndIdCookiesScript);
+      htmlChecked = true;
+      if (sessionStorage.getItem("cookiesAccepted")) {
+        cookiesAccepted = sessionStorage.getItem("cookiesAccepted");
+      } else {
+        sessionStorage.setItem('cookiesAccepted', 'null');
+      }
+      CookiesAreAccepted(cookiesAccepted);
+    }
+  };
+
+  function CookiesAreAccepted(param) {
+    if (htmlChecked === true) {
+      if (param === 'true') {
+        sessionStorage.setItem('cookiesAccepted', 'true');
+        blkInfos.remove();
+      } else if (param === 'false') {
+        sessionStorage.setItem('cookiesAccepted', 'false');
+        blkInfos.remove();
+        blkScript.remove();
+      } else {
+        var htmlContent = '<div style="z-index: 9999 !important;position: fixed !important;background-color: rgba(51, 51, 51, 0.6);color:#fff;bottom: 0;width: 100%;padding: 10px;">';
+        htmlContent += '<div style="float: left;"><em>' + contentInfosMessage + '</em>';
+        if (contentInfosMessageLinkMore != '') {
+          htmlContent += ' <a href="' + contentInfosMessageLinkMore + '" style="color:#fff;text-decoration: underline;">en savoir +</a>';
+        }
+        htmlContent += '</div>';
+        htmlContent += '<div style="float: right;">';
+        htmlContent += '<span id="btnAcceptCookies" style="padding:5px;background-color:green;cursor:pointer;" onclick="CookiesAreAccepted(\'true\');">ACCEPTER</span>  ';
+        htmlContent += '<span id="btnDeclineCookies" style="padding:5px;background-color:red;cursor:pointer;" onclick="CookiesAreAccepted(\'false\');">REFUSER</span>  ';
+        htmlContent += '</div></div>';
+        blkInfos.innerHTML = htmlContent;
+      }
+    }
+  }
+
+  function ClearCookieschoices() {
+    sessionStorage.removeItem('cookiesAccepted');
+  }
+
+</script>
 
 
 

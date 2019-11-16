@@ -3,11 +3,7 @@
 @section('head')
 
 <style>
-  @media only screen and (min-height: 533px) and (min-width:1018px) {
-    #idk {
-      position: absolute;
-    }
-  }
+
 </style>
 
 @endsection
@@ -16,29 +12,11 @@
 Admin / BDE
 @endsection
 
-@section('header')
+@section('nav')
 
-
-                <li><a href="{{ url('/home') }}">Home</a></li>
-                <li><a href="{{ url('/activities') }}">Activités</a></li>
-                <li><a href="{{ url('/shop') }}">Boutique</a></li>
-                <?php
-                if (Session::get('login')=='true'){
-                    echo "<li><a>Bienvenue ".Session::get('username')."</a></li>";
-                if (Session::get('rang')>1){
-                  ?>
-                    <li><a href=" {{ url('/admingestion') }}" class="active">BDE/ADMIN</a></li>";
-                    <?php
-                }
-
-                }
-
-                else
-                {
-                echo "<li><a href=\"{{ url('/login') }}\">Login/Register</a></li>";
-                }
-
-                ?>
+  <li><a class="active" href="{{ url('/home') }}">Home</a></li>
+  <li><a href="{{ url('/activities') }}">Activités</a></li>
+  <li><a href="{{ url('/shop') }}">Boutique</a></li>
 
 @endsection
 
@@ -47,7 +25,6 @@ Admin / BDE
 <?php
 if (Session::get('rang')>1){
   ?>
-
 
     <?php
 
@@ -67,15 +44,13 @@ if (Session::get('rang')>1){
       </div>";
       }
 
-
     ?>
 
-
-
-
 <br>
 <br>
-<h1><u>ADMIN : </u></h1>
+<h1><u>Admin : </u></h1>
+
+<!-- Supprimer un utilisateur : -->
 <div class="container" style="text-align:left;">
   <section>
     <div id="container">
@@ -86,7 +61,6 @@ if (Session::get('rang')>1){
           <h5><u>Supprimer un utilisateur </u></h5>
           <form method="post" action="{{ url('/deleteUser') }}" autocomplete="on">
             {{ csrf_field() }}
-
             <br>
             <br>
             <p>
@@ -97,14 +71,9 @@ if (Session::get('rang')>1){
               <label for="password" class="youpasswd" data-icon="p"> Mot de passe Admin: </label>
               <input id="password" name="motDePasse" required="required" type="password" placeholder="motdepasse" />
             </p>
-
             <p class="login button">
               <input type="submit" value="Supprimer" onclick=""/>
             </p>
-
-
-
-
           </form>
         </div>
       </div>
@@ -112,7 +81,7 @@ if (Session::get('rang')>1){
   </section>
 </div>
 
-
+<!-- Modifier la localisation d'un utilisateur : -->
 
 <div class="container" style="text-align:left;">
   <section>
@@ -124,7 +93,6 @@ if (Session::get('rang')>1){
           <h5><u>Modifier la localisation d'un utilisateur </u></h5>
           <form method="post" action="{{ url('/editUser') }}" autocomplete="on">
             {{ csrf_field() }}
-
             <br>
             <br>
             <p>
@@ -139,14 +107,9 @@ if (Session::get('rang')>1){
               <label for="location" class="uname" data-icon="p"> Location: </label>
               <input id="location" name="location" required="required" type="required" placeholder="Location" />
             </p>
-
             <p class="login button">
               <input type="submit" value="Modifier" onclick=""/>
             </p>
-
-
-
-
           </form>
         </div>
       </div>
@@ -154,8 +117,7 @@ if (Session::get('rang')>1){
   </section>
 </div>
 
-
-
+<!-- Obtenir les informations d'un utiilisateur : -->
 
 <div class="container" style="text-align:left;">
   <section>
@@ -167,23 +129,15 @@ if (Session::get('rang')>1){
           <h5><u>Obtenir les informations d'un utilisateur </u></h5>
           <form method="post" action="{{ url('/getUser') }}" autocomplete="on">
             {{ csrf_field() }}
-
             <br>
             <br>
             <p>
               <label for="username" class="uname" data-icon="u"> Email utilisateur pour obtenir des informations: </label>
               <input id="emailget" name="email" required="required" type="text" placeholder="email" />
             </p>
-
-
-
             <p class="login button">
               <input type="submit" value="Obtenir" onclick=""/>
             </p>
-
-
-
-
           </form>
         </div>
       </div>
@@ -191,18 +145,12 @@ if (Session::get('rang')>1){
   </section>
 </div>
 
-
-
-
-
-
-
-
-
 <?php
 }
-else {
+else { ?> <h2 style="text-align:center;color:red;">Accès non autorisé ! (Veuillez vous connecter avec un compte approprié)</h2></br>
+</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
 
+<?php
 }
 ?>
 @endsection
