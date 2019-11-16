@@ -85,6 +85,7 @@
       }
     }
 ?>
+
 </tbody>
 <tfoot>
 <tr>
@@ -98,7 +99,42 @@
           <input id="mail" name="mail" type="hidden" value="{{ Session::get('email') }}">
           <input class="btn btn-success" type="submit" name="btn" value="Commander !" class="btForm" >
       </form>
-      
+
+    </td>
+
+    <td>
+      <!-- Set up a container element for the button -->
+          <div id="paypal-button-container"></div>
+
+          <!-- Include the PayPal JavaScript SDK -->
+          <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=EUR"></script>
+
+          <script>
+              // Render the PayPal button into #paypal-button-container
+              paypal.Buttons({
+
+                  // Set up the transaction
+                  createOrder: function(data, actions) {
+                      return actions.order.create({
+                          purchase_units: [{
+                              amount: {
+                                  value: '{{ $total }}'
+                              }
+                          }]
+                      });
+                  },
+
+                  // Finalize the transaction
+                  onApprove: function(data, actions) {
+                      return actions.order.capture().then(function(details) {
+                          // Show a success message to the buyer
+                          alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                      });
+                  }
+
+              }).render('#paypal-button-container');
+          </script>
+
     </td>
     <td class="hidden-xs text-center"><strong>Total ${{ $total }}</strong></td>
     <td>
@@ -113,6 +149,9 @@
 </tr>
 </tfoot>
 </table>
+
+
+
 
 @else
 
