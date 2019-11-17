@@ -1,22 +1,6 @@
-@extends('default')
-
-<!doctype html>
-
-@section('head')
 
 <style>
 
-	@media only screen and (min-height: 745px) {
-		#idk {
-			position: relative;
-		}
-	}
-
-	@media only screen and (min-height: 825px) and (max-width:971px) {
-		#idk {
-			position: absolute;
-		}
-	}
 	.coeur{
 		float: right;
 		color: black;
@@ -36,13 +20,6 @@
 		margin-right: 0%;
 
 	}
-	.rounded2{
-		height:15%;
-		width: 15%;
-		margin-top: 1%;
-		margin-right: 1%;
-		margin-left: 1%;
-	}
 	.jumbotron {
 		padding: 1rem 1rem;
 		margin-bottom: 0rem; 
@@ -59,6 +36,19 @@
 	}
 	.commentaire{
 		top: 50%; left: 50%;
+	}
+	.butt {
+		border: 1px solid black;
+		height: 30px;
+		width: 100px;
+		margin-top: 8px;
+		background-color: black;
+		margin-bottom: 8px;
+	}
+
+
+	.background {
+		background-color: red;
 	}
 	.monBoutton {
 		background-color: green;
@@ -90,159 +80,42 @@
 	}
 </style>
 
-@endsection
-
-
-@section('title')
-CESI
-@endsection
-
-@section('nav')
-<!-- Barre de navigation avec de l'autocomplétion -->
-<div class="header-area ">
-	<div id="sticky-header" class="main-header-area">
-		<div class="container-fluid p-0">
-			<div class="row align-items-center justify-content-between no-gutters">
-				<div class="col-xl-2 col-lg-2">
-					<div class="logo-img">
-						<a href="index.html">
-							<img class="w-50" src="https://arras.cesi.fr/wp-content/uploads/sites/9/2019/05/Cesi_Logo_INGENIEUR_RVB-HD-500x296.jpg" alt="">
-						</a>
-					</div>
-				</div>
-				<div class="col-xl-7 col-lg-8">
-					<div class="main-menu  d-none d-lg-block">
-						<nav>
-							<ul id="navigation">
-								<li><a class="active" href="{{ url('/home') }}">Home</a></li>
-								<li><a href="{{ url('/activities') }}">Activités</a></li>
-								<li><a href="{{ url('/shop') }}">Boutique</a></li>
-								<li><a href="{{ url('/login') }}">Login/Register</a></li>
-								<li class="mt-2 mb-2">
-									<form class="form-inline">
-										<input class="form-control mr-sm-2" name="recherche" type="search" list="recherche" placeholder="Search" aria-label="Search">
-
-										<button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-										<form onsubmit="return validateForm();" class="pure-form autocomplete">
-											<datalist id="recherche">
-												<a href="">
-													<option>ezggzrtec</option>
-												</a>
-												<a href="">
-													<option></option>
-												</a>
-												<a href="">
-													<option></option>
-												</a>
-												<a href="">
-													<option></option>
-												</a>
-												<a href="">
-													<option> </option>
-												</a>
-												<a href="">
-													<option> </option>
-												</a>
-												<a href="">
-													<option></option>
-												</a>
-												<a href="">
-													<option></option>
-												</a>
-												<a href="">
-													<option></option>
-												</a>
-											</datalist>
-										</form>
-									</form>
-								</li>
-							</ul>
-						</nav>
-					</div>
-				</div>
-				<div class="col-xl-3 col-lg-2 d-none d-lg-block">
-					<div class="social_media_links">
-						<ul>
-							<li><a target="_blank" href="https://www.facebook.com/CESIingenieurs/"> <i class="fa fa-facebook"></i> </a></li>
-							<li><a target="_blank" href="https://twitter.com/GroupeCESI?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"> <i class="fa fa-twitter"></i> </a></li>
-							<li><a target="_blank" href="https://www.instagram.com/campus_cesi/?hl=fr"> <i class="fa fa-instagram"></i> </a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-12">
-					<div class="mobile_menu d-block d-lg-none"></div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-@endsection
-
-@section('section')
 
 <main>
 
 	<section class="jumbotron text-center">
 		<div >
 
-			<a href=" Inscription" target="_blank" class="monBoutton">-> Inscription <- </a> 
+			<a href="{{ url('/inscription') }}/<?php echo ($id) ?>">
+				<button type="button" class="btn btn-primary">
+					Inscription
+				</button>
+			</a>
 
-
-
-			<!--Récupération des données souhaités  -->
-			<?php
-
-			$activite = DB::table('actives')
-			->where('id', '=', $id)
-			->get();
-
-			$photo = DB::table('photo')
-			->where([
-				['idActivite', '=', $id],
-				['idphoto', '=', $id],
-			])
-			->get();
-
-			$ah = DB::table('fusion')
-			->where([
-				['idActivite', '=', $id],
-			])
-			->get();
-
-			$commentaire = DB::table('fusion')
-			->where([
-
-				['idActivite', '=', $id],
-			])
-			->groupBy('idFusion')
-			->get();
-
-			$count = DB::table('like')
-
-			->where('idActivite', '=', $id)
-			->get();
-			?>
-
-			<!--lancement de la commande foreach pour la récupération du titre de l'activité ainsi que du nombre de Like que l'activité possède  -->
-			@foreach($count as $coeur)
-			@foreach($activite as $active)
-			<div id="boutonactu">
-				<h1 >{{ $active->nomActivite }} <button id="envoielike" type="button" class= "fas false fa-heart coeur"> <b>{{ $coeur->Like }} </b></button></h1>
-			</div>
+			<!--launch the foreach command to retrieve the title of the activity as well as the number of Like that the activity has  -->
 			
+			@foreach($activite as $active)
+			<form method="post" action="{{ url('/coeur') }}/<?php echo ($id) ?>" class="comment-form">
+				<div id="boutonactu">
+					<h1 >{{ $active->nomActivite }} <a href="javascript:window.location.reload()"><button id="envoielike" type="button" class= "fas false fa-heart coeur butt"> <b></b></button></a></h1>
+				</div>
+			</form>
 		</div>
 		@endforeach
-		@endforeach
 	</section>
-	<!-- lancement de la commande foreach pour la récupération de l'image de l'activité -->
-	@foreach($photo as $img)
 
-	<img class="rounded" src="{{ $img->url }}" >
-	<img class="rounded2" src="{{ $img->url }}" >
+
+
+
+
+	<!-- launch of the foreach command for the recovery of the activity image -->
+	@foreach($activite as $img)
+
+	<img class="rounded" src="{{ $img->image }}" >
 
 	@endforeach
-	<!-- lancement de la commande foreach pour la récupération de la description, de la date ainsi que de la localisation de l'activité -->
+
+	<!-- launch of the foreach command to retrieve the description, date and location of the activity -->
 	@foreach($activite as $active)
 	<p><u>Présentation : </u></p>
 
@@ -251,82 +124,64 @@ CESI
 	<p><u>Date :</u> {{ $active->dateActivite }}  </p>
 	<p><u>Localisation :</u> {{ $active->localisation }}  </p>
 	@endforeach
-	<!-- création de la zone pour la visualisation des commentaires -->
+
+	<!-- creation of the area for viewing comments -->
 	<section id="comments">
 		<div id="respond" class="comment-respond">
 			<h3 id="reply-title"  class="comment-reply-title commentaire">Commenter l'activité: </h3><br>
 			<div class="commentaireZone">
 				<for>
-					<!-- Récupération de l'username de la personne connecté afin de l'afficher dans les commentaires -->
-					<?php
-					if (Session::has('username')){
-						$username=Sesion::get('username');
-					}
-					?>
-					<!-- Affichage des commentaires/ images -->
-					<form method="post" action="{{url(/test/<?php echo $id ?>)}}" class="comment-form">
+					<!--  Display of comments and images -->
+					
 						{{ csrf_field() }}
-						@foreach($ah as $comm)
 
-						@foreach($commentaire as $coucou)
-						<img class="rounded" src="{{ $comm->url }}">
+						
+						@foreach($photocom as $data){
+						
+						<img class="rounded" src="{{ $data->url }}">
+						<p>Commenter par: $username <br>{{ $data ->contenuCommentaire }} </p><br>
+						<?php if (Session::get('rang') >= 3){ ?>
+						<form name="reset" method="POST" action="{{ url('/deleteComm') }}">
+							@csrf
+							<input id="id" name="id" type="hidden" value="{{ $data->idPhotoComm }}">
+							<input class="btn btn-danger btn-sm remove-from-cart" type="submit" name="btn" value="Delete only this product !" class="btForm" >
+						</form>
+						<?php }else { ?>
 
-						<p>Commenter par: $username {{ $coucou->contenuDescription }}</p><br>
-						@endforeach
-						@endforeach
+							<form name="reset" method="POST" action="{{ url('/login') }}">
+							@csrf
+							<input class="btn btn-danger btn-sm remove-from-cart" type="submit" name="btn" value="Delete only this product !" class="btForm" >
+						</form>
+						<?php }
+									
+						?>
 
-					</div>
-					<!--Création de la zone d'écriture pour les commentaire ainsi que pour l'url de l'image  -->
-					<p><label for="comment">Entrer votre commentaire:</label></p>
-					<input class="form-control mr-sm-2 Entrer" type="text" name="commentaire" placeholder="Entrer votre commentaire"></input> 
-					<p class="form-submit">
-						<input name="envoie" type="submit"  class="submit" value="Envoyer"><br><br>
-					</p>
+					}@endforeach
 
-					{{ csrf_field() }}
-					<input class="form-control mr-sm-2 url" type="text" name="url" placeholder="déposer votre url pour imager cet événement">
-				</form><br><br><br><br><br><br><br><br><br><br><br><br>
+					
 
-			</div>
-		</section>
+				</div>
+
+<form method="post" action="{{ url('/test') }}/<?php echo ($id) ?>" class="comment-form">
+				<!--Création de la zone d'écriture pour les commentaire ainsi que pour l'url de l'image  -->
+				<p><label for="comment">Entrer votre commentaire:</label></p>
+				<input class="form-control mr-sm-2 Entrer" type="text" name="commentaire" placeholder="Entrer votre commentaire"></input> 
+				<p class="form-submit">
+					<input name="envoie" type="submit" class="submit" value="Envoyer"><br><br>
+				</p>
+
+				{{ csrf_field() }}
+				<input class="form-control mr-sm-2 url" type="text" name="url" placeholder="déposer votre url pour imager cet événement">
+			</form><br><br><br><br><br><br><br><br><br><br><br><br>
+
+		</div>
+	</section>
 
 
-		<br>
-		<br>
+	<br>
+	<br>
 
-	</form>
-	<form method="get" action="{{url('/all')}}">
-		<a href="path_to_file" download="allImg"> <input name="envoie" type="submit"  class="submit" value="Download"></a>
-	</form>
-<?php $tavariable="ok" ?>
+</form>
+
 </main>
 
-@endsection
-
-@section('script')
-<script>
-	$('#envoielike').click(function(){
-		var php = "<?php echo $tavariable; ?>";
-		console.log(php);
-		$.ajax({
-       url : 'http://localhost:8000/like', // La ressource ciblée
-       type : 'GET', // Le type de la requête HTTP.
-       data : 'utilisateur=',
-       success:
-       		function(retour){
-       			location.reload()
-       			console.log(retour);
-       		}
-    });
-     
-   	
-		
-
-   
-});
-
-
-</script>
-
-
-@endsection

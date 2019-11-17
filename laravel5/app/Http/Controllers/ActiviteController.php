@@ -11,76 +11,153 @@ class ActiviteController extends Controller
 {
 	public function index($id){
 
-		$activite = active::all();
-		return view('activite',compact('activite'));
-		$photo = photo::all();
-		return view('activite',compact('activite'));
-		$commentaire = commentaire::all();
-		return view('activite',compact('activite'));
-		$like = like::all();
-		return view('activite',compact('activite'));
+		$activite = DB::table('actives')
+		->where('id', '=', $id)
+		->get();
 
+		$photo = DB::table('photocomm')
+		->where([
+			['idActivite', '=', $id],
+			['rangUser', '>=', 3],
+		])
+		->get();
+
+		$photocom = DB::table('photocomm')
+		->where([
+			['idActivite', '=', $id],
+			['rangUser', '<', 3],
+		])
+		->get();
+
+		return view('activite', compact('activite', 'photo', 'photocom'))->with('id',$id);		
 
 	}
-	public function index2($id){
 
-		$activite = active::all();
-		return view('activite')->with('id',$id);
-		
-		
-
-	}
-	public function quantity ($id){
+	public function insert ($id){
 
 		$commentaire = $_POST['commentaire'];
 		$url = $_POST['url'];
-
-		DB::table('commentaire')->insert(
+		DB::table('photocomm')->insert(
 			[	
-				'idUser' => 7,
-			 	'idActivite' => $id,
-			 	'contenuCommentaire' => $commentaire, 
+				'RangUser' => 1,
+				'idActivite' => $id,
+				'url' => $url, 
+				'contenuCommentaire' => $commentaire,
 			]);
-		$idPhoto=DB::table('photo')
-		->select('idPhoto', '=', '7')
-		->Where(
-			['idUser','=','7'],
-			['idUser','=','idActivite']
-		);
+
+		$activite = DB::table('actives')
+		->where([
+			['idActivite', '=', $id],
+			['id', '=', $id],
+			])
+		->get();
+
+
+		$photocom = DB::table('photocomm')
+		->where([
+			['idActivite', '=', $id],
+			['rangUser', '<', 3],
+		])
+		->get();
+
+		return view('activite', compact('activite',  'photocom'))->with('id',$id);		
+
+	}
 
 
 
+	public function inscription ($id){
 
-		DB::table('photo')->insert(
+		
+		DB::table('inscription')->insert(
 			[	
-				'idUser' => 7,
-			 	'idActivite' => $id,
-			 	'url' => $url, 
+				'username' =>'sdqd' ,
+				'idActivite' => $id, 
 			]);
-		DB::table('commentaire')->insert(
-			[	
-				'idPhoto'=>$idPhoto,
+		$activite = DB::table('actives')
+		->where('id', '=', $id)
+		->get();
 
-			]);	
-return view('activite');
-	
-}
-public function like (){
+		$photo = DB::table('photocomm')
+		->where([
+			['idActivite', '=', $id],
+			['rangUser', '>=', 3],
+		])
+		->get();
+
+		$photocom = DB::table('photocomm')
+		->where([
+			['idActivite', '=', $id],
+			['rangUser', '<', 3],
+		])
+		->get();
+
+	return view('activite', compact('activite', 'photo', 'photocom'))->with('id',$id);			
+
+	}
+
+
+
+
+
+	public function deleteComm()
+	{
+		$id = $_POST['id'];
+
+		DB::table('photocomm')
+		->where('idPhotoComm', '=', $id)->delete();
+
+		$activite = DB::table('actives')
+		->where('id', '=', $id)
+		->get();
+
+		$photo = DB::table('photocomm')
+		->where([
+			['idActivite', '=', $id],
+			['rangUser', '>=', 3],
+		])
+		->get();
+
+		$photocom = DB::table('photocomm')
+		->where([
+			['idActivite', '=', $id],
+			['rangUser', '<', 3],
+		])
+		->get();
+
+		return view('activite', compact('activite', 'photo', 'photocom'))->with('id',$id);		
+
+	}
+
+	public function like ($id){
+
 
 		DB::table('like')->increment('Like');
-		$idUser=1;
-		$idActivite=$id;
-		$boole=false;
+
+		$count=  DB::table('like')
+		->select('Like')
+		->where('idActivite','=',$id,);
 
 
+		$activite = DB::table('actives')
+		->where('id', '=', $id)
+		->get();
 
-	
+		$photo = DB::table('photocomm')
+		->where([
+			['idActivite', '=', $id],
+			['rangUser', '>=', 3],
+		])
+		->get();
 
-return $test;
+		$photocom = DB::table('photocomm')
+		->where([
+			['idActivite', '=', $id],
+			['rangUser', '<', 3],
+		])
+		->get();
 
+		return view('activite', compact('activite', 'photo', 'photocom','like'))->with('id',$id);	
 
-
-
-
-}
+	}
 }
