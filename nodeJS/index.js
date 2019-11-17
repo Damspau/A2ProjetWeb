@@ -42,7 +42,7 @@ myRouter.route('/data/:userName')
 myRouter.route('/data')
 //POST add a user
 .post(function(req,res){
-  let sql = "CALL PostData ('" + req.body.username + "', '" + req.body.password + "', '" + req.body.email + "','" + req.body.location+ "')";
+  let sql = "CALL PostData ('" + req.body.username + "', '" + req.body.password + "', '" + req.body.email + "','" + req.body.location+ "','" + req.body.nom+ "','" + req.body.prenom+  "')";
   var input = "{\"email\":\"" + req.body.email + "\"}";
 
   let sqlverify = "SELECT email FROM utilisateur WHERE email = '"+ req.body.email + "';";
@@ -76,10 +76,10 @@ myRouter.route('/data')
 })
 //PUT update location of user
 .put(function(req,res){
-  var input = "{\"email\":\"adminMail\"}";
+  var input = "{\"email\":\"admin@Mail\"}";
 
 
-  let sqlverify = "SELECT email FROM utilisateur WHERE email = 'adminMail' AND password = '"+req.body.passwordAdmin+"';";
+  let sqlverify = "SELECT email FROM utilisateur WHERE email = 'admin@Mail' AND password = '"+req.body.passwordAdmin+"';";
   let query = connexion.query(sqlverify, (err, results2) => {
     if(err) throw err;
 
@@ -142,12 +142,12 @@ myRouter.route('/connexDel/:identifiant/:mdp')
 //delete
 .delete(function(req,res){
    //res.json({message : "GET connexion", methode : req.method, identifiant : req.params.identifiant, mdp : req.params.mdp });
-   var input = "{\"email\":\"adminMail\"}";
+   var input = "{\"email\":\"admin@Mail\"}";
    let sql = "CALL DeleteData ('" + req.params.identifiant + "', '" + req.params.mdp + "')";
    console.log(req.params.identifiant);
    console.log(req.params.mdp);
 
-   let sqlverify = "SELECT email FROM utilisateur WHERE email = 'adminMail' AND password = '"+req.params.mdp+"';";
+   let sqlverify = "SELECT email FROM utilisateur WHERE email = 'admin@Mail' AND password = '"+req.params.mdp+"';";
    let query = connexion.query(sqlverify, (err, results2) => {
      if(err) throw err;
 

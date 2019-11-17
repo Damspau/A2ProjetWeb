@@ -42,6 +42,9 @@ Route::get('/credits', function () {
 Route::get('/cgv', function () {
     return view('cgv');
 });
+Route::get('/credit', function () {
+	return view('Crédit');
+});
 
 /*Shop*/
 
@@ -103,3 +106,19 @@ Route::get('/logout', 'LoginRegisterController@logout');
 Route::post('/deleteUser', 'adminFunctions@delete');
 Route::post('/editUser', 'adminFunctions@locationModification');
 Route::post('/getUser', 'adminFunctions@userGetData');
+//Ativites:
+Route::get('/Activite2/{id}','ActiviteController@index2');
+Route::get('/Activite2','ActiviteController@index');
+Route::post('/test/{id}','ActiviteController@quantity');
+Route::get('/like','ActiviteController@like');
+//bdegestion
+Route::post('/addactivite','bdefonctions@addactivite');
+Route::get('/deletecomment','bdefonctions@deletecomment');
+Route::get('uploadfile','bdefonctions@uploadfile');
+Route::get('/bdegestion',function() {
+  return view('bdegestion');
+});
+//personnel
+Route::get('/personnelReport{idCommentaire}', 'personnelFunctions@reportComment');
+Route::get('/userPdf{idActivite}', 'personnelFunctions@userPdf');
+Route::get('/downloadPic{idActivite}', 'personnelFunctions@downloadPic');

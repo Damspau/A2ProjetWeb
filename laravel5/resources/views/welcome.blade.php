@@ -43,6 +43,7 @@ CESI accueil
 <li><a href="{{ url('/activities') }}">Activités</a></li>
 <li><a href="{{ url('/shop') }}">Boutique</a></li>
 
+
 @endsection
 
 @section('section')

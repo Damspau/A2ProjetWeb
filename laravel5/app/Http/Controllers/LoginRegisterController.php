@@ -34,6 +34,8 @@ class LoginRegisterController extends Controller
           Session::put('login', 'true');
           Session::put('rang', $response['response'][1][0]['idrang']);
           Session::put('username', $response['response'][2][0]['username']);
+          Session::put('email', $email);
+          Session::put('idUser', $response['response'][2][0]['idUser']);
           return view('Welcome');
 
        }
@@ -52,9 +54,12 @@ class LoginRegisterController extends Controller
       $username=$_POST['username'];
       $password=$_POST['password'];
       $location=$_POST['location'];
+      $nom=$_POST['nom'];
+      $prenom=$_POST['prenom'];
       $urlco ="http://localhost:3000/data/";
       $client = new GuzzleHttp\Client();
-      $response = $client->post($urlco, [GuzzleHttp\RequestOptions::JSON => ['username' => $username, 'password' => $password, 'email' => $email,'location' => $location]]);
+      $response = $client->post($urlco, [GuzzleHttp\RequestOptions::JSON => ['username' => $username, 'password' => $password, 'email' => $email,'location' => $location, 'nom' => $nom, 'prenom' => $prenom ]]);
+
 
 
       $response = $response->getBody();
@@ -63,10 +68,17 @@ class LoginRegisterController extends Controller
       if ($response['status']=="200")
        {
 
+
+          $urlco ="http://localhost:3000/data/". $email ;
+          $response = $client->request('GET', $urlco);
+
           Session::put('login', 'true');
           Session::put('rang', '1');
           Session::put('username', $username);
           Session::put('email', $email);
+
+          Session::put('idUser', $response['response'][2][0]['idUser']);
+
           return view('Welcome');
 
        }
@@ -81,9 +93,9 @@ class LoginRegisterController extends Controller
     }
   public function logout ()
    {
-     Session::put('login', 'false');
-     Session::put('rang', '0');
-     Session::put('username', "");
-     return view('/welcome');
+
+     session()->flush();
+     return view('Welcome');
+
    }
 }

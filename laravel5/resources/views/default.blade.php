@@ -8,6 +8,7 @@ if (Session::has('login')) {
   Session::put('rang', '0');
   Session::put('username', '');
   Session::put('email', '');
+
 }
 ?>
 <!DOCTYPE html>
@@ -91,6 +92,7 @@ if (Session::has('login')) {
 
                   @yield('nav')
 
+
                   <?php
                   if (Session::get('login') == 'true') {
                     echo "<li><a>Bienvenue " . Session::get('username') . "</a></li>";
@@ -111,44 +113,7 @@ if (Session::has('login')) {
 
                   ?>
 
-                  <!-- <li class="mt-2 mb-2">
-                    <form class="form-inline">
-                      <input class="form-control mr-sm-2" name="recherche" type="search" list="recherche" placeholder="Search" aria-label="Search">
 
-                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-                      <form onsubmit="return validateForm();" class="pure-form autocomplete">
-                        <datalist id="recherche">
-                          <a href="{{ url('/shop') }}">
-                            <option>boutique</option>
-                          </a>
-                          <a href="{{ url('/accueil') }}">
-                            <option>accueil</option>
-                          </a>
-                          <a href="">
-                            <option></option>
-                          </a>
-                          <a href="">
-                            <option></option>
-                          </a>
-                          <a href="">
-                            <option> </option>
-                          </a>
-                          <a href="">
-                            <option> </option>
-                          </a>
-                          <a href="">
-                            <option></option>
-                          </a>
-                          <a href="">
-                            <option></option>
-                          </a>
-                          <a href="">
-                            <option></option>
-                          </a>
-                        </datalist>
-                      </form>
-                    </form>
-                  </li> -->
                 </ul>
               </nav>
             </div>
