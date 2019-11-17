@@ -1,16 +1,13 @@
 @extends('default')
 
-@section('head')
 
-
-@endsection
 
 @section('title')
 Admin / BDE
 @endsection
 
 
-@section('header')
+@section('nav')
 
 
                 <li><a href="{{ url('/home') }}">Home</a></li>
@@ -25,9 +22,7 @@ Admin / BDE
 <?php
 if (Session::get('rang')>1){
 
-  ?>
 
-    <?php
 
     if (isset($response))
     {
@@ -87,8 +82,8 @@ if (Session::get('rang')>1){
     </div>
   </section>
 </div>
-<?php } ?>
-<?php  if (Session::get('rang')>1)
+<?php }
+ if (Session::get('rang')>1)
 { ?>
 <!-- Modifier la localisation d'un utilisateur : -->
 
@@ -156,10 +151,6 @@ if (Session::get('rang')>1){
 
 <?php
 }
-else { ?> <h2 style="text-align:center;color:red;">Accès non autorisé ! (Veuillez vous connecter avec un compte approprié)</h2></br>
-</br>
 
-<?php
-}
 ?>
 @endsection
