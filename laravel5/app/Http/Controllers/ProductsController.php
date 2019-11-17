@@ -21,7 +21,10 @@ class ProductsController extends Controller
     {
         $username = $_REQUEST['username'];
 
-        $users = DB::table('users')->select('idArticle', 'quantity')->where('username', '=', $username)->get();
+        $users = DB::table('users')
+        ->select('idArticle', 'quantity')
+        ->where('username', '=', $username)
+        ->get();
         $products = Product::all();
         return view('cart', compact('users'), compact('products'))->with('username', $username);
     }

@@ -3,13 +3,14 @@
 @section('head')
 
 <style>
-
-footer{
-  position: absolute;
-   width: 100%; height: 50px;
-   bottom: 0; left: 0; right: 0;
-}
-
+  footer {
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
 </style>
 
 @endsection
@@ -64,46 +65,53 @@ class="active"
               <label for="location" class="youpasswd" data-icon="p"> Localisation : </label>
               <input id="location" name="location" required="required" type="text" placeholder="location" />
             </p>
+            <p>
+              <label for="nom" class="youpasswd" data-icon="p"> Nom : </label>
+              <input id="nom" name="nom" required="required" type="text" placeholder="location" />
+            </p>
+            <p>
+              <label for="prenom" class="youpasswd" data-icon="p"> Prenom : </label>
+              <input id="prenom" name="prenom" required="required" type="text" placeholder="location" />
+            </p>
 
 
             <p class="register button">
-              <input type="submit" value="Inscription" onclick=""/>
+              <input type="submit" value="Inscription" onclick="" />
             </p>
 
           </form>
         </div>
-            <?php
+        <?php
 
-            if (isset($erreur))
-            {
-              echo "<div class=\"alert alert-danger\" role=\"alert\">
-  ".$erreur."
+        if (isset($erreur)) {
+          echo "<div class=\"alert alert-danger\" role=\"alert\">
+  " . $erreur . "
 </div>";
-            }?>
-            <p class="change_link">
-              Déjà inscrit ?
-              <a href="{{ url('/login') }}" class="to_register"> Connexion </a>
-            </p>
-
-        </div>
+        } ?>
+        <p class="change_link">
+          Déjà inscrit ?
+          <a href="{{ url('/login') }}" class="to_register"> Connexion </a>
+        </p>
       </div>
     </div>
+</div>
+
 
 @endsection
 
 @section('script')
 <script>
-    $('#link').on('submit', function (e) {
-        e.preventDefault();
-        var $form = $(this),
-                $select = $form.find('select'),
-                links = $select.val();
-        if (links.length > 0) {
-            for (i in links) {
-                link = links[i];
-                window.open(link);
-            }
-        }
-    });
+  $('#link').on('submit', function(e) {
+    e.preventDefault();
+    var $form = $(this),
+      $select = $form.find('select'),
+      links = $select.val();
+    if (links.length > 0) {
+      for (i in links) {
+        link = links[i];
+        window.open(link);
+      }
+    }
+  });
 </script>
 @endsection

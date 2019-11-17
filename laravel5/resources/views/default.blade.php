@@ -8,6 +8,7 @@ if (Session::has('login')) {
   Session::put('rang', '0');
   Session::put('username', '');
   Session::put('email', '');
+
 }
 ?>
 <!DOCTYPE html>
@@ -90,6 +91,7 @@ if (Session::has('login')) {
                 <ul id="navigation">
 
                   @yield('nav')
+                  @yield('header')
 
                   <?php
                   if (Session::get('login') == 'true') {

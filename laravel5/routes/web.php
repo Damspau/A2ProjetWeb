@@ -42,6 +42,9 @@ Route::get('/credits', function () {
 Route::get('/cgv', function () {
     return view('cgv');
 });
+Route::get('/credit', function () {
+	return view('Crédit');
+});
 
 /*Shop*/
 
@@ -79,13 +82,6 @@ Route::get('autocomplete', 'SearchController@autocomplete')->name('autocomplete'
 
 Route::post('/ShopSearch', 'SearchController@resultSearch');
 
-/*Activities*/
-
-Route::get('/activities', 'ActivitiesController@index');
-
-Route::get('/activites', function () {
-    return view('activities');
-});
 
 Route::get('/connexion', function () {
     return view('scriptConnexion');
@@ -103,3 +99,27 @@ Route::get('/logout', 'LoginRegisterController@logout');
 Route::post('/deleteUser', 'adminFunctions@delete');
 Route::post('/editUser', 'adminFunctions@locationModification');
 Route::post('/getUser', 'adminFunctions@userGetData');
+
+//Ativites:
+
+Route::get('/Activite/{id}', 'ActiviteController@index');
+
+Route::get('/like/{id}', 'ActiviteController@like');
+
+Route::post('/deleteComm', 'ActiviteController@deleteComm');
+
+Route::post('/insert/{id}', 'ActiviteController@insert');
+
+Route::get('/activities', 'ActivitiesController@home');
+
+//bdegestion
+Route::post('/addactivite','bdefonctions@addactivite');
+Route::get('/deletecomment','bdefonctions@deletecomment');
+Route::get('uploadfile','bdefonctions@uploadfile');
+Route::get('/bdegestion',function() {
+  return view('bdegestion');
+});
+//personnel
+Route::get('/personnelReport{idCommentaire}', 'personnelFunctions@reportComment');
+Route::get('/userPdf{idActivite}', 'personnelFunctions@userPdf');
+Route::get('/downloadPic{idActivite}', 'personnelFunctions@downloadPic');
