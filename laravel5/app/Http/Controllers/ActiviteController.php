@@ -39,8 +39,8 @@ class ActiviteController extends Controller
 		$url = $_POST['url'];
 		DB::table('photocomm')->insert(
 			[	
-				'RangUser' => 1,
-				'idActivite' => $id,
+				'RangUser' => 1, 
+				'idActivite' => $id,                              
 				'url' => $url, 
 				'contenuCommentaire' => $commentaire,
 			]);
