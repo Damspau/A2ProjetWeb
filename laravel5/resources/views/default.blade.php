@@ -91,7 +91,7 @@ if (Session::has('login')) {
                 <ul id="navigation">
 
                   @yield('nav')
-
+                  @yield('header')
 
                   <?php
                   if (Session::get('login') == 'true') {
