@@ -1,16 +1,5 @@
 @extends('default')
 
-
-<style>
-  @media only screen and (min-height: 533px) and (min-width:1018px) {
-    #idk {
-      position: absolute;
-    }
-  }
-</style>
-
-@endsection
-
 @section('title')
 Admin / BDE
 @endsection
@@ -26,11 +15,11 @@ Admin / BDE
 @endsection
 @section('section')
 <?php
-if (Session::get('rang') > 1) {
+if (Session::get('rang') > 1) { 
 
 
 
-  <?php
+  
 
     if (isset($response)) {
       echo "<div class=\"alert alert-success\" role=\"alert\">" . $response . "</div>";
