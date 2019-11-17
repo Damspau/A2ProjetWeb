@@ -16,7 +16,7 @@ class ActiviteController extends Controller
 
 		$activities = DB::table('actives')->get();
 
-		return view('allactivities', compact('activities'));
+		return view('activities', compact('activities'));
 	}
 
 	public function index($id){
@@ -39,7 +39,7 @@ class ActiviteController extends Controller
 		])
 		->get();
 
-		return view('activite', compact('activite', 'photo', 'photocom'))->with('id',$id);		
+		return view('activite', compact('activite', 'photo', 'photocom'))->with('id',$id);
 
 	}
 
@@ -48,10 +48,10 @@ class ActiviteController extends Controller
 		$commentaire = $_POST['commentaire'];
 		$url = $_POST['url'];
 		DB::table('photocomm')->insert(
-			[	
+			[
 				'RangUser' => 1,
 				'idActivite' => $id,
-				'url' => $url, 
+				'url' => $url,
 				'contenuCommentaire' => $commentaire,
 
 
@@ -75,7 +75,7 @@ class ActiviteController extends Controller
 		])
 		->get();
 
-		return view('activite', compact('activite', 'photo', 'photocom'))->with('id',$id);		
+		return view('activite', compact('activite', 'photo', 'photocom'))->with('id',$id);
 
 	}
 
@@ -85,7 +85,7 @@ public function deleteComm()
 
         DB::table('photocomm')
         ->where('idPhotoComm', '=', $id)->delete();
-        
+
 		$activite = DB::table('actives')
 		->where('id', '=', $id)
 		->get();
@@ -104,7 +104,7 @@ public function deleteComm()
 		])
 		->get();
 
-		return view('activite', compact('activite', 'photo', 'photocom'))->with('id',$id);		
+		return view('activite', compact('activite', 'photo', 'photocom'))->with('id',$id);
 
 	}
 
