@@ -81,7 +81,9 @@ if (Session::get('rang')==2 || Session::get('rang')==4 ){
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"></textarea>
               </div>
 
-              					{{ csrf_field() }}
+              {{ csrf_field() }}
+              
+
 
 
               <button type="submit" class="btn btn-primary">Submit</button>

@@ -42,7 +42,7 @@ if (Session::get('rang')>1){
     }
     if (isset($send))
     {
-      echo "<div class=\"alert alert-info\" role=\"alert\"> Informations utilisateur: </br>Rang: ".$send[0]." </br>Username: ".$send[1]. "</br>Nom: ".$send[2]." </br>Prenom: ".$send[3]."</div>";
+      echo "<div class=\"alert alert-info\" role=\"alert\"> Informations utilisateur: </br>Rang: ".$send[0]." </br>Username: ".$send[1]. "</br>Nom: ".$send[2]." </br>Prenom: ".$send[3]." </br>Iduser: ".$send[4]."</div>";
     }
 
     if (isset($erreur))
@@ -61,6 +61,8 @@ if (Session::get('rang')>1){
 <br>
 <br>
 <h1><u>Gestion : </u></h1>
+<button type="button" class="btn btn-info" onclick="window.location='{{ url('/bdegestion') }}';">Gestion bde</button>
+
 <?php  if (Session::get('rang')>3)
 { ?>
 <div class="container" style="text-align:left;">

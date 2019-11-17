@@ -199,6 +199,20 @@ CESI
 						<img class="rounded" src="{{ $comm->url }}">
 
 						<p>Commenter par: $username {{ $coucou->contenuDescription }}</p><br>
+						<?php
+						if (Session::get('rang')==2 || Session::get('rang')==4 )
+						{
+						 ?>
+						 <button type="button" class="btn btn-danger">Delete</button>
+					 <?php } ?>
+
+					 <?php
+					 if (Session::get('rang')==3 )
+					 {
+						?>
+						<button type="button" class="btn btn-warning">Warning</button>
+					<?php } ?>
+
 						@endforeach
 						@endforeach
 
@@ -225,7 +239,6 @@ CESI
 	<form method="get" action="{{url('/all')}}">
 		<a href="path_to_file" download="allImg"> <input name="envoie" type="submit"  class="submit" value="Download"></a>
 	</form>
-<?php $tavariable="ok" ?>
 </main>
 
 @endsection
