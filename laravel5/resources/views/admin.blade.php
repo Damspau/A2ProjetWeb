@@ -1,6 +1,5 @@
 @extends('default')
 
-@section('head')
 
 <style>
   @media only screen and (min-height: 533px) and (min-width:1018px) {
@@ -29,7 +28,6 @@ Admin / BDE
 <?php
 if (Session::get('rang') > 1) {
 
-  ?>
 
 
   <?php
