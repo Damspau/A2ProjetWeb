@@ -2,9 +2,6 @@
 
 @section('head')
 
-<style>
-
-</style>
 
 @endsection
 
