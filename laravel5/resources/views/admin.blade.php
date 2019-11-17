@@ -160,7 +160,7 @@ if (Session::get('rang')>1){
 <?php
 }
 else { ?> <h2 style="text-align:center;color:red;">Accès non autorisé ! (Veuillez vous connecter avec un compte approprié)</h2></br>
-</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+</br>
 
 <?php
 }
