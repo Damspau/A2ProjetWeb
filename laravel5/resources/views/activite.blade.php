@@ -1,3 +1,4 @@
+@extends('default')
 
 <style>
 
@@ -22,7 +23,7 @@
 	}
 	.jumbotron {
 		padding: 1rem 1rem;
-		margin-bottom: 0rem; 
+		margin-bottom: 0rem;
 
 	}
 	.btn-sm:hover
@@ -56,7 +57,7 @@
 		float: left;
 		font-weight: bold;
 		padding: 1% 2%;
-		cursor: pointer;   
+		cursor: pointer;
 	}
 	.commentaire{
 		text-align:center;
@@ -93,7 +94,7 @@
 			</a>
 
 			<!--lancement de la commande foreach pour la récupération du titre de l'activité ainsi que du nombre de Like que l'activité possède  -->
-			
+
 			@foreach($activite as $active)
 			<form method="post" action="{{ url('/coeur') }}/<?php echo ($id) ?>" class="comment-form">
 				<div id="boutonactu">
@@ -138,12 +139,12 @@
 					}
 					?>
 					<!-- Affichage des commentaires/ images -->
-					
+
 						{{ csrf_field() }}
 
-						
+
 						@foreach($photocom as $data){
-						
+
 						<img class="rounded" src="{{ $data->url }}">
 						<p>Commenter par: $username <br>{{ $data ->contenuCommentaire }} </p><br>
 						<?php if (true){ ?>
@@ -159,19 +160,19 @@
 							<input class="btn btn-danger btn-sm remove-from-cart" type="submit" name="btn" value="Delete only this product !" class="btForm" >
 						</form>
 						<?php }
-									
+
 						?>
 
 					}@endforeach
 
-					
+
 
 				</div>
 
 <form method="post" action="{{ url('/test') }}/<?php echo ($id) ?>" class="comment-form">
 				<!--Création de la zone d'écriture pour les commentaire ainsi que pour l'url de l'image  -->
 				<p><label for="comment">Entrer votre commentaire:</label></p>
-				<input class="form-control mr-sm-2 Entrer" type="text" name="commentaire" placeholder="Entrer votre commentaire"></input> 
+				<input class="form-control mr-sm-2 Entrer" type="text" name="commentaire" placeholder="Entrer votre commentaire"></input>
 				<p class="form-submit">
 					<input name="envoie" type="submit" class="submit" value="Envoyer"><br><br>
 				</p>
@@ -210,9 +211,8 @@
 //    data : 'utilisateur=',
 //    success:
 //    function(retour){
-   	
+
 //    	console.log(retour);
 //    }
 // });
 	</script>
-

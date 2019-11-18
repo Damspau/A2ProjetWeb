@@ -101,7 +101,7 @@ Route::post('/editUser', 'adminFunctions@locationModification');
 Route::post('/getUser', 'adminFunctions@userGetData');
 
 //Ativites:
-
+Route::get('/activities', 'ActiviteController@catalogue');
 Route::get('/Activite/{id}', 'ActiviteController@index');
 
 Route::get('/like/{id}', 'ActiviteController@like');
@@ -110,7 +110,7 @@ Route::post('/deleteComm', 'ActiviteController@deleteComm');
 
 Route::post('/insert/{id}', 'ActiviteController@insert');
 
-Route::get('/activities', 'ActivitiesController@home');
+
 
 //bdegestion
 Route::post('/addactivite','bdefonctions@addactivite');
@@ -123,3 +123,4 @@ Route::get('/bdegestion',function() {
 Route::get('/personnelReport{idCommentaire}', 'personnelFunctions@reportComment');
 Route::get('/userPdf{idActivite}', 'personnelFunctions@userPdf');
 Route::get('/downloadPic{idActivite}', 'personnelFunctions@downloadPic');
+//
