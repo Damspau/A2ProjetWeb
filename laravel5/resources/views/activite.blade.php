@@ -88,41 +88,44 @@ CESI Activité
             
             <img class="rounded" src="{{ $data->url }}">
             <p>Commenter par: $username <br>{{ $data ->contenuCommentaire }} </p><br>
-            <?php if (true){ ?>
+           
+            <?php if (Session::get('rang')==2 || Session::get('rang')==4){ ?>
             <form name="reset" method="POST" action="{{ url('/deleteComm') }}">
               @csrf
               <input id="id" name="id" type="hidden" value="{{ $data->idPhotoComm }}">
-              <input class="btn btn-danger btn-sm remove-from-cart" type="submit" name="btn" value="Delete only this product !" class="btForm" >
-            </form>
-            <?php }else { ?>
-
-              <form name="reset" method="POST" action="{{ url('/login') }}">
-              @csrf
-              <input class="btn btn-danger btn-sm remove-from-cart" type="submit" name="btn" value="Delete only this product !" class="btForm" >
+              <input class="btn btn-danger btn-sm remove-from-cart"  type="submit" name="btn" value="Delete only this product !" class="btForm" >
             </form>
             <?php }
-                  
-            ?>
 
-          }@endforeach
+            //else { ?>
+
+             <!--  <form name="reset" method="POST" action="{{ url('/login') }}">
+              @csrf
+              <input class="btn btn-danger btn-sm remove-from-cart" type="submit" name="btn" value="Delete only this product !" class="btForm" >
+            </form> -->
+           
+
+          
+          @endforeach
 
           
 
         </div>
 
-<form method="post" action="{{ url('/test') }}/<?php echo ($id) ?>" class="comment-form">
+<form method="post" action="{{ url('/insert') }}/<?php echo ($id) ?>" class="comment-form">
         <!--Création de la zone d'écriture pour les commentaire ainsi que pour l'url de l'image  -->
         
           <div class="form-group">
           <label for="exampleFormControlTextarea1" >Entrer votre commentaire:</label>
-          <textarea class="form-control"  id="exampleFormControlTextarea1" rows="3" name="commentaire" type="required"></textarea>
+          <textarea class="form-control" id="exampleFormControlTextarea1" style="width: 20%;" rows="3" name="commentaire" type="required"> déposer votre Commentaire</textarea>
           </div>
-        <p class="form-submit">
-          <input name="envoie" type="submit" class="submit" value="Envoyer"><br><br>
-        </p>
+        
 
         {{ csrf_field() }}
-        <input class="form-control mr-sm-2 url " type="text" name="url" placeholder="déposer votre url pour imager cet événement">
+        <input class="form-control mr-sm-2 url " type="text"  style="width: 20%;margin-bottom: 1%;" name="url" placeholder="déposer votre url pour imager cet événement">
+        <p class="form-submit">
+          <input name="envoie" type="submit"  class="submit" value="Envoyer"><br><br>
+        </p>
       </form><br><br><br><br><br><br><br><br><br><br><br><br>
 
     </div>

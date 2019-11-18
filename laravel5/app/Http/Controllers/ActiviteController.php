@@ -54,14 +54,11 @@ class ActiviteController extends Controller
 				'url' => $url,
 				'contenuCommentaire' => $commentaire,
 
-
 			]);
 
 		$activite = DB::table('actives')
-	->where([
-			['idActivite', '=', $id],
-			['id', '=', $id],
-			])
+	->where('id', '=', $id
+			)
 		->get();
 
 
