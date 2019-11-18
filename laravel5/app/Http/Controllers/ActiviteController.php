@@ -9,16 +9,6 @@ use DB;
 
 class ActiviteController extends Controller
 {
-
-	public function home()
-	{
-
-
-		$activities = DB::table('actives')->get();
-
-		return view('activities', compact('activities'));
-	}
-
 	public function index($id){
 
 		$activite = DB::table('actives')
@@ -39,7 +29,15 @@ class ActiviteController extends Controller
 		])
 		->get();
 
-		return view('activite', compact('activite', 'photo', 'photocom'))->with('id',$id);
+		return view('activite', compact('activite', 'photo', 'photocomm'))->with('id',$id);
+
+	}
+	public function catalogue(){
+
+		$activite = DB::table('actives')
+		->get();
+
+		return view('allactivities', compact('activite'));
 
 	}
 
