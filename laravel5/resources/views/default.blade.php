@@ -40,9 +40,9 @@ if (Session::has('login')) {
 
   <!-- JS here ------------------------------------------>
 
-  <script src="js/vendor/jquery-1.12.4.min.js"></script>
+  <script src="{{ asset('js/vendor/jquery-1.12.4.min.js') }}"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="js/jquery.slicknav.min.js"></script>
+  <script src="{{ asset('js/jquery.slicknav.min.js') }}"></script>
   <script src="js/main.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -225,7 +225,7 @@ if (Session::has('login')) {
 
 </body>
 
-@yield('script')
+
 
 <!--Script cookies------------------>
 
@@ -233,7 +233,7 @@ if (Session::has('login')) {
 <div id="cookiesScript">
 
 </div>
-
+@yield('script')
 <script>
 
   /** PARAM ////////////////////// */

@@ -79,13 +79,14 @@ CESI Activité
             @foreach($photocom as $data){
 
             <img class="rounded" src="{{ $data->url }}">
-            <p>Commenter par: $username <br>{{ $data ->contenuCommentaire }} </p><br>
+            <p>{{ $data ->user }} :<br>{{ $data ->contenuCommentaire }} </p><br>
 
             <?php if (Session::get('rang')==2 || Session::get('rang')==4){ ?>
             <form name="reset" method="POST" action="{{ url('/deleteComm') }}">
               @csrf
-              <input id="id" name="id" type="hidden" value="{{ $data->idPhotoComm }}">
-              <input class="btn btn-danger btn-sm remove-from-cart"  type="submit" name="btn" value="Delete only this product !" class="btForm" >
+              <input name="id" type="hidden" value="{{ $data->idPhotoComm }}">
+							<button id="{{ $data ->idPhotoComm }} " class="btn btn-danger btn-sm" type="button" >Supprimer le com</button>
+
             </form>
             <?php }
 
@@ -134,30 +135,28 @@ CESI Activité
 </main>
 @endsection
 @section('script')
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js%22%3E"</script>
-
-    $(function() {
-      $(".popup").click(function() {
-        $(this).toggleClass("background");
-
-      });
-
-    });
-
-//  $('#envoielike').click(function(){
-    //var php = "<?php //echo $tavariable; ?>";
-//    console.log(php);
-//    $.ajax({
-//    url : 'http://localhost:8000/like', // La ressource ciblée
-//    type : 'GET', // Le type de la requête HTTP.
-//    data : 'utilisateur=',
-//    success:
-//    function(retour){
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous">
+jQuery(document).ready(function(){
+           alert("fuck")
+       });
 
 
-//      console.log(retour);
-//    }
-// });
+
+
+
+
+		$(".btn-danger").click(function(){
+			var idCommentaire = $(this).attr('id');
+			console.log(idCommentaire);
+
+
+
+});
+
+
   </script>
 
 @endsection

@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Resquest;
 use App\Active;
 use DB;
+use Session;
 
 class ActiviteController extends Controller
 {
@@ -45,12 +46,14 @@ class ActiviteController extends Controller
 
 		$commentaire = $_POST['commentaire'];
 		$url = $_POST['url'];
+		$user = Session::get('username');
 		DB::table('photocomm')->insert(
 			[
 				'RangUser' => 1,
 				'idActivite' => $id,
 				'url' => $url,
 				'contenuCommentaire' => $commentaire,
+				'user'=> $user,
 
 			]);
 
@@ -100,9 +103,9 @@ class ActiviteController extends Controller
 
 	}
 
-public function deleteComm()
+public function deleteComm($id)
     {
-        $id = $_POST['id'];
+    
 
         DB::table('photocomm')
         ->where('idPhotoComm', '=', $id)->delete();

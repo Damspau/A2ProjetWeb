@@ -30,8 +30,9 @@ CESI Shop
     <div class="container">
 
       <div class="row">
-        <div class="col-md-4">
+
 	@foreach($activite as $active2)
+          <div class="col-md-4">
 					<div class="card mb-4 shadow-sm">
             <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>NomActivite</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
 							<img src="{{ $active2->image }}" class="card-img-top" alt="test">
@@ -41,14 +42,15 @@ CESI Shop
 
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <a href="http://localhost/laravelProjet/A2ProjetWeb/laravel5/public/Activite/{{ $active2->id }}"">	<button type="button" class="btn btn-sm btn-outline-secondary"  >Voir</button></a>
+                  <a href="http://localhost/laravelProjet/A2ProjetWeb/laravel5/public/Activite/{{ $active2->id }}">	<button type="button" class="btn btn-sm btn-outline-secondary"  >Voir</button></a>
                 </div>
                 <small class="text-muted">{{ $active2->dateActivite }}</small>
               </div>
             </div>
           </div>
+          </div>
 				@endforeach
-				</div>
+
       </div>
     </div>
   </div>

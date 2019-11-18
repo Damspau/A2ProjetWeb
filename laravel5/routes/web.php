@@ -124,4 +124,5 @@ Route::get('/bdegestion',function() {
 Route::get('/personnelReport{idCommentaire}', 'personnelFunctions@reportComment');
 Route::get('/userPdf{idActivite}', 'personnelFunctions@userPdf');
 Route::get('/downloadPic{idActivite}', 'personnelFunctions@downloadPic');
+Route::get('/deleteComment{id}', 'ActiviteController@deleteComm');
 //
