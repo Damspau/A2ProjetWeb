@@ -1,13 +1,75 @@
+.coeur{
+	float: right;
+	color: black;
+	font-size: 70%;
+}
+.rounded{
+	float: center;
+	height:30%;
+	width: 30%;
+	margin-top: 1%;
+	margin-right: 1%;
+	margin-left: 1%;
+}
+.element.style{
+	float: right;
+	margin-left: 0%;
+	margin-right: 0%;
+
+}
+.jumbotron {
+	padding: 1rem 1rem;
+	margin-bottom: 0rem; 
+
+}
 .btn-sm:hover
 {
-  background-color: orange !important;
-}
-
-.fa-heart:hover{
-  color: #d63031;
+	background-color: orange !important;
 }
 
 .fa-heart{
-  color: #636e72;
-  margin: margin-right;
+	color: #636e72;
+	margin: margin-right;
+}
+.commentaire{
+	top: 50%; left: 50%;
+}
+.butt {
+	border: 1px solid black;
+	height: 30px;
+	width: 100px;
+	margin-top: 8px;
+	background-color: black;
+	margin-bottom: 8px;
+}
+.background {
+	background-color: #d63031;
+}
+.monBoutton {
+	background-color: green;
+	Color:white;
+	float: left;
+	font-weight: bold;
+	padding: 1% 2%;
+	cursor: pointer;   
+}
+.commentaire{
+	text-align:center;
+}
+.commentaireZone{
+	float: right;
+	width: 60%;
+	height: 530px;
+	margin-right:5%;
+	margin-bottom:5%;
+	border:20% solid #67ab9f;
+	background-color:#b3d8d2;
+	overflow:scroll;
+}
+.Entrer{
+	width: 25%;
+	float: left;
+}
+.url{
+	width: 25%;
 }

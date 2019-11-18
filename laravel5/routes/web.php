@@ -104,6 +104,7 @@ Route::post('/getUser', 'adminFunctions@userGetData');
 
 Route::get('/Activite/{id}', 'ActiviteController@index');
 
+
 Route::get('/like/{id}', 'ActiviteController@like');
 
 Route::post('/deleteComm', 'ActiviteController@deleteComm');

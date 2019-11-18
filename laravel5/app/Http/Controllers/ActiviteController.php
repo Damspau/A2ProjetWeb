@@ -58,6 +58,32 @@ class ActiviteController extends Controller
 			]);
 
 		$activite = DB::table('actives')
+	->where([
+			['idActivite', '=', $id],
+			['id', '=', $id],
+			])
+		->get();
+
+
+		$photocom = DB::table('photocomm')
+		->where([
+			['idActivite', '=', $id],
+			['rangUser', '<', 3],
+		])
+		->get();
+
+		return view('activite', compact('activite', 'photo', 'photocom'))->with('id',$id);
+
+	}
+	public function inscription ($id){
+
+		
+		DB::table('inscription')->insert(
+			[	
+				'username' =>'sdqd' ,
+				'idActivite' => $id, 
+			]);
+		$activite = DB::table('actives')
 		->where('id', '=', $id)
 		->get();
 
@@ -75,7 +101,7 @@ class ActiviteController extends Controller
 		])
 		->get();
 
-		return view('activite', compact('activite', 'photo', 'photocom'))->with('id',$id);
+	return view('activite', compact('activite', 'photo', 'photocom'))->with('id',$id);			
 
 	}
 
