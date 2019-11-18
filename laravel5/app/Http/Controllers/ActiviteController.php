@@ -29,7 +29,7 @@ class ActiviteController extends Controller
 		])
 		->get();
 
-		return view('activite', compact('activite', 'photo', 'photocomm'))->with('id',$id);
+		return view('activite', compact('activite', 'photo', 'photocom'))->with('id',$id);
 
 	}
 	public function catalogue(){
@@ -72,11 +72,11 @@ class ActiviteController extends Controller
 	}
 	public function inscription ($id){
 
-		
+
 		DB::table('inscription')->insert(
-			[	
+			[
 				'username' =>'sdqd' ,
-				'idActivite' => $id, 
+				'idActivite' => $id,
 			]);
 		$activite = DB::table('actives')
 		->where('id', '=', $id)
@@ -96,7 +96,7 @@ class ActiviteController extends Controller
 		])
 		->get();
 
-	return view('activite', compact('activite', 'photo', 'photocom'))->with('id',$id);			
+	return view('activite', compact('activite', 'photo', 'photocom'))->with('id',$id);
 
 	}
 
